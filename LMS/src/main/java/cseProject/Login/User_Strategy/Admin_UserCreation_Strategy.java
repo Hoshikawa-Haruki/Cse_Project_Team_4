@@ -22,7 +22,7 @@ public class Admin_UserCreation_Strategy implements UserCreation_Strategy {
     public void make_User(String newAdminID, String newAdminPW, String newAdminName, boolean newisManager) throws IOException {
         System.out.print("관리자 코드를 입력하세요:");
         String AdminCode = helper.getUserInput();
-        if (!AdminCode.equals("1111")) {
+        if (!AdminCode.equals("admin1111")) {
             System.out.println("올바르지 않은 관리자 코드입니다. 회원가입을 취소합니다.");
             return; // 메서드를 즉시 종료하고 호출자로 반환
         } else {
