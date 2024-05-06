@@ -9,5 +9,5 @@ package cseProject.MainWindow;
  * @author 이승환
  */
 public class ShowMain {
-    //작업중
+    //작업중. 구현 예정
 }
