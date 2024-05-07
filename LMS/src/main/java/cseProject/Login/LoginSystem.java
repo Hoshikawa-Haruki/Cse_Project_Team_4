@@ -92,6 +92,8 @@ public class LoginSystem {
             General_UserCreation_Strategy generalStrategy = new General_UserCreation_Strategy();
             generalStrategy.make_User(newID, newPW, newName, newisManager);
         }
+        
+        
     }
 
     public void try_Login() throws IOException {

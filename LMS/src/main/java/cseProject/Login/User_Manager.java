@@ -5,7 +5,15 @@
 package cseProject.Login;
 
 import cseProject.SystemHelper;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -60,4 +68,67 @@ public class User_Manager {
     public ArrayList<User_Info> getUserDB() {
         return userDB;
     }
+    
+                          
+        public void Regenerate(String str){ //변경된 파일을 백업 후 재성성
+            helper.BackUpTextFile("./"+str+".txt");
+       
+        try{
+             File f = new File("./UserData.txt");
+        if(f.exists()){
+            System.out.println("파일이 이미 존재합니다."); 
+        }else if(f.createNewFile()){
+             System.out.println("파일을 생성합니다.");
+        }
+        } catch (IOException ex) {
+            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+       
+        try(FileOutputStream output = new FileOutputStream("./"+str+".txt",true);
+            OutputStreamWriter writer=new OutputStreamWriter(output,"UTF-8");
+            BufferedWriter out=new BufferedWriter(writer); )
+        {
+            for(int i=0;i<userDB.size();i++){ //이름,아이디,비밀번호,관리자여부 형식으로 저장
+                 out.append(
+                 userDB.get(i).getUserName()
+                 +
+                 ","        
+                 +         
+                 userDB.get(i).getUserID()
+                 +
+                 ","        
+                 +      
+                 userDB.get(i).getUserPW()
+                 +
+                 ","        
+                 +     
+                 String.valueOf(userDB.get(i).getIsManager())
+                 +
+                 "/"                      // '/'문자로 사용자와 다른 사용자의 정보를 구분지음
+                 );
+                 out.append("\n");
+            }
+            out.append("*");          //시스템에 저장된 사용자데이터의 끝을 나타냄
+           
+           
+           
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+          
+        
+        
+        
+        
+        }
+    
+    
+        
+ 
+    
 }
