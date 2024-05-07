@@ -29,5 +29,4 @@ juwon123,password29,임주원,false/
 admin123,pw123,관리자,true/
 qkr123,pw123,박준영,false/
 librarian,pw123,사서,true/
-test123,pw123,테스트유저,false/
 *

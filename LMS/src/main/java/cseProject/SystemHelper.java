@@ -37,14 +37,26 @@ public class SystemHelper {
         return instance;
     }
 
-    public String getUserInput() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String input = br.readLine();
-        return input;
-    }
+    public static String getUserInput() {       //유저의 입력을 받는 메서드
+        String inputLine = null;
+        try{
+            InputStreamReader reader=new InputStreamReader(System.in,"EUC-KR");     
+            BufferedReader is = new BufferedReader(reader);                                    
+            inputLine = is.readLine();
+           
+            while(inputLine.length() == 0){
+                System.out.println("공백입력은 허용되지 않습니다.");
+                 inputLine = is.readLine();
+            }
+            
+            
+        } catch (IOException e){
+        System.out.println("IOException"+ e);
+        }
+        return inputLine;
+}
     
     
-      
             public static ArrayList<String[]> getTextedData(String parameter){    //파일에 저장된 데이터를 리스트에 읽어드림
                 
                 ArrayList<String[]> list = new ArrayList<>();
