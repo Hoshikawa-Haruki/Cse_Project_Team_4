@@ -51,6 +51,7 @@ public class User_Manager {
     public void add_userDB(User_Info user_MemberShip) {
         User_Info newUser = User_Factory.createUser(user_MemberShip); //팩토리 메서드를 통해 사용자 객체 생성
         userDB.add(newUser);
+        Regenerate("UserData");
     }
 
     public void setUserDB(ArrayList<User_Info> userDB) {
@@ -92,15 +93,15 @@ public class User_Manager {
         {
             for(int i=0;i<userDB.size();i++){ //이름,아이디,비밀번호,관리자여부 형식으로 저장
                  out.append(
-                 userDB.get(i).getUserName()
-                 +
-                 ","        
-                 +         
                  userDB.get(i).getUserID()
                  +
                  ","        
-                 +      
+                 +         
                  userDB.get(i).getUserPW()
+                 +
+                 ","        
+                 +      
+                 userDB.get(i).getUserName()
                  +
                  ","        
                  +     
