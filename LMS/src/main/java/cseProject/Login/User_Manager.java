@@ -91,7 +91,7 @@ public class User_Manager {
             OutputStreamWriter writer=new OutputStreamWriter(output,"UTF-8");
             BufferedWriter out=new BufferedWriter(writer); )
         {
-            for(int i=0;i<userDB.size();i++){ //이름,아이디,비밀번호,관리자여부 형식으로 저장
+            for(int i=0;i<userDB.size();i++){ //아이디,비밀번호,이름,관리자여부 형식으로 저장
                  out.append(
                  userDB.get(i).getUserID()
                  +

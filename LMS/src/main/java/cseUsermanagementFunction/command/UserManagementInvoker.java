@@ -21,6 +21,7 @@ public class UserManagementInvoker {
         commandMap.put("delete", new DeleteUserCommand(UserManagementFunction.getInstance()));
         commandMap.put("modify", new ModifyUserCommand(UserManagementFunction.getInstance()));
         commandMap.put("search", new SearchUserCommand(UserManagementFunction.getInstance()));
+        commandMap.put("inspect", new InspectUserListCommand(UserManagementFunction.getInstance()));
     }
 
     public void executeCommand(String commandName) {
