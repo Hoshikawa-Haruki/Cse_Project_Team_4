@@ -26,8 +26,8 @@ public class User_Manager {
     private User_Info loginUser; // 현재 로그인 유저
     private static SystemHelper helper = SystemHelper.getInstance();
 
-    private User_Manager() {
-        // Private 생성자
+    private User_Manager() { 
+        // Private 생성자, 처음 생성될시 UserData.txt에서 유저정보를 가져와 객체 리스트화 하여 추가해줌
          ArrayList<String[]> UserTemp = new ArrayList<>(helper.getTextedData("UserData.txt"));
          
           for(int i=0; i<UserTemp.size();i++){
@@ -51,7 +51,7 @@ public class User_Manager {
     public void add_userDB(User_Info user_MemberShip) {
         User_Info newUser = User_Factory.createUser(user_MemberShip); //팩토리 메서드를 통해 사용자 객체 생성
         userDB.add(newUser);
-        Regenerate("UserData");
+        Regenerate("UserData"); //userDB에 새롭게 추가된 유저정보를 기반으로 데이터 파일 재생성(UserData.txt)
     }
 
     public void setUserDB(ArrayList<User_Info> userDB) {

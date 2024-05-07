@@ -110,7 +110,7 @@ public class SystemHelper {
     }
         
    
-    public static void BackUpTextFile(String paramater){   
+    public static void BackUpTextFile(String paramater){   //기존 파일을 파일이름_old폴더에 현재시간을 이름으로 백업하고 기존파일은 삭제
         
          LocalDateTime now = LocalDateTime.now(); 
          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");  
