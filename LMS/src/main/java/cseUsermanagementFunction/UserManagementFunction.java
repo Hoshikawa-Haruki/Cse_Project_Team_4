@@ -4,6 +4,8 @@
  */
 package cseUsermanagementFunction;
 
+import cseProject.Login.User_Info;
+import cseProject.Login.User_Manager;
 import cseProject.SystemHelper;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -22,7 +24,7 @@ import java.util.logging.Logger;
 
 
 
-public class UserManagement {
+public class UserManagementFunction {
     private String username;
     
     private static SystemHelper helper = SystemHelper.getInstance();
@@ -32,45 +34,33 @@ public class UserManagement {
     ArrayList<String> Pw = new ArrayList<>();
     ArrayList<Boolean> IsManager = new ArrayList<>();
     
-     private static final UserManagement instance = new UserManagement();
+     private static final UserManagementFunction instance = new UserManagementFunction();
+     private static User_Manager manager = User_Manager.getInstance();
     
-        private UserManagement(){    //처음 생성될때 유저데이터를 파일에서 불러와 저장
-        
-        ArrayList<String[]> UserTemp = new ArrayList<>(helper.getTextedData("UserData.txt"));
-
-        for(int i=0; i<UserTemp.size();i++){
-            Name.add(UserTemp.get(i)[0]);
-            Id.add(UserTemp.get(i)[1]);
-            Pw.add(UserTemp.get(i)[2]);
-            if(UserTemp.get(i)[3].equals("true")){
-                IsManager.add(true);
-            } else {
-                 IsManager.add(false);
-            }
-        }
+        private UserManagementFunction(){    //처음 생성될때 유저데이터를 파일에서 불러와 저장
         }
         
         
-        public static UserManagement getInstance(){
+        public static UserManagementFunction getInstance(){
             return instance;
         }
         
         
         public void InspectUserList(){ //사용자 목록 출력
            
-        for(int i=0;i<Name.size();i++){
+        for(int i=0;i<manager.getUserDB().size();i++){
              System.out.println(
              i+1
                +
              "."        
                +
-             String.format("%15s",Name.get(i))
+             String.format("%15s",manager.getUserDB().get(i).getUserID())
                +
-             String.format("%15s",Id.get(i))
+             String.format("%15s",manager.getUserDB().get(i).getUserPW())
                +
-             String.format("%15s",Pw.get(i))
+             String.format("%15s",manager.getUserDB().get(i).getUserName())  
                +
-             String.format("%15b",IsManager.get(i))
+             String.format("%15b",manager.getUserDB().get(i).getIsManager())
             
              );
             
@@ -78,8 +68,9 @@ public class UserManagement {
             
         }
         
-           
+          
         public void SearchUserList(){ //사용자 검색
+            /* 
            String str="";
            ArrayList<Integer> index = new ArrayList<>();
             System.out.println("검색방식을 입력하세요(name, id, pw, type): ");
@@ -200,29 +191,30 @@ public class UserManagement {
                     }
                     break;
             }
-            
+               */
         }
        
-    
+ 
         
         public void AddUser(){ //사용자정보 등록
            InspectUserList();
            
-           String[] temp = new String[4];
-
-           System.out.println("이름: ");
-           temp[0] = helper.getUserInput();
+           String[] UserTemp = new String[4];
            System.out.println("아이디: ");
-           temp[1] = helper.getUserInput();
+           UserTemp[0] = helper.getUserInput();
            System.out.println("비밀번호: ");
-           temp[2] = helper.getUserInput();
+           UserTemp[1] = helper.getUserInput();
+           System.out.println("이름: ");
+           UserTemp[2] = helper.getUserInput();
            System.out.println("관리자 여부(true or false): ");
-           temp[3] = helper.getUserInput();
+           UserTemp[3] = helper.getUserInput();
            
-           Name.add(temp[0]);
-           Id.add(temp[1]);
-           Pw.add(temp[2]);
-           IsManager.add(Boolean.parseBoolean(temp[3]));
+           manager.getUserDB().add(new User_Info(
+                      UserTemp[0],
+                      UserTemp[1],
+                      UserTemp[2],
+                      Boolean.parseBoolean(UserTemp[3])
+              )); 
            
            Regenerate("UserData");
            
@@ -238,10 +230,7 @@ public class UserManagement {
             
             int selNum = Integer.parseInt(input)-1;
             
-            Name.remove(selNum);
-            Id.remove(selNum);
-            Pw.remove(selNum);
-            IsManager.remove(selNum);
+             manager.getUserDB().remove(selNum); 
             
             Regenerate("UserData");
             
@@ -256,32 +245,30 @@ public class UserManagement {
             
            int selNum = Integer.parseInt(input)-1;
            
-           
-           String[] temp = new String[4];
 
-           System.out.println("이름: ");
-           input = helper.getUserInput();
-           Name.set(selNum, input);
-           
            System.out.println("아이디: ");
            input = helper.getUserInput();
-           Id.set(selNum, input);
+           manager.getUserDB().get(selNum).setUserID(input);
            
            System.out.println("비밀번호: ");
            input = helper.getUserInput();
-           Pw.set(selNum, input);
+           manager.getUserDB().get(selNum).setUserPW(input);
+           
+            System.out.println("이름: ");
+           input = helper.getUserInput();
+           manager.getUserDB().get(selNum).setUserName(input);
            
            System.out.println("관리자 여부(true or false): ");
            input = helper.getUserInput();
-           IsManager.set(selNum, Boolean.valueOf(input));
+           manager.getUserDB().get(selNum).setIsManager(Boolean.valueOf(input));
           
            Regenerate("UserData");
            
            InspectUserList();
+
         }
         
-        
-                            
+                           
         public void Regenerate(String str){ //변경된 파일을 백업 후 재성성
             helper.BackUpTextFile("./"+str+".txt");
        
@@ -293,7 +280,7 @@ public class UserManagement {
              System.out.println("파일을 생성합니다.");
         }
         } catch (IOException ex) {
-            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
         }
        
         
@@ -302,21 +289,21 @@ public class UserManagement {
             OutputStreamWriter writer=new OutputStreamWriter(output,"UTF-8");
             BufferedWriter out=new BufferedWriter(writer); )
         {
-            for(int i=0;i<Name.size();i++){ //이름,아이디,비밀번호,관리자여부 형식으로 저장
+            for(int i=0;i<manager.getUserDB().size();i++){ //이름,아이디,비밀번호,관리자여부 형식으로 저장
                  out.append(
-                 Name.get(i)
+                 manager.getUserDB().get(i).getUserID()
                  +
                  ","        
                  +         
-                 Id.get(i)
+                manager.getUserDB().get(i).getUserPW()
                  +
                  ","        
                  +      
-                 Pw.get(i)
+                 manager.getUserDB().get(i).getUserName()
                  +
                  ","        
                  +     
-                 String.valueOf(IsManager.get(i))
+                 String.valueOf(manager.getUserDB().get(i).getIsManager())
                  +
                  "/"                      // '/'문자로 사용자와 다른 사용자의 정보를 구분지음
                  );
@@ -327,9 +314,9 @@ public class UserManagement {
            
            
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
         }
         
           
@@ -341,6 +328,6 @@ public class UserManagement {
     
     
         
- 
+  
 
 }

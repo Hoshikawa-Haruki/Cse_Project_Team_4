@@ -4,16 +4,16 @@
  */
 package cseUsermanagementFunction.command;
 
-import cseUsermanagementFunction.UserManagement;
+import cseUsermanagementFunction.UserManagementFunction;
 
 /**
  *
  * @author jasuj
  */
 public class DeleteUserCommand implements Command {
-    private UserManagement userManager = UserManagement.getInstance();
+    private UserManagementFunction userManager = UserManagementFunction.getInstance();
 
-    public DeleteUserCommand(UserManagement userManager) {
+    public DeleteUserCommand(UserManagementFunction userManager) {
         this.userManager = userManager;
     }
 

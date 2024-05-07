@@ -4,16 +4,16 @@
  */
 package cseUsermanagementFunction.command;
 
-import cseUsermanagementFunction.UserManagement;
+import cseUsermanagementFunction.UserManagementFunction;
 
 /**
  *
  * @author jasuj
  */
 public class AddUserCommand implements Command {
-    private UserManagement userManager = UserManagement.getInstance();
+    private UserManagementFunction userManager = UserManagementFunction.getInstance();
 
-    public AddUserCommand(UserManagement userManager) {
+    public AddUserCommand(UserManagementFunction userManager) {
         this.userManager = userManager;
     }
 
