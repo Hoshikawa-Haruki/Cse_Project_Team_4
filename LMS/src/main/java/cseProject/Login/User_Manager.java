@@ -4,6 +4,7 @@
  */
 package cseProject.Login;
 
+import cseProject.SystemHelper;
 import java.util.ArrayList;
 
 /**
@@ -15,9 +16,20 @@ public class User_Manager {
     private static User_Manager instance; // 싱글턴
     private ArrayList<User_Info> userDB = new ArrayList<>(); // 유저DB
     private User_Info loginUser; // 현재 로그인 유저
+    private static SystemHelper helper = SystemHelper.getInstance();
 
     private User_Manager() {
         // Private 생성자
+         ArrayList<String[]> UserTemp = new ArrayList<>(helper.getTextedData("UserData.txt"));
+         
+          for(int i=0; i<UserTemp.size();i++){
+              userDB.add(new User_Info(
+                      UserTemp.get(i)[0],
+                      UserTemp.get(i)[1],
+                      UserTemp.get(i)[2],
+                      Boolean.parseBoolean(UserTemp.get(i)[3])
+              ));  
+        }
     }
 
     public static User_Manager getInstance() {
