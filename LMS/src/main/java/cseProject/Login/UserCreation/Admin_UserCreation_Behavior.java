@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cseProject.Login.User_Strategy;
+package cseProject.Login.UserCreation;
 
 import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
@@ -13,7 +13,7 @@ import java.io.IOException;
  *
  * @author 이승환
  */
-public class Admin_UserCreation_Strategy implements UserCreation_Strategy {
+public class Admin_UserCreation_Behavior implements UserCreation_Behavior {
 
     private SystemHelper helper = SystemHelper.getInstance();
     private User_Manager userManager = User_Manager.getInstance();

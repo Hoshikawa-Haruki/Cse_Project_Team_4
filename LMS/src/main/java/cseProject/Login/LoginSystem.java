@@ -4,8 +4,8 @@ package cseProject.Login;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-import cseProject.Login.User_Strategy.General_UserCreation_Strategy;
-import cseProject.Login.User_Strategy.Admin_UserCreation_Strategy;
+import cseProject.Login.UserCreation.General_UserCreation_Behavior;
+import cseProject.Login.UserCreation.Admin_UserCreation_Behavior;
 import cseProject.SystemHelper;
 import java.io.IOException;
 
@@ -32,10 +32,8 @@ public class LoginSystem {
     }
 
     public void make_ID() throws IOException {
-
         String newID;
         boolean isExist;
-
         do {
             isExist = false;
             System.out.println("생성 할 ID를 입력하세요");
@@ -56,13 +54,6 @@ public class LoginSystem {
             }
         } while (isExist);
 
-//        do {
-//            newID = helper.getUserInput();
-//            if (newID.length() < 4) {
-//                System.out.println("ID는 4자리 이상 입력해주세요.");
-//                System.out.println("다시 입력해주세요.");
-//            }
-//        } while (newID.length() < 4);
         String newPW;
         do {
             System.out.println("생성 할 PW를 입력하세요");
@@ -85,15 +76,14 @@ public class LoginSystem {
 
         if (newisManager) {
             // 관리자 전략을 사용하여 가입 처리
-            Admin_UserCreation_Strategy adminStrategy = new Admin_UserCreation_Strategy();
+            Admin_UserCreation_Behavior adminStrategy = new Admin_UserCreation_Behavior();
             adminStrategy.make_User(newID, newPW, newName, newisManager);
         } else {
             // 일반 사용자 전략을 사용하여 가입 처리
-            General_UserCreation_Strategy generalStrategy = new General_UserCreation_Strategy();
+            General_UserCreation_Behavior generalStrategy = new General_UserCreation_Behavior();
             generalStrategy.make_User(newID, newPW, newName, newisManager);
         }
-        
-        
+
     }
 
     public void try_Login() throws IOException {
