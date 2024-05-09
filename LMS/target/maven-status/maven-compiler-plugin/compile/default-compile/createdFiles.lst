@@ -9,10 +9,14 @@ cseProject\Login\LoginSystem.class
 cseProject\Login\User_Factory.class
 cseProject\Login\User_Info.class
 cseProject\MainWindow\ShowMain.class
+cseUsermanagementFunction\SearchFunction\UserIdSearchStrategy.class
+cseUsermanagementFunction\SearchFunction\UserNameSearchStrategy.class
 cseProject\Login\User_Strategy\Admin_UserCreation_Strategy.class
 cseUsermanagementFunction\command\DeleteUserCommand.class
 cseProject\Login\User_Manager.class
 cseProject\Login\User_Strategy\General_UserCreation_Strategy.class
 cseProject\Login\User_Strategy\UserCreation_Strategy.class
 cseUsermanagementFunction\command\ModifyUserCommand.class
+cseUsermanagementFunction\SearchFunction\SearchUserListStrategy.class
 cseUsermanagementFunction\command\InspectUserListCommand.class
+cseUsermanagementFunction\SearchFunction\UserTypeSearchStrategy.class

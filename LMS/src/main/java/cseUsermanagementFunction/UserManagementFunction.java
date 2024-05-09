@@ -7,6 +7,10 @@ package cseUsermanagementFunction;
 import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
 import cseProject.SystemHelper;
+import cseUsermanagementFunction.SearchFunction.SearchUserListStrategy;
+import cseUsermanagementFunction.SearchFunction.UserIdSearchStrategy;
+import cseUsermanagementFunction.SearchFunction.UserNameSearchStrategy;
+import cseUsermanagementFunction.SearchFunction.UserTypeSearchStrategy;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -68,9 +72,9 @@ public class UserManagementFunction {
             
         }
         
-          
+          /*
         public void SearchUserList(){ //사용자 검색
-            /* 
+            
            String str="";
            ArrayList<Integer> index = new ArrayList<>();
             System.out.println("검색방식을 입력하세요(name, id, pw, type): ");
@@ -191,11 +195,37 @@ public class UserManagementFunction {
                     }
                     break;
             }
-               */
-        }
+               
+        }*/
        
- 
-        
+            
+    public void SearchUserList() {
+         System.out.println("검색방식을 입력하세요(id, name,, type): ");
+         String input = helper.getUserInput();
+
+        SearchUserListStrategy SearchUserStrategy = getLoginStrategy(input);
+        if (SearchUserStrategy != null) {
+            SearchUserStrategy.Search();
+        }
+    }
+
+    private SearchUserListStrategy getLoginStrategy(String input) {
+        switch (input) {
+            case "id":
+                return new UserIdSearchStrategy();
+            case "name":
+                return new UserNameSearchStrategy();
+            case "type":
+                return new UserTypeSearchStrategy();
+            default:
+                System.out.println("유효하지 않은 검색방식 입니다. ");
+                return null;
+        }
+    }
+
+    
+       
+
         public void AddUser(){ //사용자정보 등록
            InspectUserList();
            
