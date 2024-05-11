@@ -169,19 +169,7 @@ public class UserManagementFunction {
                            
         public void Regenerate(String str){ //변경된 파일을 백업 후 재성성
             helper.BackUpTextFile("./"+str+".txt");
-       
-        try{
-             File f = new File("./UserData.txt");
-        if(f.exists()){
-            System.out.println("파일이 이미 존재합니다."); 
-        }else if(f.createNewFile()){
-             System.out.println("파일을 생성합니다.");
-        }
-        } catch (IOException ex) {
-            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
-        
+            helper.fileMake(str);
        
         try(FileOutputStream output = new FileOutputStream("./"+str+".txt",true);
             OutputStreamWriter writer=new OutputStreamWriter(output,"UTF-8");

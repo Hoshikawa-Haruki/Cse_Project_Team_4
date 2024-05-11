@@ -15,6 +15,7 @@ interface InterfaceSystemHelper {
     String getUserInput();
     ArrayList<String[]> getTextedData(String parameter);
     void BackUpTextFile(String paramater);
+    void fileMake(String str);
     
     
 }

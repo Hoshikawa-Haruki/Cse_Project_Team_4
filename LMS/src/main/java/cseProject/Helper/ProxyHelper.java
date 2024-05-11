@@ -44,10 +44,15 @@ public class ProxyHelper implements InterfaceSystemHelper{
          realHelper.getUserInput();
     }
     
+     @Override
+    public void fileMake(String str) {
+         realHelper.fileMake(str);
+    }
+    
     public void rogging(){ //현재 실행중인 메서드를 반환
         stackTrace = Thread.currentThread().getStackTrace();
         System.out.println(stackTrace[2]);
     }
 
-    
+ 
 }

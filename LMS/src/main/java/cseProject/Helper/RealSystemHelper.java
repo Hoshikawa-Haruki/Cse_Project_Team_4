@@ -1,5 +1,6 @@
 package cseProject.Helper;
 
+import cseProject.Login.User_Manager;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -140,6 +141,20 @@ public class RealSystemHelper implements InterfaceSystemHelper{
            
             
                 file.delete();          
+    }
+
+    @Override
+    public void fileMake(String str) {
+         try{
+             File f = new File("./"+str+".txt");
+        if(f.exists()){
+            System.out.println("파일이 이미 존재합니다."); 
+        }else if(f.createNewFile()){
+             System.out.println("파일을 생성합니다.");
+        }
+        } catch (IOException ex) {
+            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
         
 
