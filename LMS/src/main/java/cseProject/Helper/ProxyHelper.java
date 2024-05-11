@@ -41,7 +41,7 @@ public class ProxyHelper implements InterfaceSystemHelper{
 
     @Override
     public void BackUpTextFile(String paramater) {
-         realHelper.getUserInput();
+         realHelper.BackUpTextFile(paramater);
     }
     
      @Override
