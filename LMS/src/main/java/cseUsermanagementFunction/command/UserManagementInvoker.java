@@ -18,7 +18,6 @@ public class UserManagementInvoker {
     public UserManagementInvoker() {
         // 여기에 사용할 명령어와 해당 명령어에 해당하는 커맨드 객체를 추가합니다.
         commandMap.put("add", new AddUserCommand(UserManagementFunction.getInstance()));
-        commandMap.put("delete", new DeleteUserCommand(UserManagementFunction.getInstance()));
         commandMap.put("modify", new ModifyUserCommand(UserManagementFunction.getInstance()));
         commandMap.put("search", new SearchUserCommand(UserManagementFunction.getInstance()));
         commandMap.put("inspect", new InspectUserListCommand(UserManagementFunction.getInstance()));

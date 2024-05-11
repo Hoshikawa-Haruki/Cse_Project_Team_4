@@ -8,6 +8,9 @@ import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
 import cseProject.Helper.ProxyHelper;
 import cseProject.Helper.RealSystemHelper;
+import cseUsermanagementFunction.ModifyFunction.StrategyTemplet;
+import cseUsermanagementFunction.ModifyFunction.changeStrategy;
+import cseUsermanagementFunction.ModifyFunction.deleteStrategy;
 import cseUsermanagementFunction.SearchFunction.SearchUserListStrategy;
 import cseUsermanagementFunction.SearchFunction.UserIdSearchStrategy;
 import cseUsermanagementFunction.SearchFunction.UserNameSearchStrategy;
@@ -119,52 +122,38 @@ public class UserManagementFunction {
            InspectUserList();
         }
         
-        public void DeleteUser(){ //사용자정보 삭제
+        public void ModifyUser(){
+         System.out.println("수행할 수정명령을 입력하세요(delete, change): ");
+         String input = helper.getUserInput();
+
+        
+   
+            StrategyTemplet modifyStrategy = getModifyUserStrategy(input);
+            
+         if (modifyStrategy != null) {
+              System.out.println(input);
+            modifyStrategy.excute();
+          
+        }
+             Regenerate("UserData");
             InspectUserList();
             
-            System.out.println("삭제할 대상의 번호를 입력하세요: ");
-           
-            String input = helper.getUserInput();
-            
-            int selNum = Integer.parseInt(input)-1;
-            
-             manager.getUserDB().remove(selNum); 
-            
-            Regenerate("UserData");
-            
-            InspectUserList();
+        }
+
+        public StrategyTemplet getModifyUserStrategy(String input){
+                  switch (input) {
+            case "delete":
+                return new deleteStrategy();
+            case "change":
+                return new changeStrategy();
+            default:
+                System.out.println("유효하지 않은 수정명령 입니다. ");
+                return null;
+        }
+    
         }
         
-        public void ModifyUser(){ //사용자정보 수정
-           InspectUserList();
-           System.out.println("수정할 사용자의 번호를 입력하세요."); 
-           
-           String input = helper.getUserInput();
-            
-           int selNum = Integer.parseInt(input)-1;
-           
-
-           System.out.println("아이디: ");
-           input = helper.getUserInput();
-           manager.getUserDB().get(selNum).setUserID(input);
-           
-           System.out.println("비밀번호: ");
-           input = helper.getUserInput();
-           manager.getUserDB().get(selNum).setUserPW(input);
-           
-            System.out.println("이름: ");
-           input = helper.getUserInput();
-           manager.getUserDB().get(selNum).setUserName(input);
-           
-           System.out.println("관리자 여부(true or false): ");
-           input = helper.getUserInput();
-           manager.getUserDB().get(selNum).setIsManager(Boolean.valueOf(input));
-          
-           Regenerate("UserData");
-           
-           InspectUserList();
-
-        }
+      
         
                            
         public void Regenerate(String str){ //변경된 파일을 백업 후 재성성
