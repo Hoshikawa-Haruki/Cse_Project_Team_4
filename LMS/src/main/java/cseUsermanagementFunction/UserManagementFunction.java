@@ -6,7 +6,8 @@ package cseUsermanagementFunction;
 
 import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
-import cseProject.SystemHelper;
+import cseProject.SystemHelper.ProxyHelper;
+import cseProject.SystemHelper.RealSystemHelper;
 import cseUsermanagementFunction.SearchFunction.SearchUserListStrategy;
 import cseUsermanagementFunction.SearchFunction.UserIdSearchStrategy;
 import cseUsermanagementFunction.SearchFunction.UserNameSearchStrategy;
@@ -31,7 +32,7 @@ import java.util.logging.Logger;
 public class UserManagementFunction {
     private String username;
     
-    private static SystemHelper helper = SystemHelper.getInstance();
+    private static ProxyHelper helper = ProxyHelper.getInstance();
     
     ArrayList<String> Name = new ArrayList<>();
     ArrayList<String> Id = new ArrayList<>();
