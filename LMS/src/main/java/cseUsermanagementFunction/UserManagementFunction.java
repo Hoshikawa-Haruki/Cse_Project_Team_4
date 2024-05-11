@@ -30,17 +30,11 @@ import java.util.logging.Logger;
 
 
 public class UserManagementFunction {
-    private String username;
+
     
-    private static ProxyHelper helper = ProxyHelper.getInstance();
-    
-    ArrayList<String> Name = new ArrayList<>();
-    ArrayList<String> Id = new ArrayList<>();
-    ArrayList<String> Pw = new ArrayList<>();
-    ArrayList<Boolean> IsManager = new ArrayList<>();
-    
+     private static final ProxyHelper helper = ProxyHelper.getInstance();
      private static final UserManagementFunction instance = new UserManagementFunction();
-     private static User_Manager manager = User_Manager.getInstance();
+     private static final User_Manager manager = User_Manager.getInstance();
     
         private UserManagementFunction(){    //처음 생성될때 유저데이터를 파일에서 불러와 저장
         }
