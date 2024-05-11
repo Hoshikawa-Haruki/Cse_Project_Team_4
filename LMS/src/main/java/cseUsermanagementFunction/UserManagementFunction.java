@@ -6,8 +6,8 @@ package cseUsermanagementFunction;
 
 import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
-import cseProject.SystemHelper.ProxyHelper;
-import cseProject.SystemHelper.RealSystemHelper;
+import cseProject.Helper.ProxyHelper;
+import cseProject.Helper.RealSystemHelper;
 import cseUsermanagementFunction.SearchFunction.SearchUserListStrategy;
 import cseUsermanagementFunction.SearchFunction.UserIdSearchStrategy;
 import cseUsermanagementFunction.SearchFunction.UserNameSearchStrategy;
