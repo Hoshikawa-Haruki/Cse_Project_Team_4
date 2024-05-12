@@ -183,6 +183,10 @@ public class UserManagementFunction {
                  +     
                  String.valueOf(manager.getUserDB().get(i).getIsManager())
                  +
+                 ","        
+                 +            
+                 manager.getUserDB().get(i).getRegisteredDate()      
+                 +
                  "/"                      // '/'문자로 사용자와 다른 사용자의 정보를 구분지음
                  );
                  out.append("\n");

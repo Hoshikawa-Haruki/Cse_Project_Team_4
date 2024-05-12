@@ -4,6 +4,9 @@
  */
 package cseProject.Login;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author 이승환
@@ -14,12 +17,26 @@ public class User_Info {
     private String userPW;
     private String userName;
     private boolean isManager;
+    private String registeredDate;
+    
+    LocalDateTime now;
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");  
 
     public User_Info(String userID, String userPW, String userName, boolean isManager) {
         this.userID = userID;
         this.userPW = userPW;
         this.userName = userName;
         this.isManager = isManager;
+        now = LocalDateTime.now(); 
+        this.registeredDate = now.format(formatter);
+    }
+    
+    public User_Info(String userID, String userPW, String userName, boolean isManager, String time) {
+        this.userID = userID;
+        this.userPW = userPW;
+        this.userName = userName;
+        this.isManager = isManager;
+        this.registeredDate = time;
     }
 
     public User_Info(String userID, String userPW, String userName) {
@@ -40,6 +57,10 @@ public class User_Info {
 
     public boolean getIsManager() {
         return isManager;
+    }
+    
+    public String getRegisteredDate() {
+        return registeredDate;
     }
 
     public void setUserID(String userID) {
