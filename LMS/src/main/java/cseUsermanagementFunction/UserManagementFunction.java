@@ -36,7 +36,7 @@ public class UserManagementFunction {
 
     
      private static final ProxyHelper helper = ProxyHelper.getInstance();
-     private static final UserManagementFunction instance = new UserManagementFunction();
+     private static UserManagementFunction instance;
      private static final User_Manager manager = User_Manager.getInstance();
     
         private UserManagementFunction(){    //처음 생성될때 유저데이터를 파일에서 불러와 저장
@@ -44,7 +44,10 @@ public class UserManagementFunction {
         
         
         public static UserManagementFunction getInstance(){
-            return instance;
+              if (instance == null) {
+            instance = new UserManagementFunction();
+        }
+        return instance;
         }
         
         
@@ -70,7 +73,7 @@ public class UserManagementFunction {
             
         }
                
-    public void SearchUserList() {
+    public void SearchUserList() { //검색 전략에 따라 검색 메서드 호출
          System.out.println("검색방식을 입력하세요(id, name,, type): ");
          String input = helper.getUserInput();
 
@@ -80,7 +83,7 @@ public class UserManagementFunction {
         }
     }
 
-    private SearchUserListStrategy getLoginStrategy(String input) {
+    private SearchUserListStrategy getLoginStrategy(String input) { //사용자의 입력을 받아 적절한 검색 전략 반환
         switch (input) {
             case "id":
                 return new UserIdSearchStrategy();
@@ -122,7 +125,7 @@ public class UserManagementFunction {
            InspectUserList();
         }
         
-        public void ModifyUser(){
+        public void ModifyUser(){ //사용자 정보 수정전략(삭제, 변경)에 따라 적절한 메세드 실행
          System.out.println("수행할 수정명령을 입력하세요(delete, change): ");
          String input = helper.getUserInput();
 
@@ -140,7 +143,7 @@ public class UserManagementFunction {
             
         }
 
-        public StrategyTemplet getModifyUserStrategy(String input){
+        public StrategyTemplet getModifyUserStrategy(String input){ //사용자 입력에 따라 적절한 전략 반환
                   switch (input) {
             case "delete":
                 return new deleteStrategy();
