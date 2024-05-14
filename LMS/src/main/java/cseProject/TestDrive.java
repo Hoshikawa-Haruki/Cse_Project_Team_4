@@ -19,26 +19,26 @@ public class TestDrive {
     private UserManagementFunction user = UserManagementFunction.getInstance();
 
     public static void main(String[] args) throws IOException {
-        //LoginSystem loginSystem = LoginSystem.getInstance();
-       // loginSystem.runLoginSystem();
+        LoginSystem loginSystem = LoginSystem.getInstance();
+        loginSystem.runLoginSystem();
         
         
        
-        UserManagementInvoker invoker = new UserManagementInvoker();
-        Scanner sc = new Scanner(System.in);
-        
-        while (true){
-            String command = sc.nextLine();
-            
-            if (command.equalsIgnoreCase("exit")){
-                System.out.println("프로그램을 종료합니다.");
-                break;
-            }
-            
-            invoker.executeCommand(command.toLowerCase());
-        }
-        
-          sc.close();
+//        UserManagementInvoker invoker = new UserManagementInvoker();
+//        Scanner sc = new Scanner(System.in);
+//        
+//        while (true){
+//            String command = sc.nextLine();
+//            
+//            if (command.equalsIgnoreCase("exit")){
+//                System.out.println("프로그램을 종료합니다.");
+//                break;
+//            }
+//            
+//            invoker.executeCommand(command.toLowerCase());
+//        }
+//        
+//          sc.close();
 
        
        //위의 주석은 유저 추가, 삭제, 수정 관련 기능을 사용하기 위하여 작성된 구문임

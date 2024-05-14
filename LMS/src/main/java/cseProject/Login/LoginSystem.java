@@ -4,6 +4,9 @@ package cseProject.Login;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+import cseProject.Forms.Admin_Form;
+import cseProject.Forms.Form;
+import cseProject.Forms.General_Form;
 import cseProject.Login.UserCreation.General_UserCreation_Behavior;
 import cseProject.Login.UserCreation.Admin_UserCreation_Behavior;
 import cseProject.SystemHelper;
@@ -114,21 +117,27 @@ public class LoginSystem {
     public User_Info runLoginSystem() throws IOException {
         //init();
         while (true) {
-            System.out.println("1. 회원가입, 2. 로그인");
+            //System.out.println("1. 회원가입, 2. 로그인");
+            System.out.println("1. 관리자, 2. 사용자");
             String choice = helper.getUserInput();
+            Form form = null;
 
             switch (choice) {
                 case "1" -> {
-                    System.out.println("회원가입을 시작합니다.");
-                    make_ID();
+                    //System.out.println("회원가입을 시작합니다.");
+                    //make_ID();
+                    form = new Admin_Form();
                 }
                 case "2" -> {
-                    System.out.println("로그인을 시도합니다.");
-                    try_Login();
+                    //System.out.println("로그인을 시도합니다.");
+                    //try_Login();
+                    form = new General_Form();
                 }
                 default ->
                     System.out.println("잘못된 입력입니다.");
             }
+            if(form != null)
+                form.perform_Main();
             // 회원가입 또는 로그인 후에도 다시 while 루프를 돌기 위해 루프 조건을 유지
             // 로그인에 성공했을 때만 루프를 빠져나옴
             if (manager.getLoginUser() != null) {
