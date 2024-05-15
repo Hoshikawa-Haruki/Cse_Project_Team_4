@@ -7,8 +7,6 @@ package cseProject.Login;
 import cseProject.Forms.Admin_Form;
 import cseProject.Forms.Form;
 import cseProject.Forms.General_Form;
-import cseProject.Login.UserCreation.General_UserCreation_Behavior;
-import cseProject.Login.UserCreation.Admin_UserCreation_Behavior;
 import cseProject.SystemHelper;
 import java.io.IOException;
 
@@ -76,17 +74,6 @@ public class LoginSystem {
         System.out.println("관리자로 가입하시겠습니까? (y/n)");
         String isManagerChoice = helper.getUserInput();
         boolean newisManager = isManagerChoice.equalsIgnoreCase("y");
-
-        if (newisManager) {
-            // 관리자 전략을 사용하여 가입 처리
-            Admin_UserCreation_Behavior adminStrategy = new Admin_UserCreation_Behavior();
-            adminStrategy.make_User(newID, newPW, newName, newisManager);
-        } else {
-            // 일반 사용자 전략을 사용하여 가입 처리
-            General_UserCreation_Behavior generalStrategy = new General_UserCreation_Behavior();
-            generalStrategy.make_User(newID, newPW, newName, newisManager);
-        }
-
     }
 
     public void try_Login() throws IOException {
@@ -114,36 +101,32 @@ public class LoginSystem {
         } while (manager.getLoginUser() == null);
     }
 
-    public User_Info runLoginSystem() throws IOException {
-        //init();
+    public void runLoginSystem() throws IOException {
+
         while (true) {
-            //System.out.println("1. 회원가입, 2. 로그인");
-            System.out.println("1. 관리자, 2. 사용자");
+            System.out.println("1. 회원가입, 2. 로그인");
             String choice = helper.getUserInput();
             Form form = null;
-
             switch (choice) {
                 case "1" -> {
-                    //System.out.println("회원가입을 시작합니다.");
-                    //make_ID();
+                    System.out.println("관리자 회원가입을 시작합니다.");
                     form = new Admin_Form();
                 }
                 case "2" -> {
-                    //System.out.println("로그인을 시도합니다.");
-                    //try_Login();
+                    System.out.println("이용자 회원가입을 시작합니다.");
                     form = new General_Form();
                 }
                 default ->
                     System.out.println("잘못된 입력입니다.");
             }
-            if(form != null)
-                form.perform_Main();
+            if (form != null) {
+                form.perform_Register();
+            }
             // 회원가입 또는 로그인 후에도 다시 while 루프를 돌기 위해 루프 조건을 유지
             // 로그인에 성공했을 때만 루프를 빠져나옴
             if (manager.getLoginUser() != null) {
                 break;
             }
         }
-        return manager.getLoginUser();
     }
 }

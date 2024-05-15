@@ -30,5 +30,4 @@ admin123,pw123,관리자,true/
 librarian,pw123,사서,true/
 su1234,pw1234,susu,true/
 hello,world,테스트,true/
-world,hello,이용자테스트,false/
 *

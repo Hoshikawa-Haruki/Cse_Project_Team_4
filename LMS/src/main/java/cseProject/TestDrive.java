@@ -16,14 +16,13 @@ import java.util.Scanner;
  *
  */
 public class TestDrive {
+
     private UserManagementFunction user = UserManagementFunction.getInstance();
 
     public static void main(String[] args) throws IOException {
         LoginSystem loginSystem = LoginSystem.getInstance();
         loginSystem.runLoginSystem();
-        
-        
-       
+
 //        UserManagementInvoker invoker = new UserManagementInvoker();
 //        Scanner sc = new Scanner(System.in);
 //        
@@ -39,10 +38,8 @@ public class TestDrive {
 //        }
 //        
 //          sc.close();
-
-       
-       //위의 주석은 유저 추가, 삭제, 수정 관련 기능을 사용하기 위하여 작성된 구문임
-       //add, delete, modify의 커맨드를 입력하면 해당 기능이 작동되고 변경된 사항은 UserData.txt에 저장되며 기존의 내용은'
-       //UserData.txt_old 폴더에 현재 시간을 파일명으로 하여 자동저장됨
+        //위의 주석은 유저 추가, 삭제, 수정 관련 기능을 사용하기 위하여 작성된 구문임
+        //add, delete, modify의 커맨드를 입력하면 해당 기능이 작동되고 변경된 사항은 UserData.txt에 저장되며 기존의 내용은'
+        //UserData.txt_old 폴더에 현재 시간을 파일명으로 하여 자동저장됨
     }
 }

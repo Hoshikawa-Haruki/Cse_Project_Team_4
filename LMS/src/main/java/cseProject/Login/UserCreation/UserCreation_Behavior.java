@@ -12,5 +12,5 @@ import java.io.IOException;
  */
 public interface UserCreation_Behavior {
 
-    void make_User(String newuserID, String newuserPW, String newuserName, boolean newisManager) throws IOException;
+    void make_User() throws IOException;
 }

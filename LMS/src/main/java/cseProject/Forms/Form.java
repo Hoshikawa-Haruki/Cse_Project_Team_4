@@ -6,6 +6,7 @@ package cseProject.Forms;
 
 import cseProject.Forms.MainForm.Main_Form_Behavior;
 import cseProject.Login.UserCreation.UserCreation_Behavior;
+import java.io.IOException;
 
 /**
  *
@@ -20,7 +21,7 @@ public abstract class Form { // 폼 인터페이스
         form_Behavior.show_MainForm();
     }
 
-    public void perform_Register() {
-        //register_Behavior.make_User(newuserID, newuserPW, newuserName, true);
+    public void perform_Register() throws IOException {
+        register_Behavior.make_User();
     }
 }
