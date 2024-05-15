@@ -20,15 +20,13 @@ public class KangTestDrive {
     public static void main(String[] args) {
         // TODO code application logic here
         Form form;
-        int select = 1;
-        
-        if(select == 0){
+        int select = 0;
+
+        if (select == 0) {
             form = new Admin_Form();
-        }
-        else{
+        } else {
             form = new General_Form();
         }
         form.perform_Main();
     }
-    
 }

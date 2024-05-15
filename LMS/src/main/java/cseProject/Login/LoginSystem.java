@@ -104,7 +104,7 @@ public class LoginSystem {
     public void runLoginSystem() throws IOException {
 
         while (true) {
-            System.out.println("1. 회원가입, 2. 로그인");
+            System.out.println("1. 관리자 가입, 2. 이용자 가입");
             String choice = helper.getUserInput();
             Form form = null;
             switch (choice) {
