@@ -8,6 +8,9 @@ package cseProject.Forms.MainForm;
  *
  * @author 이승환
  */
+import cseProject.Login.User_Manager;
+import cseProject.LoginState.LoggedOutState;
+import cseProject.LoginState.UserContext;
 import cseProject.SystemHelper;
 
 public class Admin_Form_Behavior implements Main_Form_Behavior {
@@ -21,28 +24,42 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
         System.out.println("│ 2. 희망도서 조회                               │ ");
         System.out.println("│ 3. 이용자 관리                                 │");
         System.out.println("│ 4. 도서관 관리                                 │");
+        System.out.println("│ 5. 로그아웃                                    │");
         System.out.println("└────────────────────────┘");
 
-        String choice = helper.getUserInput();
-        switch (choice) {
-            case "1" -> {
-                System.out.println("도서 관련 탭.");
-                show_BookManageForm();
-            }
-            case "2" -> {
-                System.out.println("희망도서 조회 탭.");
-                show_RequestList();
-            }
-            case "3" -> {
-                System.out.println("이용자 관리 탭");
-                show_UserManageForm();
-            }
-            case "4" -> {
-                System.out.println("도서관 관리 탭");
-                show_LibraryManageForm();
-            }
-            default -> {
-                System.out.println("잘못된 입력입니다.");
+        boolean valid = false;
+        while (!valid) {
+            String choice = helper.getUserInput();
+            switch (choice) {
+                case "1" -> {
+                    System.out.println("도서 관련 탭.");
+                    show_BookManageForm();
+                    valid = true;
+                }
+                case "2" -> {
+                    System.out.println("희망도서 조회 탭.");
+                    show_RequestList();
+                    valid = true;
+                }
+                case "3" -> {
+                    System.out.println("이용자 관리 탭");
+                    show_UserManageForm();
+                    valid = true;
+                }
+                case "4" -> {
+                    System.out.println("도서관 관리 탭");
+                    show_LibraryManageForm();
+                    valid = true;
+                }
+                case "5" -> {
+                    System.out.println("로그아웃을 실행합니다");
+                    User_Manager.getInstance().userLogout();
+                    UserContext.getInstance().logout();
+                    valid = true;
+                }
+                default -> {
+                    System.out.println("잘못된 입력입니다.");
+                }
             }
         }
     }
@@ -83,7 +100,7 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
         System.out.println("│ 5. 돌아가기                                    │");
         System.out.println("└────────────────────────┘");
         String choice = helper.getUserInput();
-        if ("3".equals(choice)) {
+        if ("5".equals(choice)) {
             System.out.println("메인 화면으로 돌아갑니다");
             show_MainForm();
         }

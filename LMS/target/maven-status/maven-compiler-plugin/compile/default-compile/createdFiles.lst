@@ -1,6 +1,7 @@
 cseProject\Forms\Form.class
 cseProject\Forms\MainForm\General_Form_Behavior.class
 cseUsermanagementFunction\command\AddUserCommand.class
+cseProject\LoginState\UserContext.class
 cseUsermanagementFunction\command\Command.class
 cseUsermanagementFunction\UserManagementFunction.class
 cseProject\SystemHelper.class
@@ -13,6 +14,7 @@ cseProject\Login\UserCreation\Admin_UserCreation_Behavior.class
 cseProject\Login\User_Manager.class
 cseUsermanagementFunction\SearchFunction\SearchUserListStrategy.class
 cseProject\Forms\MainForm\Main_Form_Behavior.class
+cseProject\LoginState\LoggedOutState.class
 cseUsermanagementFunction\command\InspectUserListCommand.class
 cseUsermanagementFunction\SearchFunction\UserTypeSearchStrategy.class
 cseUsermanagementFunction\command\SearchUserCommand.class
@@ -21,6 +23,7 @@ cseProject\TestDrive.class
 cseProject\KangTestDrive.class
 cseProject\Forms\Admin_Form.class
 cseProject\Forms\MainForm\Admin_Form_Behavior.class
+cseProject\LoginState\LoggedInState.class
 cseProject\Login\LoginSystem.class
 cseProject\Login\User_Factory.class
 cseProject\Login\User_Info.class

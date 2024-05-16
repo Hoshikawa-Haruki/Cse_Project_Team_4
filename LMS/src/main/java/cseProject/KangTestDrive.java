@@ -7,6 +7,7 @@ package cseProject;
 import cseProject.Forms.Admin_Form;
 import cseProject.Forms.Form;
 import cseProject.Forms.General_Form;
+import cseProject.LoginState.UserContext;
 
 /**
  *
@@ -19,14 +20,19 @@ public class KangTestDrive {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Form form;
-        int select = 0;
-
-        if (select == 0) {
-            form = new Admin_Form();
-        } else {
-            form = new General_Form();
+//        Form form;
+//        int select = 0;
+//
+//        if (select == 0) {
+//            form = new Admin_Form();
+//        } else {
+//            form = new General_Form();
+//        }
+//        form.perform_Main();
+        UserContext ctx = UserContext.getInstance();
+        while (true) {
+            ctx.login();
         }
-        form.perform_Main();
+
     }
 }

@@ -9,5 +9,8 @@ package cseProject.LoginState;
  * @author 이승환
  */
 public interface LoginState {
-    
+
+    public void login(UserContext context);
+
+    public void logout(UserContext context);
 }

@@ -4,16 +4,31 @@
  */
 package cseProject.Forms;
 
+import cseProject.Login.LoginSystem;
+import cseProject.LoginState.UserContext;
+import cseProject.SystemHelper;
+import java.io.IOException;
+
 /**
  *
  * @author 이승환
  */
 public class Landing_Form { // 초기화면
 
-    public void show_LandingForm() {
+    private static SystemHelper helper = SystemHelper.getInstance();
+
+    public void show_LandingForm() throws IOException {
         System.out.println("┌────────────────────────┐");
         System.out.println("│ 1. 로그인                                      │");
         System.out.println("│ 2. 회원가입                                    │ ");
         System.out.println("└────────────────────────┘");
+        
+        String choice = helper.getUserInput();
+        
+        switch (choice) {
+            case "1" -> {
+                LoginSystem.getInstance().try_Login();
+            }
+        }
     }
 }
