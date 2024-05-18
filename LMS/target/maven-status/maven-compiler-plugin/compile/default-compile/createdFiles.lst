@@ -1,3 +1,11 @@
+cseUsermanagementFunction\ModifyFunction\StrategyTemplet.class
+cseProject\LoginState\UserContext.class
+cseUsermanagementFunction\ModifyFunction\deleteStrategy.class
 cseProject\Helper\InterfaceSystemHelper.class
+cseProject\LoginState\LoginState.class
+cseProject\LoginState\LoggedOutState.class
+cseProject\LoginState\LoggedInState.class
 cseProject\Helper\ProxyHelper.class
+cseUsermanagementFunction\ModifyFunction\changeStrategy.class
+cseUsermanagementFunction\ModifyFunction\ModifyStrategy.class
 cseProject\Helper\RealSystemHelper.class

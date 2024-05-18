@@ -9,5 +9,6 @@ package cseUsermanagementFunction.ModifyFunction;
  * @author jasuj
  */
 public interface ModifyStrategy {
+
     public void excute();
 }

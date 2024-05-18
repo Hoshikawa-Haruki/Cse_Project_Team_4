@@ -8,11 +8,11 @@ package cseUsermanagementFunction.ModifyFunction;
  *
  * @author jasuj
  */
-public class deleteStrategy extends StrategyTemplet{
-    
-     public void modify() { 
-          manager.getUserDB().remove(selNum); 
-          System.out.println("asdasd");
+public class deleteStrategy extends StrategyTemplet {
+
+    public void modify() {
+        manager.getUserDB().remove(selNum);
+        System.out.println("asdasd");
     }
-   
+
 }
