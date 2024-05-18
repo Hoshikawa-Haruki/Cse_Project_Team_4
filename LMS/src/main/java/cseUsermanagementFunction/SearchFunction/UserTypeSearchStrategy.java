@@ -58,6 +58,16 @@ public class UserTypeSearchStrategy implements SearchUserListStrategy{
                          if(chkType == null){
                             break;
                         }
+                         
+                        String temp = manager.getUserDB().get(num).getRegisteredDate();
+                        String registeredDate="";
+                        registeredDate = temp.substring(0, 4)
+                        + "-"
+                        + temp.substring(4,6)
+                        + "-"
+                        + temp.substring(6, 8); 
+                         
+                         
                          System.out.println(
                           String.format("%-6s" , indexNumber+1 + ".")
                             +
@@ -69,7 +79,7 @@ public class UserTypeSearchStrategy implements SearchUserListStrategy{
                             +
                           String.format("%-18s",String.valueOf(manager.getUserDB().get(num).getIsManager()))
                             +     
-                          String.format("%-18s",manager.getUserDB().get(num).getRegisteredDate())                                  
+                          String.format("%-18s",registeredDate)                                 
              );
                         indexNumber++;
             

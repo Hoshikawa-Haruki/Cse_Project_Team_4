@@ -58,13 +58,21 @@ public class UserManagementFunction {
         );
 
         for (int i = 0; i < manager.getUserDB().size(); i++) {
+            String temp = manager.getUserDB().get(i).getRegisteredDate();
+            String registeredDate="";
+            registeredDate = temp.substring(0, 4)
+                    + "-"
+                    + temp.substring(4,6)
+                    + "-"
+                    + temp.substring(6, 8); 
+            
             System.out.println(
                       String.format("%-6s" , i+1 + ".")
                     + String.format("%-18s", manager.getUserDB().get(i).getUserID())
                     + String.format("%-18s", manager.getUserDB().get(i).getUserPW())
                     + String.format("%-18s", manager.getUserDB().get(i).getUserName())
                     + String.format("%-18b", manager.getUserDB().get(i).getIsManager())
-                    + String.format("%-18s",manager.getUserDB().get(i).getRegisteredDate())
+                    + String.format("%-18s",registeredDate)
             );
 
         }
