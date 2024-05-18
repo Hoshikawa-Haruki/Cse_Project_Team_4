@@ -37,7 +37,7 @@ public class SystemHelper {
         return instance;
     }
 
-    public static String getUserInput() {       //유저의 입력을 받는 메서드
+    public String getUserInput() {       //유저의 입력을 받는 메서드
         String inputLine = null;
         try {
             InputStreamReader reader = new InputStreamReader(System.in, "EUC-KR");

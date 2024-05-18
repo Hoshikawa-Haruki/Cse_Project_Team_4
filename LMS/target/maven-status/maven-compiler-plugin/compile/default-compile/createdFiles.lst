@@ -30,7 +30,6 @@ cseProject\Login\LoginSystem.class
 cseProject\Login\User_Factory.class
 cseProject\Login\User_Info.class
 cseProject\Forms\Landing_Form.class
-cseProject\Run_Manager.class
 cseUsermanagementFunction\command\ModifyUserCommand.class
 cseProject\Login\UserCreation\General_UserCreation_Behavior.class
 cseProject\Book\Book_Manager.class

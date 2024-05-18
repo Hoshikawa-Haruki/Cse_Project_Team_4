@@ -18,11 +18,17 @@ public class BookTest {
      */
     private static SystemHelper helper = SystemHelper.getInstance();
 
-    public static void main(String[] args) throws IOException{
-        System.out.println("책 추가하기");
-        String title = helper.getUserInput();
-        String author = helper.getUserInput();
-        String ISBN = helper.getUserInput();
+    public static void main(String[] args) throws IOException {
+        
+        Book_Manager manager = new Book_Manager();
+        while (true) {
+            String choice = helper.getUserInput();
+            if ("1".equals(choice)) {
+                manager.make_Book();
+            }
+            else{
+                manager.displayBooks();
+            }
+        }
     }
-
 }

@@ -12,15 +12,15 @@ public class Book_Info {
 
     private String title;
     private String author;
-    private String publihser;
+    private String publisher;
     private String genre;
     private String ISBN;
     private boolean isBorrorwed;
 
-    public Book_Info(String title, String author, String publihser, String genre, String ISBN, boolean isBorrorwed) {
+    public Book_Info(String title, String author, String publisher, String genre, String ISBN) {
         this.title = title;
         this.author = author;
-        this.publihser = publihser;
+        this.publisher = publisher;
         this.genre = genre;
         this.ISBN = ISBN;
         this.isBorrorwed = false;
@@ -43,11 +43,11 @@ public class Book_Info {
     }
 
     public String getPublihser() {
-        return publihser;
+        return publisher;
     }
 
-    public void setPublihser(String publihser) {
-        this.publihser = publihser;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
     public String getGenre() {
