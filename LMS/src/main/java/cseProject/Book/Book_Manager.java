@@ -33,8 +33,8 @@ public class Book_Manager {
     }
 
     public void make_Book() {
-        System.out.println("도서를 추가 합니다");
-        System.out.print("제목");
+        System.out.println("도서를 추가 합니다.");
+        System.out.print("제목: ");
         String title = helper.getUserInput();
         System.out.print("출판사: ");
         String publisher = helper.getUserInput();
