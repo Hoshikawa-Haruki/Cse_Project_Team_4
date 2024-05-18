@@ -5,6 +5,7 @@
 package cseProject.Book;
 
 import cseProject.SystemHelper;
+import java.io.IOException;
 
 /**
  *
@@ -17,9 +18,11 @@ public class BookTest {
      */
     private static SystemHelper helper = SystemHelper.getInstance();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         System.out.println("책 추가하기");
-        
+        String title = helper.getUserInput();
+        String author = helper.getUserInput();
+        String ISBN = helper.getUserInput();
     }
 
 }
