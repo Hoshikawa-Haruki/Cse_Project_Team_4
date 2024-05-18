@@ -47,15 +47,24 @@ public class UserManagementFunction {
     }
 
     public void InspectUserList() { //사용자 목록 출력
+        
+        System.out.println(
+                  String.format("%-6s"," ")
+                + String.format("%-16s", "아이디" )
+                + String.format("%-16s", "패스워드" )
+                + String.format("%-16s", "이름" )
+                + String.format("%-16s", "관리자여부" )
+                + String.format("%-16s", "가입일" )
+        );
 
         for (int i = 0; i < manager.getUserDB().size(); i++) {
             System.out.println(
-                    i + 1
-                    + "."
-                    + String.format("%15s", manager.getUserDB().get(i).getUserID())
-                    + String.format("%15s", manager.getUserDB().get(i).getUserPW())
-                    + String.format("%15s", manager.getUserDB().get(i).getUserName())
-                    + String.format("%15b", manager.getUserDB().get(i).getIsManager())
+                      String.format("%-6s" , i+1 + ".")
+                    + String.format("%-18s", manager.getUserDB().get(i).getUserID())
+                    + String.format("%-18s", manager.getUserDB().get(i).getUserPW())
+                    + String.format("%-18s", manager.getUserDB().get(i).getUserName())
+                    + String.format("%-18b", manager.getUserDB().get(i).getIsManager())
+                    + String.format("%-18s",manager.getUserDB().get(i).getRegisteredDate())
             );
 
         }
@@ -63,7 +72,7 @@ public class UserManagementFunction {
     }
 
     public void SearchUserList() { //검색 전략에 따라 검색 메서드 호출
-        System.out.println("검색방식을 입력하세요(id, name,, type): ");
+        System.out.println("검색방식을 입력하세요(id, name, type): ");
         String input = helper.getUserInput();
 
         SearchUserListStrategy SearchUserStrategy = getLoginStrategy(input);
