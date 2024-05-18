@@ -6,7 +6,7 @@ package cseProject.Forms;
 
 import cseProject.Login.LoginSystem;
 import cseProject.LoginState.UserContext;
-import cseProject.SystemHelper;
+import cseProject.Helper.ProxyHelper;
 import java.io.IOException;
 
 /**
@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 public class Landing_Form { // 초기화면
 
-    private static SystemHelper helper = SystemHelper.getInstance();
+     private static final ProxyHelper helper = ProxyHelper.getInstance();
 
     public void show_LandingForm() throws IOException {
         System.out.println("┌────────────────────────┐");

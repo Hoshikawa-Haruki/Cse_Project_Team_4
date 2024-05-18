@@ -50,8 +50,8 @@ public class ProxyHelper implements InterfaceSystemHelper{
     }
     
     public void rogging(){ //현재 실행중인 메서드를 반환, 임시로 작성한 코드로 추후 프록시 패턴을 이용하여 추가할 기능이 있으면 추가할 예정
-        stackTrace = Thread.currentThread().getStackTrace();
-        System.out.println(stackTrace[2]);
+       // stackTrace = Thread.currentThread().getStackTrace();
+       // System.out.println(stackTrace[2]);
     }
 
  

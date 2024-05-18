@@ -7,7 +7,7 @@ package cseProject.Login;
 import cseProject.Forms.Admin_Form;
 import cseProject.Forms.Form;
 import cseProject.Forms.General_Form;
-import cseProject.SystemHelper;
+import cseProject.Helper.ProxyHelper;
 import java.io.IOException;
 
 /**
@@ -17,7 +17,7 @@ import java.io.IOException;
 public class LoginSystem {
 
     private static LoginSystem instance;
-    private static SystemHelper helper = SystemHelper.getInstance();
+    private static final ProxyHelper helper = ProxyHelper.getInstance();
     private static User_Manager manager = User_Manager.getInstance();
 
     // 생성자를 private으로 선언하여 외부에서 인스턴스화 방지

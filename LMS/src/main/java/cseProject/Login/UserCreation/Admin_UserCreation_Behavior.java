@@ -6,7 +6,7 @@ package cseProject.Login.UserCreation;
 
 import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
-import cseProject.SystemHelper;
+import cseProject.Helper.ProxyHelper;
 import java.io.IOException;
 
 /**
@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 public class Admin_UserCreation_Behavior implements UserCreation_Behavior {
 
-    private SystemHelper helper = SystemHelper.getInstance();
+    private static final ProxyHelper helper = ProxyHelper.getInstance();
     private User_Manager manager = User_Manager.getInstance();
 
     @Override

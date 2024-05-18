@@ -71,6 +71,10 @@ public class User_Manager {
         return userDB;
     }
     
+      public void userLogout() {
+        loginUser = null;
+        
+    }
                           
         public void Regenerate(String str){ //변경된 파일을 백업 후 재성성
             helper.BackUpTextFile("./"+str+".txt");

@@ -11,11 +11,11 @@ package cseProject.Forms.MainForm;
 import cseProject.Login.User_Manager;
 import cseProject.LoginState.LoggedOutState;
 import cseProject.LoginState.UserContext;
-import cseProject.SystemHelper;
+import cseProject.Helper.ProxyHelper;
 
 public class Admin_Form_Behavior implements Main_Form_Behavior {
 
-    private static SystemHelper helper = SystemHelper.getInstance();
+    private static final ProxyHelper helper = ProxyHelper.getInstance();
 
     @Override
     public void show_MainForm() {

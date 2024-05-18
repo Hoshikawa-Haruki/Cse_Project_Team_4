@@ -5,7 +5,7 @@
 package cseProject.Forms.MainForm;
 
 import cseProject.Login.User_Manager;
-import cseProject.SystemHelper;
+import cseProject.Helper.ProxyHelper;
 
 /**
  *
@@ -13,7 +13,7 @@ import cseProject.SystemHelper;
  */
 public class General_Form_Behavior implements Main_Form_Behavior {
 
-    private static final SystemHelper helper = SystemHelper.getInstance();
+     private static final ProxyHelper helper = ProxyHelper.getInstance();
 
     @Override
     public void show_MainForm() {
