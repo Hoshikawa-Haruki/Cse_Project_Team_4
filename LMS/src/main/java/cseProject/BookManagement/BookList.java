@@ -69,7 +69,6 @@ public class BookList implements Subject {
            String line;
 
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
                 String[] data = line.split("\t");
 
                 String title = data[0];

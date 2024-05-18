@@ -104,7 +104,6 @@ public class AddRemoveUI {
 
     private void remove(BookList books) {
         try (Scanner scanner = new Scanner(System.in)) {
-           System.out.println("리스트:" + booklist.getBooks());
             System.out.print("▶ 삭제하고 싶은 책의 ISBN을 입력하시오: ");
             String isbn = scanner.nextLine();
 
@@ -130,9 +129,7 @@ public class AddRemoveUI {
 
                     switch (confirm) {
                         case "y":
-                            System.out.println("삭제전:" + booklist.getBooks());
                             books.removeBook(isbn);
-                            System.out.println("삭제후:" + booklist.getBooks());
                             System.out.println("책이 삭제되었습니다.");
                             System.out.println("------------------------------------");
                             return;
