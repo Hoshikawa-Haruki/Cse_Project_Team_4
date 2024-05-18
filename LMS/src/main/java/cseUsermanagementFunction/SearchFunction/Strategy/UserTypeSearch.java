@@ -1,39 +1,38 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package cseUsermanagementFunction.SearchFunction;
+package cseUsermanagementFunction.SearchFunction.Strategy;
 
 import cseProject.Helper.ProxyHelper;
 import cseProject.Login.User_Manager;
 import java.util.ArrayList;
 
-
 /**
  *
  * @author jasuj
  */
-public class UserIdSearchStrategy implements SearchUserListStrategy{
+public class UserTypeSearch implements SearchBehavior{
+    
      private static final ProxyHelper helper = ProxyHelper.getInstance();
      private static final User_Manager manager = User_Manager.getInstance();
     
-    
      public void Search(){
-
-        
-            String str="";
+      
+            Boolean chkType=null;
             ArrayList<Integer> index = new ArrayList<>();
             int indexNumber=0;
+            String str=null;
          
       
             
-                    System.out.println("검색할 아이디를 입력하세요: ");
+                    System.out.println("검색할 유저타입을 입력하세요: ");
                     str = helper.getUserInput();
                     
-                    for(int i=0;i<manager.getUserDB().size();i++){
-                        if(str.equals(manager.getUserDB().get(i).getUserID())){
-                            index.add(i);
-                        }
+                    if(str.equals("관리자")){
+                        chkType = true;
+                    }else if(str.equals("일반사용자")){
+                        chkType = false;
                     }
                     
         System.out.println(
@@ -45,8 +44,21 @@ public class UserIdSearchStrategy implements SearchUserListStrategy{
                 + String.format("%-16s", "가입일" )
         );
                     
+                    
+                    for(int i=0;i<manager.getUserDB().size();i++){
+                         if(chkType == null){
+                            break;
+                        }
+                        if(chkType == manager.getUserDB().get(i).getIsManager()){
+                            index.add(i);
+                        }
+                    }
+                    
                     for(int num:index){
-                        
+                         if(chkType == null){
+                            break;
+                        }
+                         
                         String temp = manager.getUserDB().get(num).getRegisteredDate();
                         String registeredDate="";
                         registeredDate = temp.substring(0, 4)
@@ -54,7 +66,8 @@ public class UserIdSearchStrategy implements SearchUserListStrategy{
                         + temp.substring(4,6)
                         + "-"
                         + temp.substring(6, 8); 
-                        
+                         
+                         
                          System.out.println(
                           String.format("%-6s" , indexNumber+1 + ".")
                             +
@@ -66,14 +79,10 @@ public class UserIdSearchStrategy implements SearchUserListStrategy{
                             +
                           String.format("%-18s",String.valueOf(manager.getUserDB().get(num).getIsManager()))
                             +     
-                          String.format("%-18s",registeredDate) 
-
+                          String.format("%-18s",registeredDate)                                 
              );
                         indexNumber++;
             
                     }
-
-            }
-               
-    
+    }
 }
