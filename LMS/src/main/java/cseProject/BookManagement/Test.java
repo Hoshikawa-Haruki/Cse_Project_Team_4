@@ -4,6 +4,8 @@
  */
 package cseProject.BookManagement;
 
+import cseProject.BookManagement.AddDelete.BookMainUI;
+
 /**
  *
  * @author Lenovo
@@ -15,7 +17,7 @@ public class Test {
      */
     
     public static void main(String[] args) {
-        AddRemoveUI a = new AddRemoveUI();
+        BookMainUI a = new BookMainUI();
         a.mainUI();
     } 
     

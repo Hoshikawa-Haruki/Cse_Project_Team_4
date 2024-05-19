@@ -2,21 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cseProject.BookManagement;
+package cseProject.BookManagement.AddDelete;
 
 /**
  *
  * @author Lenovo
  */
+
+import cseProject.BookManagement.Book;
+import cseProject.BookManagement.Search.BookIterator;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class BookList implements Subject {
 
     private List<Observer> observers;
-    private List<Book> books;
+    protected List<Book> books;
 
     public BookList() {
         observers = new ArrayList<>();
@@ -56,6 +61,10 @@ public class BookList implements Subject {
     public void removeBook(String isbn) {
         books.removeIf(book -> book.getIsbn().equals(isbn));
         notifyObservers();
+    }
+
+    public java.util.Iterator<Book> createIterator() {
+        return new BookIterator(this.books);
     }
 
     private void localFile() {
