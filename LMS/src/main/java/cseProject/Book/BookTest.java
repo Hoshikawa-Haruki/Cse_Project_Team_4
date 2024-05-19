@@ -4,7 +4,7 @@
  */
 package cseProject.Book;
 
-import cseProject.SystemHelper;
+import cseProject.Helper.RealSystemHelper;
 import java.io.IOException;
 
 /**
@@ -16,7 +16,7 @@ public class BookTest {
     /**
      * @param args the command line arguments
      */
-    private static SystemHelper helper = SystemHelper.getInstance();
+    private static RealSystemHelper helper = RealSystemHelper.getInstance();
 
     public static void main(String[] args) throws IOException {
         
