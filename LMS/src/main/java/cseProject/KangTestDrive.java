@@ -29,10 +29,13 @@ public class KangTestDrive {
 //            form = new General_Form();
 //        }
 //        form.perform_Main();
+        FileManager.getInstance().createDBFile("User_Info.txt");
+        FileManager.getInstance().createDB("User_Info.txt");
+
         UserContext ctx = UserContext.getInstance();
-        while (true) {
+
             ctx.login();
-        }
+
 
     }
 }

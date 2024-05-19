@@ -37,6 +37,17 @@ public class FileManager {
         return basePath;
     }
 
+    public static FileManager getInstance() {
+        File createFolder = new File(basePath);
+        if (instance == null) {
+            if (!createFolder.exists()) {
+                createFolder.mkdir();
+            }
+            instance = new FileManager();
+        }
+        return instance;
+    }
+
     public void createDBFile(String fileName) {
         String createFilePath = basePath + File.separator + fileName;
         File createFile = new File(createFilePath); // File 객체 생성
@@ -57,7 +68,7 @@ public class FileManager {
             for (String fileContent : fileContents) {
                 if (fileName.equals("User_Info.txt")) { //사용자 데이터 파일 읽기
                     String[] params = fileContent.split(";");
-                    User_Info newUser = new User_Info(params[1], params[2], params[3], Boolean.parseBoolean(params[4]));
+                    User_Info newUser = new User_Info(params[0], params[1], params[2], Boolean.parseBoolean(params[3]), params[4]);
                     userManager.add_userDB(newUser);
                 } //도서 데이터 파일 읽기
                 else if (fileName.equals("Book_Info.txt")) {
@@ -93,30 +104,34 @@ public class FileManager {
         return fileContents;
     }
 
-    public void writeDBFile(String fileName) throws IOException {
-        String writeFilePath = basePath + File.separator + fileName;
-        FileWriter write;
-        write = new FileWriter(writeFilePath, false);
+    public void writeDBFile(String fileName) {
+        try {
+            String writeFilePath = basePath + File.separator + fileName;
+            FileWriter write;
+            write = new FileWriter(writeFilePath, false);
 
-        //유저 데이터 파일 작성
-        if (fileName.equals("User_Info.txt")) {
-            for (User_Info user : userManager.getUserDB()) {
-                String context = user.getUserID() + ';' + user.getUserPW() + ';' + user.getUserName() + String.valueOf(user.getIsManager()) + '\n';
-                write.write(context);
-            }
-            write.flush();
-            write.close();
-        }//도서 목록 데이터 파일 작성
-        else if (fileName.equals("Book_Info.txt")) {
-            for (Book_Info book : bookManager.getBookDB()) {
-                String context = book.getTitle() + ';' + book.getAuthor() + ';' + book.getGenre() + ';' + book.getPublihser() + ';' + book.getISBN() + '\n';
-                write.write(context);
-            }
-            write.flush();
-            write.close();
-        } //대여 목록 데이터 파일 작성
-        else if (fileName.equals("Rental_Info.txt")) {
+            //유저 데이터 파일 작성
+            if (fileName.equals("User_Info.txt")) {
+                for (User_Info user : userManager.getUserDB()) {
+                    String context = user.getUserID() + ';' + user.getUserPW() + ';' + user.getUserName() + ';' + String.valueOf(user.getIsManager()) + ';' + user.getRegisteredDate() + '\n';
+                    write.write(context);
+                }
+                write.flush();
+                write.close();
+            }//도서 목록 데이터 파일 작성
+            else if (fileName.equals("Book_Info.txt")) {
+                for (Book_Info book : bookManager.getBookDB()) {
+                    String context = book.getTitle() + ';' + book.getAuthor() + ';' + book.getGenre() + ';' + book.getPublihser() + ';' + book.getISBN() + '\n';
+                    write.write(context);
+                }
+                write.flush();
+                write.close();
+            } //대여 목록 데이터 파일 작성
+            else if (fileName.equals("Rental_Info.txt")) {
 
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

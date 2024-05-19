@@ -7,6 +7,7 @@ package cseProject.Forms;
 import cseProject.Login.LoginSystem;
 import cseProject.LoginState.UserContext;
 import cseProject.Helper.ProxyHelper;
+import cseProject.Login.UserCreation.UserCreation_Behavior;
 import java.io.IOException;
 
 /**
@@ -15,20 +16,25 @@ import java.io.IOException;
  */
 public class Landing_Form { // 초기화면
 
-     private static final ProxyHelper helper = ProxyHelper.getInstance();
+    private static final ProxyHelper helper = ProxyHelper.getInstance();
 
     public void show_LandingForm() throws IOException {
         System.out.println("┌────────────────────────┐");
         System.out.println("│ 1. 로그인                                      │");
         System.out.println("│ 2. 회원가입                                    │ ");
+        System.out.println("│ 3. 돌아가기                                    │ ");
         System.out.println("└────────────────────────┘");
-        
+
         String choice = helper.getUserInput();
-        
+
         switch (choice) {
             case "1" -> {
                 LoginSystem.getInstance().try_Login();
             }
+            case "2" -> {
+                LoginSystem.getInstance().runLoginSystem();
+            }
+
         }
     }
 }
