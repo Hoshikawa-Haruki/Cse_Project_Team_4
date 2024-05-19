@@ -8,6 +8,8 @@ import cseProject.Forms.Admin_Form;
 import cseProject.Forms.Form;
 import cseProject.Forms.General_Form;
 import cseProject.Helper.ProxyHelper;
+import cseProject.LoginState.LoggedInState;
+import cseProject.LoginState.UserContext;
 import java.io.IOException;
 
 /**
@@ -94,6 +96,9 @@ public class LoginSystem {
                     break;
                 }
             }
+            UserContext ctx = UserContext.getInstance();
+            ctx.setState(new LoggedInState()); // 여기서 로그인 상태로 변경해줌 (상태패턴)
+
             if (manager.getLoginUser() == null) {
                 System.out.println("로그인 정보를 찾을 수 없습니다.");
             }
@@ -120,5 +125,8 @@ public class LoginSystem {
         if (form != null) {
             form.perform_Register();
         }
+        // 회원가입 또는 로그인 후에도 다시 while 루프를 돌기 위해 루프 조건을 유지
+        // 로그인에 성공했을 때만 루프를 빠져나옴
+
     }
 }

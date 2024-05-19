@@ -34,8 +34,7 @@ public class KangTestDrive {
 
         UserContext ctx = UserContext.getInstance();
 
-            ctx.login();
-
+        ctx.login();
 
     }
 }

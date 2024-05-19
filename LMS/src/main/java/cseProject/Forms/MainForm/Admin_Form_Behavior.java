@@ -53,7 +53,6 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
                 }
                 case "5" -> {
                     System.out.println("로그아웃을 실행합니다");
-                    User_Manager.getInstance().userLogout();
                     UserContext.getInstance().logout();
                     valid = true;
                 }

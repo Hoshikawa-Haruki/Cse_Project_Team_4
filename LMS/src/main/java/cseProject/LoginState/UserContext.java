@@ -11,7 +11,7 @@ package cseProject.LoginState;
 public class UserContext {
 
     private static UserContext instance;
-    public LoginState state;
+    public LoginState state; // 현재 객체의 로그인 유무 상태
 
     // 외부에서 인스턴스를 생성하지 못하도록 private 생성자를 사용
     private UserContext() {

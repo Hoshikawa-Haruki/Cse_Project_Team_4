@@ -23,7 +23,6 @@ public class LoggedOutState implements LoginState {
         } catch (IOException ex) {
             System.out.println("잘못된 입력입니다");
         }
-        context.setState(new LoggedInState());
     }
 
     @Override

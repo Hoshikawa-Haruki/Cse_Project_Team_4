@@ -26,13 +26,16 @@ public class Landing_Form { // 초기화면
         System.out.println("└────────────────────────┘");
 
         String choice = helper.getUserInput();
-
+        UserContext ctx = UserContext.getInstance();
         switch (choice) {
             case "1" -> {
                 LoginSystem.getInstance().try_Login();
+                
+                ctx.login();
             }
             case "2" -> {
                 LoginSystem.getInstance().runLoginSystem();
+                show_LandingForm();
             }
 
         }

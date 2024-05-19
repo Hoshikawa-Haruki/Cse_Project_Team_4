@@ -36,5 +36,6 @@ public class LoggedInState implements LoginState {
         System.out.println("로그아웃 되었습니다.");
         User_Manager.getInstance().userLogout();
         context.setState(new LoggedOutState());
+        context.login();
     }   
 }
