@@ -39,7 +39,7 @@ public class User_Info {
         this.registeredDate = time;
     }
 
-    public User_Info(String userID, String userPW, String userName) {
+    public User_Info(String userID, String userPW, String userName) { // 안쓰임
         this(userID, userPW, userName, false);
     }
 

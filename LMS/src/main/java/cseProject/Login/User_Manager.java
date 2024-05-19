@@ -76,6 +76,13 @@ public class User_Manager {
 
     }
 
+//    public void userLogin(String inputID, String inputPW) { // 안쓰이고있음
+//        for (User_Info user : userDB) {
+//            if (user.getUserID().equals(inputID) && user.getUserPW().equals(inputPW)) {
+//                loginUser = user;
+//            }
+//        }
+//    }
     public void Regenerate(String str) { //변경된 파일을 백업 후 재성성
         helper.BackUpTextFile("./" + str + ".txt");
 
