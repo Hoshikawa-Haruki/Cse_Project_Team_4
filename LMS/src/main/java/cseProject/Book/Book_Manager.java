@@ -46,12 +46,12 @@ public class Book_Manager {
         System.out.print("ISBN: ");
         String ISBN = helper.getUserInput();
 
-        Book_Info book = new Book_Info(title, author, genre, publisher, ISBN);
+        Book_Info book = new Book_Info(title, author, genre, publisher, ISBN, false);
         add_BookDB(book);
         FileManager.getInstance().writeDBFile("Book_Info.txt");
     }
 
-    public ArrayList<Book_Info> findBooksByTitle() {
+    public ArrayList<Book_Info> findBooksByTitle() { // 제목으로 검색
         System.out.print("대상 도서 제목: ");
         String title = helper.getUserInput();
         ArrayList<Book_Info> books = new ArrayList<>();
@@ -63,7 +63,57 @@ public class Book_Manager {
         return books;
     }
 
-    public void showBooks(ArrayList<Book_Info> targetBooks) {
+    public ArrayList<Book_Info> findBooksByOption() { // 검색 조건
+        System.out.println("1.제목 2.저자 3.장르 4.출판사 5.대여 상태");
+        System.out.println("옵션을 골라주세요.");
+        String option = helper.getUserInput();
+        ArrayList<Book_Info> books = new ArrayList<>();
+        switch (option) {
+            case "1" -> {
+                String title = helper.getUserInput();
+                for (Book_Info book : bookDB) {
+                    if (book.getTitle().contains(title)) {
+                        books.add(book);
+                    }
+                }
+            }
+            case "2" -> {
+                String author = helper.getUserInput();
+                for (Book_Info book : bookDB) {
+                    if (book.getAuthor().contains(author)) {
+                        books.add(book);
+                    }
+                }
+            }
+            case "3" -> {
+                String genre = helper.getUserInput();
+                for (Book_Info book : bookDB) {
+                    if (book.getGenre().contains(genre)) {
+                        books.add(book);
+                    }
+                }
+            }
+            case "4" -> {
+                String publisher = helper.getUserInput();
+                for (Book_Info book : bookDB) {
+                    if (book.getPublisher().contains(publisher)) {
+                        books.add(book);
+                    }
+                }
+            }
+            case "5" -> {
+                boolean isBorrowed = Boolean.parseBoolean(helper.getUserInput());
+                for (Book_Info book : bookDB) {
+                    if (book.getIsBorrorwed() == isBorrowed) {
+                        books.add(book);
+                    }
+                }
+            }
+        }
+        return books;
+    }
+
+    public void showBooks(ArrayList<Book_Info> targetBooks) { // 조건에 맞는 책 출력
         if (targetBooks.isEmpty()) {
             System.out.println("책 목록이 비어 있습니다.");
         } else {
@@ -72,11 +122,12 @@ public class Book_Manager {
                 System.out.println(
                         i + 1
                         + "."
-                        + String.format("%15s", book.getTitle())
+                        + String.format("%20s", book.getTitle())
                         + String.format("%15s", book.getAuthor())
                         + String.format("%15s", book.getGenre())
-                        + String.format("%15s", book.getPublihser())
+                        + String.format("%15s", book.getPublisher())
                         + String.format("%15s", book.getISBN())
+                        + String.format("%15s", book.getIsBorrorwed())
                 );
             }
         }
@@ -137,11 +188,12 @@ public class Book_Manager {
                 System.out.println(
                         i + 1
                         + "."
-                        + String.format("%15s", book.getTitle())
+                        + String.format("%20s", book.getTitle())
                         + String.format("%15s", book.getAuthor())
                         + String.format("%15s", book.getGenre())
-                        + String.format("%15s", book.getPublihser())
+                        + String.format("%15s", book.getPublisher())
                         + String.format("%15s", book.getISBN())
+                        + String.format("%15s", book.getIsBorrorwed())
                 );
             }
         }

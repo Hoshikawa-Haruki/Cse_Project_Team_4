@@ -84,6 +84,8 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
                 case "2" -> {
                     System.out.println("도서 검색");
                     // todo
+                    Book_Manager.getInstance().showBooks(Book_Manager.getInstance().findBooksByOption());
+                    show_BookManageForm();
                     valid = true;
                 }
                 case "3" -> {

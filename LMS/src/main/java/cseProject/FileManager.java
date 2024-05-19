@@ -71,16 +71,16 @@ public class FileManager {
                     User_Info newUser = new User_Info(params[0], params[1], params[2], Boolean.parseBoolean(params[3]), params[4]);
                     userManager.add_userDB(newUser);
                 } //도서 데이터 파일 읽기
-                else if (fileName.equals("Book_Info.txt")) {
+                else if (fileName.equals("Book_Info.txt")) { // 도서 데이터 파일 읽기
                     String[] params = fileContent.split(";");
-                    Book_Info newBook = new Book_Info(params[0], params[1], params[2], params[3], params[4]);
+                    Book_Info newBook = new Book_Info(params[0], params[1], params[2], params[3], params[4], Boolean.parseBoolean(params[5]));
                     bookManager.add_BookDB(newBook);
                 } //대여 목록 파일 읽기
-                else if (fileName.equals("Rental_Info.txt")) {
-                    String[] params = fileContent.split(";");
-                    Book_Info newBook = new Book_Info(params[1], params[2], params[3], params[4], params[5]);
-                    bookManager.add_BookDB(newBook);
-                }
+//                else if (fileName.equals("Rental_Info.txt")) {
+//                    String[] params = fileContent.split(";");
+//                    Book_Info newBook = new Book_Info(params[1], params[2], params[3], params[4], params[5]);
+//                    bookManager.add_BookDB(newBook);
+//                }
             }
         } catch (IOException ex) {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -120,7 +120,7 @@ public class FileManager {
             }//도서 목록 데이터 파일 작성
             else if (fileName.equals("Book_Info.txt")) {
                 for (Book_Info book : bookManager.getBookDB()) {
-                    String context = book.getTitle() + ';' + book.getAuthor() + ';' + book.getGenre() + ';' + book.getPublihser() + ';' + book.getISBN() + '\n';
+                    String context = book.getTitle() + ';' + book.getAuthor() + ';' + book.getGenre() + ';' + book.getPublisher() + ';' + book.getISBN() + ';' + book.getIsBorrorwed() + '\n';
                     write.write(context);
                 }
                 write.flush();
