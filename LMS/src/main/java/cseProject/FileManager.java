@@ -73,14 +73,13 @@ public class FileManager {
                 } //도서 데이터 파일 읽기
                 else if (fileName.equals("Book_Info.txt")) {
                     String[] params = fileContent.split(";");
-                    Book_Info newBook = new Book_Info(params[1], params[2], params[3], params[4], params[5]);
-                    bookManager.add_bookDB(newBook);
+                    Book_Info newBook = new Book_Info(params[0], params[1], params[2], params[3], params[4]);
+                    bookManager.add_BookDB(newBook);
                 } //대여 목록 파일 읽기
                 else if (fileName.equals("Rental_Info.txt")) {
                     String[] params = fileContent.split(";");
                     Book_Info newBook = new Book_Info(params[1], params[2], params[3], params[4], params[5]);
-                    bookManager.add_bookDB(newBook);
-
+                    bookManager.add_BookDB(newBook);
                 }
             }
         } catch (IOException ex) {

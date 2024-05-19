@@ -45,10 +45,10 @@ public class RealSystemHelper implements InterfaceSystemHelper {
             BufferedReader is = new BufferedReader(reader);
             inputLine = is.readLine();
 
-            while (inputLine.length() == 0) {
-                System.out.println("공백입력은 허용되지 않습니다.");
-                inputLine = is.readLine();
-            }
+//            while (inputLine.length() == 0) {
+//                System.out.println("공백입력은 허용되지 않습니다.");
+//                inputLine = is.readLine();
+//            }
 
         } catch (IOException e) {
             System.out.println("IOException" + e);

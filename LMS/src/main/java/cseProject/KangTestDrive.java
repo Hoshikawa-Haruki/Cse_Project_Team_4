@@ -31,6 +31,8 @@ public class KangTestDrive {
 //        form.perform_Main();
         FileManager.getInstance().createDBFile("User_Info.txt");
         FileManager.getInstance().createDB("User_Info.txt");
+        FileManager.getInstance().createDBFile("Book_Info.txt");
+        FileManager.getInstance().createDB("Book_Info.txt");
 
         UserContext ctx = UserContext.getInstance();
 

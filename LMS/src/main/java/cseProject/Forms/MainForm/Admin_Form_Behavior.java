@@ -8,8 +8,7 @@ package cseProject.Forms.MainForm;
  *
  * @author 이승환
  */
-import cseProject.Login.User_Manager;
-import cseProject.LoginState.LoggedOutState;
+import cseProject.Book.Book_Manager;
 import cseProject.LoginState.UserContext;
 import cseProject.Helper.ProxyHelper;
 
@@ -71,10 +70,45 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
         System.out.println("│ 4. 도서 정보 수정                              │");
         System.out.println("│ 5. 돌아가기                                    │");
         System.out.println("└────────────────────────┘");
-        String choice = helper.getUserInput();
-        if ("5".equals(choice)) {
-            System.out.println("메인 화면으로 돌아갑니다");
-            show_MainForm();
+        boolean valid = false;
+        while (!valid) {
+            String choice = helper.getUserInput();
+            switch (choice) {
+                case "1" -> {
+                    System.out.println("도서 현황");
+                    Book_Manager.getInstance().displayBooks();
+                    show_BookManageForm();
+                    // todo
+                    valid = true;
+                }
+                case "2" -> {
+                    System.out.println("도서 검색");
+                    // todo
+                    valid = true;
+                }
+                case "3" -> {
+                    System.out.println("도서 등록");
+                    // todo
+                    Book_Manager.getInstance().makeBook();
+                    show_BookManageForm();
+                    valid = true;
+                }
+                case "4" -> {
+                    System.out.println("도서 정보 수정");
+                    // todo
+                    //Book_Manager.getInstance().editBook();
+                    show_BookManageForm();
+                    valid = true;
+                }
+                case "5" -> {
+                    System.out.println("메인 화면으로 돌아갑니다");
+                    show_MainForm();
+                    valid = true;
+                }
+                default -> {
+                    System.out.println("잘못된 입력입니다.");
+                }
+            }
         }
     }
 

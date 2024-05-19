@@ -6,6 +6,7 @@ package cseProject.Forms.MainForm;
 
 import cseProject.Login.User_Manager;
 import cseProject.Helper.ProxyHelper;
+import cseProject.LoginState.UserContext;
 
 /**
  *
@@ -13,7 +14,7 @@ import cseProject.Helper.ProxyHelper;
  */
 public class General_Form_Behavior implements Main_Form_Behavior {
 
-     private static final ProxyHelper helper = ProxyHelper.getInstance();
+    private static final ProxyHelper helper = ProxyHelper.getInstance();
 
     @Override
     public void show_MainForm() {
@@ -39,7 +40,7 @@ public class General_Form_Behavior implements Main_Form_Behavior {
             }
             case "4" -> {
                 System.out.println("로그아웃을 실행합니다");
-                User_Manager.getInstance().userLogout();
+                UserContext.getInstance().logout();
             }
             default -> {
                 System.out.println("잘못된 입력입니다.");

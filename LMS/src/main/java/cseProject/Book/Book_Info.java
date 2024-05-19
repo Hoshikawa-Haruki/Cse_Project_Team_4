@@ -16,8 +16,8 @@ public class Book_Info {
     private String genre;
     private String ISBN;
     private boolean isBorrorwed;
-
-    public Book_Info(String title, String author, String publisher, String genre, String ISBN) {
+    // 무조건 생성 순서는 타 - 아 - 장 - 퍼 - i
+    public Book_Info(String title, String author, String genre, String publisher, String ISBN) {
         this.title = title;
         this.author = author;
         this.publisher = publisher;

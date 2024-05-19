@@ -24,7 +24,7 @@ public class BookTest {
         while (true) {
             String choice = helper.getUserInput();
             if ("1".equals(choice)) {
-                manager.make_Book();
+                manager.makeBook();
             }
             else{
                 manager.displayBooks();
