@@ -164,7 +164,7 @@ public class Book_Manager {
                         + String.format("%15s", book.getGenre())
                         + String.format("%15s", book.getPublisher())
                         + String.format("%15s", book.getISBN())
-                        + String.format("%15s", book.getIsBorrorwed())
+                        + String.format("%15s", borrowCheck(book))
                 );
             }
         }
@@ -225,7 +225,9 @@ public class Book_Manager {
 
     public void displayBooks() {
         if (bookDB.isEmpty()) {
-            System.out.println("책 목록이 비어 있습니다.");
+            System.out.println("────────────────────────────────────────────────────────────────────────");
+            System.out.printf("%5s%20s%20s%20s%20s%20s%15s\n", "번호", "제목", "저자", "장르", "출판사", "ISBN", "대여여부");
+            System.out.println("────────────────────────────────────────────────────────────────────────");
         } else {
             for (int i = 0; i < bookDB.size(); i++) {
                 Book_Info book = bookDB.get(i);
@@ -237,9 +239,18 @@ public class Book_Manager {
                         + String.format("%15s", book.getGenre())
                         + String.format("%15s", book.getPublisher())
                         + String.format("%15s", book.getISBN())
-                        + String.format("%15s", book.getIsBorrorwed())
+                        + String.format("%15s", borrowCheck(book))
                 );
             }
+            System.out.println("────────────────────────────────────────────────────────────────────────");
+        }
+    }
+
+    public String borrowCheck(Book_Info book) {
+        if (book.getIsBorrorwed() == false) {
+            return "대여가능";
+        } else {
+            return "대여중";
         }
     }
 }
