@@ -22,7 +22,7 @@ public class Landing_Form { // 초기화면
         System.out.println("┌────────────────────────┐");
         System.out.println("│ 1. 로그인                                      │");
         System.out.println("│ 2. 회원가입                                    │ ");
-        System.out.println("│ 3. 돌아가기                                    │ ");
+        System.out.println("│ 3. 종료                                        │ ");
         System.out.println("└────────────────────────┘");
 
         String choice = helper.getUserInput();

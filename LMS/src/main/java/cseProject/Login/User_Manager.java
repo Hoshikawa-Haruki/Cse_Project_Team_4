@@ -51,8 +51,9 @@ public class User_Manager {
 
     // user_MemberShip : 로그인시스템에서 정보 받음 -> 전략패턴 실행 -> 전략패턴에서 addUser 실행 -> 생성한 객체를 add_userDB에 넘겨줌, 여기 매개변수 이름이 user_MemberShip
     public void add_userDB(User_Info user_MemberShip) {
-        User_Info newUser = User_Factory.createUser(user_MemberShip); //팩토리 메서드를 통해 사용자 객체 생성
-        userDB.add(newUser);
+//        User_Info newUser = User_Factory.createUser(user_MemberShip); //팩토리 메서드를 통해 사용자 객체 생성
+//        User_Info newUser = new User_Info();
+        userDB.add(user_MemberShip);
         FileManager.getInstance().writeDBFile("User_Info.txt");
         //Regenerate("UserData"); //userDB에 새롭게 추가된 유저정보를 기반으로 데이터 파일 재생성(UserData.txt)
     }

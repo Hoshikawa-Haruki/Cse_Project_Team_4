@@ -22,7 +22,7 @@ public class User_Info {
     LocalDateTime now;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");  
 
-    public User_Info(String userID, String userPW, String userName, boolean isManager) {
+    public User_Info(String userID, String userPW, String userName, boolean isManager) { // 회원가입 시 사용
         this.userID = userID;
         this.userPW = userPW;
         this.userName = userName;
@@ -31,7 +31,7 @@ public class User_Info {
         this.registeredDate = now.format(formatter);
     }
     
-    public User_Info(String userID, String userPW, String userName, boolean isManager, String time) {
+    public User_Info(String userID, String userPW, String userName, boolean isManager, String time) { // 파일 읽어올때 사용
         this.userID = userID;
         this.userPW = userPW;
         this.userName = userName;

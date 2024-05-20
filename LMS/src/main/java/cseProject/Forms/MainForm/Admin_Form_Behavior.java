@@ -68,7 +68,8 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
         System.out.println("│ 2. 도서 검색                                   │");
         System.out.println("│ 3. 도서 등록                                   │");
         System.out.println("│ 4. 도서 정보 수정                              │");
-        System.out.println("│ 5. 돌아가기                                    │");
+        System.out.println("│ 5. 도서 삭제                                   │");
+        System.out.println("│ 6. 돌아가기                                    │");
         System.out.println("└────────────────────────┘");
         boolean valid = false;
         while (!valid) {
@@ -84,7 +85,7 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
                 case "2" -> {
                     System.out.println("도서 검색");
                     // todo
-                    Book_Manager.getInstance().showBooks(Book_Manager.getInstance().findBooksByOption());
+                    Book_Manager.getInstance().showBooks(Book_Manager.getInstance().findBooksByAll());
                     show_BookManageForm();
                     valid = true;
                 }
@@ -99,10 +100,16 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
                     System.out.println("도서 정보 수정");
                     // todo
                     //Book_Manager.getInstance().editBook();
+                    Book_Manager.getInstance().editBook(Book_Manager.getInstance().findBookByISBN());
                     show_BookManageForm();
                     valid = true;
                 }
                 case "5" -> {
+                    Book_Manager.getInstance().removeBook(Book_Manager.getInstance().findBookByISBN());
+                    show_BookManageForm();
+                    valid = true;
+                }
+                case "6" -> {
                     System.out.println("메인 화면으로 돌아갑니다");
                     show_MainForm();
                     valid = true;

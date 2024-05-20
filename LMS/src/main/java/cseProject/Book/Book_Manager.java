@@ -113,6 +113,43 @@ public class Book_Manager {
         return books;
     }
 
+    public ArrayList<Book_Info> findBooksByAll() { // 모든 검색어
+        String option = helper.getUserInput(); // 검색어
+        ArrayList<Book_Info> books = new ArrayList<>();
+
+        for (Book_Info book : bookDB) {
+            if (book.getTitle().contains(option)) {
+                books.add(book);
+            }
+        }
+
+        for (Book_Info book : bookDB) {
+            if (book.getAuthor().contains(option)) {
+                books.add(book);
+            }
+        }
+
+        for (Book_Info book : bookDB) {
+            if (book.getGenre().contains(option)) {
+                books.add(book);
+            }
+        }
+
+        for (Book_Info book : bookDB) {
+            if (book.getPublisher().contains(option)) {
+                books.add(book);
+            }
+        }
+
+//        boolean isBorrowed = Boolean.parseBoolean(option);
+//        for (Book_Info book : bookDB) {
+//            if (book.getIsBorrorwed() == isBorrowed) {
+//                books.add(book);
+//            }
+//        }
+        return books;
+    }
+
     public void showBooks(ArrayList<Book_Info> targetBooks) { // 조건에 맞는 책 출력
         if (targetBooks.isEmpty()) {
             System.out.println("책 목록이 비어 있습니다.");
@@ -122,7 +159,7 @@ public class Book_Manager {
                 System.out.println(
                         i + 1
                         + "."
-                        + String.format("%20s", book.getTitle())
+                        + String.format("%15s", book.getTitle())
                         + String.format("%15s", book.getAuthor())
                         + String.format("%15s", book.getGenre())
                         + String.format("%15s", book.getPublisher())
@@ -179,6 +216,13 @@ public class Book_Manager {
         FileManager.getInstance().writeDBFile("Book_Info.txt");
     }
 
+    public void removeBook(Book_Info targetBook) {
+
+        System.out.println(targetBook.getTitle() + " 도서가 삭제되었습니다");
+        getBookDB().remove(targetBook);
+        FileManager.getInstance().writeDBFile("Book_Info.txt");
+    }
+
     public void displayBooks() {
         if (bookDB.isEmpty()) {
             System.out.println("책 목록이 비어 있습니다.");
@@ -188,7 +232,7 @@ public class Book_Manager {
                 System.out.println(
                         i + 1
                         + "."
-                        + String.format("%20s", book.getTitle())
+                        + String.format("%15s", book.getTitle())
                         + String.format("%15s", book.getAuthor())
                         + String.format("%15s", book.getGenre())
                         + String.format("%15s", book.getPublisher())

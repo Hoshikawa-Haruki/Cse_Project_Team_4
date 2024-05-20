@@ -6,7 +6,7 @@ package cseProject.Login;
 
 /**
  *
- * @author 이승환
+ * @author 이승환 - 안쓰이는 클래스
  */
 public class User_Factory {
 
