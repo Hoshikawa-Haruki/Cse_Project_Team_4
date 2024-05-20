@@ -10,8 +10,10 @@ import java.util.List;
 public class BookListPrint extends BookList implements Observer {
 
     public void printBooks() {
-        Iterator<Book> iterator = this.createIterator();
-        System.out.println("---------------<<List>>-------------------------------------------------");
+        new BookIterator(books);
+        Iterator<Book> iterator = createIterator();
+
+        System.out.println("--------------------------------<<List>>--------------------------------");
         System.out.printf("%-5s %-30s %-20s %-20s %-15s\n", "No.", "Title", "Author", "Publisher", "ISBN");
 
         int count = 1;
@@ -27,9 +29,8 @@ public class BookListPrint extends BookList implements Observer {
         System.out.println("-------------------------------------------------------------------------");
     }
 
-
+    @Override
     public void update(List<Book> books) {
-        System.out.println("*업데이트 된 책 리스트*");
-        printBooks();
+        System.out.println("책 목록이 업데이트 되었습니다.");
     }
 }

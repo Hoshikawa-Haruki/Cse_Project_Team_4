@@ -73,5 +73,10 @@ public class BookMainUI {
     private void ObserverAdd(BookList booklist) {
         BookFileWriter a = new BookFileWriter();
         booklist.registerObserver(a);
+
+        BookListPrint bp = new BookListPrint();
+        booklist.registerObserver(bp);
+
     }
+
 }

@@ -63,8 +63,8 @@ public class BookList implements Subject {
         notifyObservers();
     }
 
-    public java.util.Iterator<Book> createIterator() {
-        return new BookIterator(this.books);
+    public Iterator<Book> createIterator() {
+        return books.iterator();
     }
 
     private void localFile() {

@@ -34,8 +34,8 @@ public class DeleteBook {
 
                         switch (confirm) {
                             case "y":
+                                System.out.println("책이 성공적으로 삭제되었습니다.");
                                 books.removeBook(isbn);
-                                System.out.println("책이 삭제되었습니다.");
                                 System.out.println("------------------------------------");
                                 return;
                             case "n":
@@ -52,7 +52,6 @@ public class DeleteBook {
                 } else {
                     // ISBN이 일치하는 Book 객체를 찾지 못했을 때의 처리
                     System.out.println("책을 찾을 수 없습니다. 다시 입력해주세요.");
-                    continue;
                 }
             }
         }

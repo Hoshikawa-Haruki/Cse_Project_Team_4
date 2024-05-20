@@ -1,16 +1,17 @@
 package cseProject.BookManagement.Search;
 
 import cseProject.BookManagement.AddDelete.BookList;
+import cseProject.BookManagement.AddDelete.Observer;
 import cseProject.BookManagement.Book;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 
-public class BookSearch {
+public class BookSearch extends BookList{
     private final BookList bookList;
 
     public BookSearch(BookList bookList) {
@@ -31,10 +32,14 @@ public class BookSearch {
             if (!Objects.equals(title, "") && title != null) { break; }
         }
 
-        Iterator<Book> iterator = bookList.createIterator();
+        Iterator<Book> iterator = new BookIterator(books);
+
+        bookList.createIterator();
+
         ArrayList<Book> foundBooks = new ArrayList<>();
         while (iterator.hasNext()) {
-            Book book = iterator.next();
+            Book book = (Book) iterator.next();
+
             if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 foundBooks.add(book);
             }

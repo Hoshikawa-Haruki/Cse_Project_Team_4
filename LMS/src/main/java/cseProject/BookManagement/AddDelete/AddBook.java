@@ -30,7 +30,7 @@ public class AddBook {
                 isbn = br.readLine();
 
                 if (title.isEmpty() || author.isEmpty() || publisher.isEmpty() || isbn.isEmpty()) {
-                    System.out.println("다시 입력하시기 바랍니다.");
+                    System.out.println("다시 입력하시기 바랍니다.\n");
                     continue;
                 } else {
                     break;
