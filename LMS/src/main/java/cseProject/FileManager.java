@@ -8,7 +8,7 @@ import cseProject.Book.Book_Info;
 import cseProject.Book.Book_Manager;
 import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
-import cseProject.RentalFunction.Rental_Manager;
+import cseProject.Rental.Rental_Manager;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
