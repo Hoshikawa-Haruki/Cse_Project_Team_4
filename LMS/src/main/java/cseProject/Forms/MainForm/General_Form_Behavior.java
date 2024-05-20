@@ -4,6 +4,7 @@
  */
 package cseProject.Forms.MainForm;
 
+import cseProject.Book.Book_Manager;
 import cseProject.Login.User_Manager;
 import cseProject.Helper.ProxyHelper;
 import cseProject.LoginState.UserContext;
@@ -27,16 +28,16 @@ public class General_Form_Behavior implements Main_Form_Behavior {
         String choice = helper.getUserInput();
         switch (choice) {
             case "1" -> {
-                System.out.println("도서 관련 탭.");
-                show_BookForm();
+                System.out.println("도서 검색/대출/반납");
+                showBookGeneralForm();
             }
             case "2" -> {
                 System.out.println("희망도서 신청 탭.");
-                show_RequestingBook();
+                showRequestingBook();
             }
             case "3" -> {
-                System.out.println("내 정보 탭");
-                show_MyInformation();
+                System.out.println("내 정보 조회");
+                showMyInformation();
             }
             case "4" -> {
                 System.out.println("로그아웃을 실행합니다");
@@ -48,21 +49,45 @@ public class General_Form_Behavior implements Main_Form_Behavior {
         }
     }
 
-    public void show_BookForm() {
+    public void showBookGeneralForm() {
         System.out.println("┌────────────────────────┐");
-        System.out.println("│ 1. 도서 검색                                   │");
-        System.out.println("│ 2. 도서 대출                                   │");
-        System.out.println("│ 3. 도서 반납                                   │");
-        System.out.println("│ 4. 돌아가기                                    │");
+        System.out.println("│ 1. 도서 현황                                   │");
+        System.out.println("│ 2. 도서 검색                                   │");
+        System.out.println("│ 3. 도서 대출                                   │");
+        System.out.println("│ 4. 도서 반납                                   │");
+        System.out.println("│ 5. 돌아가기                                    │");
         System.out.println("└────────────────────────┘");
         String choice = helper.getUserInput();
-        if ("4".equals(choice)) {
-            System.out.println("메인 화면으로 돌아갑니다");
-            show_MainForm();
+        switch (choice) {
+            case "1" -> {
+                System.out.println("도서 현황");
+                Book_Manager.getInstance().displayBooks();
+                showBookGeneralForm();
+            }
+            case "2" -> {
+                System.out.println("도서 검색");
+                // todo
+                Book_Manager.getInstance().showBooks(Book_Manager.getInstance().findBooksByAll());
+                showBookGeneralForm();
+            }
+            case "3" -> {
+                System.out.println("도서 대출");
+            }
+            case "4" -> {
+                System.out.println("도서 반납");
+                showBookGeneralForm();
+            }
+            case "5" -> {
+                System.out.println("이전 화면으로 돌아갑니다");
+                show_MainForm();
+            }
+            default -> {
+                System.out.println("잘못된 입력입니다.");
+            }
         }
     }
 
-    public void show_RequestingBook() {
+    public void showRequestingBook() {
         System.out.println("┌────────────────────────┐");
         System.out.println("│ 1. 희망도서 신청                               │");
         System.out.println("│ 2. 희망도서 신청 현황                          │");
@@ -75,7 +100,7 @@ public class General_Form_Behavior implements Main_Form_Behavior {
         }
     }
 
-    public void show_MyInformation() {
+    public void showMyInformation() {
 
     }
 }
