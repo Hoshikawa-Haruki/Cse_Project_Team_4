@@ -10,10 +10,16 @@ import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
 import cseProject.RentalFunction.Rental_Manager;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -89,15 +95,17 @@ public class FileManager {
 
     public ArrayList<String> readDBFile(String fileName) throws IOException {
         String readFilePath = basePath + File.separator + fileName;
-        File readFile;
-        String fileContent;
         ArrayList<String> fileContents = new ArrayList<>();
 
-        readFile = new File(readFilePath);
-        BufferedReader br = new BufferedReader(new FileReader(readFile));
-        while ((fileContent = br.readLine()) != null) {
-            fileContents.add(fileContent);
-            System.out.println(fileContent);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(readFilePath), StandardCharsets.UTF_8))) {
+            String fileContent;
+            while ((fileContent = br.readLine()) != null) {
+                fileContents.add(fileContent);
+                System.out.println(fileContent);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
         }
 
         return fileContents;
@@ -106,28 +114,28 @@ public class FileManager {
     public void writeDBFile(String fileName) {
         try {
             String writeFilePath = basePath + File.separator + fileName;
-            FileWriter write;
-            write = new FileWriter(writeFilePath, false);
+            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(writeFilePath, false), StandardCharsets.UTF_8);
+            BufferedWriter out = new BufferedWriter(writer);
 
-            //유저 데이터 파일 작성
+            // 유저 데이터 파일 작성
             if (fileName.equals("User_Info.txt")) {
                 for (User_Info user : userManager.getUserDB()) {
                     String context = user.getUserID() + ';' + user.getUserPW() + ';' + user.getUserName() + ';' + String.valueOf(user.getIsManager()) + ';' + user.getRegisteredDate() + '\n';
-                    write.write(context);
+                    out.write(context);
                 }
-                write.flush();
-                write.close();
-            }//도서 목록 데이터 파일 작성
+                out.flush();
+                out.close();
+            } // 도서 목록 데이터 파일 작성
             else if (fileName.equals("Book_Info.txt")) {
                 for (Book_Info book : bookManager.getBookDB()) {
                     String context = book.getTitle() + ';' + book.getAuthor() + ';' + book.getGenre() + ';' + book.getPublisher() + ';' + book.getISBN() + ';' + book.getIsBorrorwed() + '\n';
-                    write.write(context);
+                    out.write(context);
                 }
-                write.flush();
-                write.close();
-            } //대여 목록 데이터 파일 작성
+                out.flush();
+                out.close();
+            } // 대여 목록 데이터 파일 작성 (추가 구현 필요)
             else if (fileName.equals("Rental_Info.txt")) {
-
+                // 대여 목록 작성 로직 구현
             }
         } catch (IOException ex) {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
