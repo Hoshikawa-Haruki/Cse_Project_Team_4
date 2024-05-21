@@ -4,11 +4,13 @@
  */
 package cseProject.Book;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author 이승환
  */
-public class Book_Info {
+public class Book_Info extends Subject {
 
     private String title;
     private String author;
@@ -25,6 +27,35 @@ public class Book_Info {
         this.genre = genre;
         this.ISBN = ISBN;
         this.isBorrorwed = isBorrowed;
+        observers = new ArrayList<>();
+    }
+
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        int i = observers.indexOf(o);
+        if (i >= 0) {
+            observers.remove(o);
+        }
+    }
+
+    @Override
+    public void notifyObserver() {
+        System.out.println("나는 " + ISBN);
+
+        observers.forEach((observer) -> {
+            observer.updateRental(ISBN);
+        });
+    }
+
+    public void realRent() {
+        System.out.println("나는 " + "r");
+
+        notifyObserver();
     }
 
     public String getTitle() {

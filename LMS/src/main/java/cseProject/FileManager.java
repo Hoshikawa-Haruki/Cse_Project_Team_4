@@ -6,6 +6,7 @@ package cseProject;
 
 import cseProject.Book.Book_Info;
 import cseProject.Book.Book_Manager;
+import cseProject.Book.RentalObserver;
 import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
 import cseProject.Rental.Rental_Manager;
@@ -80,6 +81,9 @@ public class FileManager {
                 else if (fileName.equals("Book_Info.txt")) { // 도서 데이터 파일 읽기
                     String[] params = fileContent.split(";");
                     Book_Info newBook = new Book_Info(params[0], params[1], params[2], params[3], params[4], Boolean.parseBoolean(params[5]));
+                    
+                    // 옵저버 등록
+                    RentalObserver ro = new RentalObserver(newBook);
                     bookManager.add_BookDB(newBook);
                 } //대여 목록 파일 읽기
 //                else if (fileName.equals("Rental_Info.txt")) {

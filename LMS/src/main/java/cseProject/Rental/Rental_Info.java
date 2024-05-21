@@ -4,6 +4,9 @@
  */
 package cseProject.Rental;
 
+import cseProject.Book.Subject;
+import java.util.ArrayList;
+
 /**
  *
  * @author 이승환

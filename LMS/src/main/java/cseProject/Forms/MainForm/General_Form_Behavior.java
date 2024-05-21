@@ -4,6 +4,7 @@
  */
 package cseProject.Forms.MainForm;
 
+import cseProject.Book.Book_Info;
 import cseProject.Book.Book_Manager;
 import cseProject.Login.User_Manager;
 import cseProject.Helper.ProxyHelper;
@@ -72,6 +73,11 @@ public class General_Form_Behavior implements Main_Form_Behavior {
             }
             case "3" -> {
                 System.out.println("도서 대출");
+                Book_Info targetBook = Book_Manager.getInstance().findBookByISBN();
+                System.out.println("대출 실행중");
+                System.out.println(targetBook.getISBN());
+                targetBook.realRent();
+                showBookGeneralForm();
             }
             case "4" -> {
                 System.out.println("도서 반납");
