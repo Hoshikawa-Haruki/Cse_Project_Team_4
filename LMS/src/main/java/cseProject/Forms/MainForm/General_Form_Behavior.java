@@ -9,6 +9,7 @@ import cseProject.Book.Book_Manager;
 import cseProject.Login.User_Manager;
 import cseProject.Helper.ProxyHelper;
 import cseProject.LoginState.UserContext;
+import cseProject.Rental.Rental_Info;
 import cseProject.Rental.Rental_Manager;
 
 /**
@@ -74,14 +75,14 @@ public class General_Form_Behavior implements Main_Form_Behavior {
             }
             case "3" -> {
                 System.out.println("도서 대출");
-                //Rental_Manager.getInstance().doRental(Book_Manager.getInstance().findBookByISBN());
-                //Book_Info targetBook = Book_Manager.getInstance().findBookByISBN();
+                //Book_Info targetBook = Book_Manager.getInstance().findBookByISBN(); // 기존코드
+                //targetBook.realRent(); // 옵저버 실행
                 Book_Info targetBook;
                 while (true) {
                     targetBook = Book_Manager.getInstance().findBookByISBN();
-                    if (targetBook != null) {
-                        targetBook.realRent();
-                        Rental_Manager.getInstance().doRental(targetBook);
+                    if (targetBook != null) { // 널포인트 해결 코드
+                        targetBook.realRent(); // 대여 옵저버 실행 (책 객체 상태 변경 알림)
+                        Rental_Manager.getInstance().doRental(targetBook); // 옵저버와 관계 X rentalDB 만드는 과정
                         break;
                     } else {
                         System.out.println("해당 도서를 찾을 수 없습니다.");
@@ -92,8 +93,19 @@ public class General_Form_Behavior implements Main_Form_Behavior {
 
             case "4" -> {
                 System.out.println("도서 반납");
-                Book_Info targetBook = Book_Manager.getInstance().findBookByISBN();
-                targetBook.realReturn();
+                Book_Info targetBook;
+                while (true) {
+                    targetBook = Book_Manager.getInstance().findBookByISBN();
+                    if (targetBook != null) { // 널포인트 해결 코드
+                        targetBook.realReturn(); // 반납 옵저버 실행 (책 객체 상태 변경 알림)
+                        break;
+                    } else {
+                        System.out.println("해당 도서를 찾을 수 없습니다.");
+                    }
+                }
+                Rental_Info targetRentalBook;
+                targetRentalBook = Rental_Manager.getInstance().findMyBookByISBN();
+                Rental_Manager.getInstance().doReturn(targetRentalBook);
                 showBookGeneralForm();
             }
             case "5" -> {

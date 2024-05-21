@@ -138,7 +138,7 @@ public class FileManager {
                 }
                 out.flush();
                 out.close();
-            } // 대여 목록 데이터 파일 작성 (추가 구현 필요)
+            } // 대여 목록 데이터 파일 작성
             else if (fileName.equals("Rental_Info.txt")) {
                 for (Rental_Info rental : rentalManager.getRentalDB()) {
                     String context = rental.getUserID() + ';' + rental.getUserName() + ';' + rental.getTitle() + ';' + rental.getISBN() + '\n';

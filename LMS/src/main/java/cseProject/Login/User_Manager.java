@@ -5,16 +5,17 @@
 package cseProject.Login;
 
 import cseProject.FileManager;
-import cseProject.Helper.RealSystemHelper;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import cseProject.Helper.RealSystemHelper;
+//import java.io.BufferedWriter;
+//import java.io.File;
+//import java.io.FileNotFoundException;
+//import java.io.FileOutputStream;
+//import java.io.IOException;
+//import java.io.OutputStreamWriter;
+//
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 
 /**
  *
@@ -25,7 +26,7 @@ public class User_Manager {
     private static User_Manager instance; // 싱글턴
     private ArrayList<User_Info> userDB = new ArrayList<>(); // 유저DB
     private User_Info loginUser; // 현재 로그인 유저
-    private static RealSystemHelper helper = RealSystemHelper.getInstance();
+    //private static RealSystemHelper helper = RealSystemHelper.getInstance();
 
     private User_Manager() {
         // Private 생성자, 처음 생성될시 UserData.txt에서 유저정보를 가져와 객체 리스트화 하여 추가해줌
@@ -86,44 +87,43 @@ public class User_Manager {
 //            }
 //        }
 //    }
-    public void Regenerate(String str) { //변경된 파일을 백업 후 재성성
-        helper.BackUpTextFile("./" + str + ".txt");
-
-        try {
-            File f = new File("./UserData.txt");
-            if (f.exists()) {
-                System.out.println("파일이 이미 존재합니다.");
-            } else if (f.createNewFile()) {
-                System.out.println("파일을 생성합니다.");
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        try (FileOutputStream output = new FileOutputStream("./" + str + ".txt", true); OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8"); BufferedWriter out = new BufferedWriter(writer);) {
-            for (int i = 0; i < userDB.size(); i++) { //아이디,비밀번호,이름,관리자여부 형식으로 저장
-                out.append(
-                        userDB.get(i).getUserID()
-                        + ","
-                        + userDB.get(i).getUserPW()
-                        + ","
-                        + userDB.get(i).getUserName()
-                        + ","
-                        + String.valueOf(userDB.get(i).getIsManager())
-                        + ","
-                        + userDB.get(i).getRegisteredDate()
-                        + "/" // '/'문자로 사용자와 다른 사용자의 정보를 구분지음
-                );
-                out.append("\n");
-            }
-            out.append("*");          //시스템에 저장된 사용자데이터의 끝을 나타냄
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
+//    public void Regenerate(String str) { //변경된 파일을 백업 후 재성성
+//        helper.BackUpTextFile("./" + str + ".txt");
+//
+//        try {
+//            File f = new File("./UserData.txt");
+//            if (f.exists()) {
+//                System.out.println("파일이 이미 존재합니다.");
+//            } else if (f.createNewFile()) {
+//                System.out.println("파일을 생성합니다.");
+//            }
+//        } catch (IOException ex) {
+//            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        try (FileOutputStream output = new FileOutputStream("./" + str + ".txt", true); OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8"); BufferedWriter out = new BufferedWriter(writer);) {
+//            for (int i = 0; i < userDB.size(); i++) { //아이디,비밀번호,이름,관리자여부 형식으로 저장
+//                out.append(
+//                        userDB.get(i).getUserID()
+//                        + ","
+//                        + userDB.get(i).getUserPW()
+//                        + ","
+//                        + userDB.get(i).getUserName()
+//                        + ","
+//                        + String.valueOf(userDB.get(i).getIsManager())
+//                        + ","
+//                        + userDB.get(i).getRegisteredDate()
+//                        + "/" // '/'문자로 사용자와 다른 사용자의 정보를 구분지음
+//                );
+//                out.append("\n");
+//            }
+//            out.append("*");          //시스템에 저장된 사용자데이터의 끝을 나타냄
+//
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//    }
 }
