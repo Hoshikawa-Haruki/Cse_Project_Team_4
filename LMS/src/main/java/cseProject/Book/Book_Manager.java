@@ -34,25 +34,26 @@ public class Book_Manager {
     }
 
     public void makeBook() {
-        System.out.println("도서를 추가 합니다.");
-        System.out.print("제목: ");
+        System.out.println("- 도서를 추가 합니다.");
+        System.out.print("▶ 제목 : ");
         String title = helper.getUserInput();
-        System.out.print("저자: ");
+        System.out.print("▶ 저자 : ");
         String author = helper.getUserInput();
-        System.out.print("장르: ");
+        System.out.print("▶ 장르 : ");
         String genre = helper.getUserInput();
-        System.out.print("출판사: ");
+        System.out.print("▶ 출판사 : ");
         String publisher = helper.getUserInput();
-        System.out.print("ISBN: ");
+        System.out.print("▶ ISBN : ");
         String ISBN = helper.getUserInput();
 
         Book_Info book = new Book_Info(title, author, genre, publisher, ISBN, false);
         RentalObserver ro = new RentalObserver(book); // 새로운 도서 객체 추가마다 옵저버에 등록
         add_BookDB(book);
+        System.out.println("- " + book.getTitle() + " 도서가 추가되었습니다.");
         FileManager.getInstance().writeDBFile("Book_Info.txt");
     }
 
-    public ArrayList<Book_Info> findBooksByTitle() { // 제목으로 검색
+    public ArrayList<Book_Info> findBooksByTitle() { // 제목으로 검색 (안쓰이는중)
         System.out.print("대상 도서 제목: ");
         String title = helper.getUserInput();
         ArrayList<Book_Info> books = new ArrayList<>();
@@ -64,7 +65,7 @@ public class Book_Manager {
         return books;
     }
 
-    public ArrayList<Book_Info> findBooksByOption() { // 검색 조건
+    public ArrayList<Book_Info> findBooksByOption() { // 검색 조건 (안쓰이는중)
         System.out.println("1.제목 2.저자 3.장르 4.출판사 5.대여 상태");
         System.out.println("옵션을 골라주세요.");
         String option = helper.getUserInput();
@@ -142,6 +143,12 @@ public class Book_Manager {
             }
         }
 
+        for (Book_Info book : bookDB) {
+            if (book.getISBN().contains(option)) {
+                books.add(book);
+            }
+        }
+
 //        boolean isBorrowed = Boolean.parseBoolean(option);
 //        for (Book_Info book : bookDB) {
 //            if (book.getIsBorrorwed() == isBorrowed) {
@@ -153,7 +160,7 @@ public class Book_Manager {
 
     public void showBooks(ArrayList<Book_Info> targetBooks) { // 조건에 맞는 책 출력
         if (targetBooks.isEmpty()) {
-            System.out.println("책 목록이 비어 있습니다.");
+            System.out.println("- 책 목록이 비어 있습니다.");
         } else {
             for (int i = 0; i < targetBooks.size(); i++) {
                 Book_Info book = targetBooks.get(i);
@@ -172,7 +179,7 @@ public class Book_Manager {
     }
 
     public Book_Info findBookByISBN() {
-        System.out.print("대상 도서 ISBN: ");
+        System.out.print("▶ 대상 도서 ISBN : ");
         String ISBN = helper.getUserInput();
         for (Book_Info book : bookDB) {
             if (book.getISBN().equals(ISBN)) {
@@ -184,18 +191,18 @@ public class Book_Manager {
 
     public void editBook(Book_Info targetBook) {
         if (targetBook == null) {
-            System.out.println("해당 ISBN의 도서가 없습니다.");
+            System.out.println("- 해당 ISBN의 도서가 없습니다.");
             return;
         }
 
-        System.out.println("도서를 수정 합니다.");
-        System.out.print("제목: ");
+        System.out.println("- 도서를 수정 합니다. 수정할 내용이 없으면 enter을 입력하세요");
+        System.out.print("▶ 제목 : ");
         String title = helper.getUserInput();
-        System.out.print("저자: ");
+        System.out.print("▶ 저자 : ");
         String author = helper.getUserInput();
-        System.out.print("장르: ");
+        System.out.print("▶ 장르 : ");
         String genre = helper.getUserInput();
-        System.out.print("출판사: ");
+        System.out.print("▶ 출판사 : ");
         String publisher = helper.getUserInput();
 
         if (!title.isBlank()) {
@@ -219,28 +226,31 @@ public class Book_Manager {
 
     public void removeBook(Book_Info targetBook) {
 
-        System.out.println(targetBook.getTitle() + " 도서가 삭제되었습니다");
+        System.out.println("- " + targetBook.getTitle() + " 도서가 삭제되었습니다");
         getBookDB().remove(targetBook);
         FileManager.getInstance().writeDBFile("Book_Info.txt");
     }
 
-    public void displayBooks() {
+    public void displayBooks() { // 모든 책 보여주기
         if (bookDB.isEmpty()) {
             System.out.println("────────────────────────────────────────────────────────────────────────");
-            System.out.printf("%5s%20s%20s%20s%20s%20s%15s\n", "번호", "제목", "저자", "장르", "출판사", "ISBN", "대여여부");
+            System.out.printf("현재 도서 목록이 없습니다.");
             System.out.println("────────────────────────────────────────────────────────────────────────");
         } else {
+            System.out.println("────────────────────────────────────────────────────────────────────────");
+            System.out.printf("%1s%5s%25s%20s%20s%20s%20s\n", "번호", "제목", "저자", "장르", "출판사", "ISBN", "대여여부");
+            System.out.println("────────────────────────────────────────────────────────────────────────");
             for (int i = 0; i < bookDB.size(); i++) {
                 Book_Info book = bookDB.get(i);
-                System.out.println(
-                        i + 1
-                        + "."
-                        + String.format("%15s", book.getTitle())
-                        + String.format("%15s", book.getAuthor())
-                        + String.format("%15s", book.getGenre())
-                        + String.format("%15s", book.getPublisher())
-                        + String.format("%15s", book.getISBN())
-                        + String.format("%15s", borrowCheck(book))
+                System.out.printf(
+                        "%-5d %-20s %-20s %-10s %-20s %-20s %-10s\n",
+                        i + 1,
+                        book.getTitle(),
+                        book.getAuthor(),
+                        book.getGenre(),
+                        book.getPublisher(),
+                        book.getISBN(),
+                        borrowCheck(book)
                 );
             }
             System.out.println("────────────────────────────────────────────────────────────────────────");

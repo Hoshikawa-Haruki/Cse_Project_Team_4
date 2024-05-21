@@ -9,6 +9,7 @@ import cseProject.Book.Book_Manager;
 import cseProject.Book.RentalObserver;
 import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
+import cseProject.Rental.Rental_Info;
 import cseProject.Rental.Rental_Manager;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -30,20 +31,20 @@ import java.util.logging.Logger;
  * @author 이승환
  */
 public class FileManager {
-
+    
     private static FileManager instance;
     private static String basePath = System.getProperty("user.dir") + "\\data"; //파일 저장 경로
     private static User_Manager userManager = User_Manager.getInstance();
     private static Book_Manager bookManager = Book_Manager.getInstance();
     private static Rental_Manager rentalManager = Rental_Manager.getInstance();
-
+    
     private FileManager() {
     }
-
+    
     public static String getBasePath() {
         return basePath;
     }
-
+    
     public static FileManager getInstance() {
         File createFolder = new File(basePath);
         if (instance == null) {
@@ -54,7 +55,7 @@ public class FileManager {
         }
         return instance;
     }
-
+    
     public void createDBFile(String fileName) {
         String createFilePath = basePath + File.separator + fileName;
         File createFile = new File(createFilePath); // File 객체 생성
@@ -68,7 +69,7 @@ public class FileManager {
             }
         }
     }
-
+    
     public void createDB(String fileName) {
         try {
             ArrayList<String> fileContents = readDBFile(fileName);
@@ -81,26 +82,26 @@ public class FileManager {
                 else if (fileName.equals("Book_Info.txt")) { // 도서 데이터 파일 읽기
                     String[] params = fileContent.split(";");
                     Book_Info newBook = new Book_Info(params[0], params[1], params[2], params[3], params[4], Boolean.parseBoolean(params[5]));
-                    
+
                     // 옵저버 등록
                     RentalObserver ro = new RentalObserver(newBook);
                     bookManager.add_BookDB(newBook);
                 } //대여 목록 파일 읽기
-//                else if (fileName.equals("Rental_Info.txt")) {
-//                    String[] params = fileContent.split(";");
-//                    Book_Info newBook = new Book_Info(params[1], params[2], params[3], params[4], params[5]);
-//                    bookManager.add_BookDB(newBook);
-//                }
+                else if (fileName.equals("Rental_Info.txt")) {
+                    String[] params = fileContent.split(";");
+                    Rental_Info newRental = new Rental_Info(params[0], params[1], params[2], params[3]);
+                    rentalManager.add_rentalDB(newRental);
+                }
             }
         } catch (IOException ex) {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public ArrayList<String> readDBFile(String fileName) throws IOException {
         String readFilePath = basePath + File.separator + fileName;
         ArrayList<String> fileContents = new ArrayList<>();
-
+        
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(readFilePath), StandardCharsets.UTF_8))) {
             String fileContent;
             while ((fileContent = br.readLine()) != null) {
@@ -111,10 +112,10 @@ public class FileManager {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
             throw ex;
         }
-
+        
         return fileContents;
     }
-
+    
     public void writeDBFile(String fileName) {
         try {
             String writeFilePath = basePath + File.separator + fileName;
@@ -139,11 +140,16 @@ public class FileManager {
                 out.close();
             } // 대여 목록 데이터 파일 작성 (추가 구현 필요)
             else if (fileName.equals("Rental_Info.txt")) {
-                // 대여 목록 작성 로직 구현
+                for (Rental_Info rental : rentalManager.getRentalDB()) {
+                    String context = rental.getUserID() + ';' + rental.getUserName() + ';' + rental.getTitle() + ';' + rental.getISBN() + '\n';
+                    out.write(context);
+                }
+                out.flush();
+                out.close();
             }
         } catch (IOException ex) {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
 }

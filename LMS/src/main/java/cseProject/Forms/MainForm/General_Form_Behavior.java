@@ -9,6 +9,7 @@ import cseProject.Book.Book_Manager;
 import cseProject.Login.User_Manager;
 import cseProject.Helper.ProxyHelper;
 import cseProject.LoginState.UserContext;
+import cseProject.Rental.Rental_Manager;
 
 /**
  *
@@ -73,10 +74,22 @@ public class General_Form_Behavior implements Main_Form_Behavior {
             }
             case "3" -> {
                 System.out.println("도서 대출");
-                Book_Info targetBook = Book_Manager.getInstance().findBookByISBN();
-                targetBook.realRent();
+                //Rental_Manager.getInstance().doRental(Book_Manager.getInstance().findBookByISBN());
+                //Book_Info targetBook = Book_Manager.getInstance().findBookByISBN();
+                Book_Info targetBook;
+                while (true) {
+                    targetBook = Book_Manager.getInstance().findBookByISBN();
+                    if (targetBook != null) {
+                        targetBook.realRent();
+                        Rental_Manager.getInstance().doRental(targetBook);
+                        break;
+                    } else {
+                        System.out.println("해당 도서를 찾을 수 없습니다.");
+                    }
+                }
                 showBookGeneralForm();
             }
+
             case "4" -> {
                 System.out.println("도서 반납");
                 Book_Info targetBook = Book_Manager.getInstance().findBookByISBN();

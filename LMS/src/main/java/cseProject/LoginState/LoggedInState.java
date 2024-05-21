@@ -19,15 +19,16 @@ public class LoggedInState implements LoginState {
     public void login(UserContext context) {
         System.out.println("이미 로그인 상태 입니다");
         Form form;
-        try{
-        if (User_Manager.getInstance().getLoginUser().getIsManager() == false) {
-            form = new General_Form();
-        } else {
-            form = new Admin_Form();
-        }
-        form.perform_Main();
-        } catch(NullPointerException a){
-            System.out.println("널포인트");
+        try {
+            if (User_Manager.getInstance().getLoginUser().getIsManager() == false) {
+                form = new General_Form();
+            } else {
+                form = new Admin_Form();
+            }
+            form.perform_Main();
+        } catch (NullPointerException a) {
+            System.out.println("널포인트 에러!! 프로그램을 종료합니다.");
+            System.out.println("에러 사유 : 해당되는 이용자 또는 도서가 없습니다.");
         }
     }
 
@@ -37,5 +38,5 @@ public class LoggedInState implements LoginState {
         User_Manager.getInstance().userLogout();
         context.setState(new LoggedOutState());
         context.login();
-    }   
+    }
 }

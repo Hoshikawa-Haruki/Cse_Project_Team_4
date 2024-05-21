@@ -4,6 +4,7 @@
  */
 package cseProject;
 
+import cseProject.Book.Book_Manager;
 import cseProject.Forms.Admin_Form;
 import cseProject.Forms.Form;
 import cseProject.Forms.General_Form;
@@ -33,9 +34,10 @@ public class KangTestDrive {
         FileManager.getInstance().createDB("User_Info.txt");
         FileManager.getInstance().createDBFile("Book_Info.txt");
         FileManager.getInstance().createDB("Book_Info.txt");
+        FileManager.getInstance().createDBFile("Rental_Info.txt");
+        FileManager.getInstance().createDB("Rental_Info.txt");
 
         UserContext ctx = UserContext.getInstance();
-
         ctx.login();
 
     }
