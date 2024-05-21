@@ -45,16 +45,27 @@ public class Book_Info extends Subject {
 
     @Override
     public void notifyObserver() {
-        System.out.println("나는 " + ISBN);
+        System.out.println("대여 " + ISBN);
 
         observers.forEach((observer) -> {
             observer.updateRental(ISBN);
         });
     }
 
-    public void realRent() {
-        System.out.println("나는 " + "r");
+    @Override
+    public void notifyReturnObserver() {
+        System.out.println("반납 " + ISBN);
 
+        observers.forEach((observer) -> {
+            observer.updateReturn(ISBN);
+        });
+    }
+
+    public void realReturn() {
+        notifyReturnObserver();
+    }
+
+    public void realRent() {
         notifyObserver();
     }
 

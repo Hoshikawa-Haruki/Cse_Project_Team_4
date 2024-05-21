@@ -47,6 +47,7 @@ public class Book_Manager {
         String ISBN = helper.getUserInput();
 
         Book_Info book = new Book_Info(title, author, genre, publisher, ISBN, false);
+        RentalObserver ro = new RentalObserver(book); // 새로운 도서 객체 추가마다 옵저버에 등록
         add_BookDB(book);
         FileManager.getInstance().writeDBFile("Book_Info.txt");
     }

@@ -21,20 +21,38 @@ public class RentalObserver implements Observer {
 
     @Override
     public void updateRental(String ISBN) {
-         Book_Info book = null;
+        Book_Info book = null;
         for (Book_Info bk : Book_Manager.getInstance().getBookDB()) {
             if (bk.getISBN().equals(ISBN)) {
                 book = bk;
             }
         }
-        
-        if(book != null){
+
+        if (book != null) {
             book.setIsBorrorwed(true);
-            System.out.println(ISBN+" 도서가 대여 되었습니다.");
+            System.out.println(ISBN + " 도서가 대여 되었습니다.");
             FileManager.getInstance().writeDBFile("Book_Info.txt");
-        }
-        else{
-            System.out.println(ISBN+" 도서가 없습니다.");
+        } else {
+            System.out.println(ISBN + " 도서가 없습니다.");
         }
     }
+
+    @Override
+    public void updateReturn(String ISBN) {
+        Book_Info book = null;
+        for (Book_Info bk : Book_Manager.getInstance().getBookDB()) {
+            if (bk.getISBN().equals(ISBN)) {
+                book = bk;
+            }
+        }
+
+        if (book != null) {
+            book.setIsBorrorwed(false);
+            System.out.println(ISBN + " 도서가 반납 되었습니다.");
+            FileManager.getInstance().writeDBFile("Book_Info.txt");
+        } else {
+            System.out.println(ISBN + " 도서가 없습니다.");
+        }
+    }
+
 }
