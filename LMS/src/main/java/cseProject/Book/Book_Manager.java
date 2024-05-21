@@ -116,6 +116,7 @@ public class Book_Manager {
     }
 
     public ArrayList<Book_Info> findBooksByAll() { // 모든 검색어
+        System.out.print("▶ 키워드 : ");
         String option = helper.getUserInput(); // 검색어
         ArrayList<Book_Info> books = new ArrayList<>();
 
@@ -160,19 +161,24 @@ public class Book_Manager {
 
     public void showBooks(ArrayList<Book_Info> targetBooks) { // 조건에 맞는 책 출력
         if (targetBooks.isEmpty()) {
-            System.out.println("- 책 목록이 비어 있습니다.");
+            System.out.println("────────────────────────────────────────────────────────────────────────");
+            System.out.println("조건에 맞는 도서 목록이 없습니다.");
+            System.out.println("────────────────────────────────────────────────────────────────────────");
         } else {
+            System.out.println("────────────────────────────────────────────────────────────────────────");
+            System.out.printf("%1s%5s%25s%20s%20s%20s%20s\n", "번호", "제목", "저자", "장르", "출판사", "ISBN", "대여여부");
+            System.out.println("────────────────────────────────────────────────────────────────────────");
             for (int i = 0; i < targetBooks.size(); i++) {
                 Book_Info book = targetBooks.get(i);
-                System.out.println(
-                        i + 1
-                        + "."
-                        + String.format("%15s", book.getTitle())
-                        + String.format("%15s", book.getAuthor())
-                        + String.format("%15s", book.getGenre())
-                        + String.format("%15s", book.getPublisher())
-                        + String.format("%15s", book.getISBN())
-                        + String.format("%15s", borrowCheck(book))
+                System.out.printf(
+                        "%-5d %-20s %-20s %-10s %-20s %-20s %-10s\n",
+                        i + 1,
+                        book.getTitle(),
+                        book.getAuthor(),
+                        book.getGenre(),
+                        book.getPublisher(),
+                        book.getISBN(),
+                        borrowCheck(book)
                 );
             }
         }
@@ -234,7 +240,7 @@ public class Book_Manager {
     public void displayBooks() { // 모든 책 보여주기
         if (bookDB.isEmpty()) {
             System.out.println("────────────────────────────────────────────────────────────────────────");
-            System.out.printf("현재 도서 목록이 없습니다.");
+            System.out.println("현재 도서 목록이 없습니다.");
             System.out.println("────────────────────────────────────────────────────────────────────────");
         } else {
             System.out.println("────────────────────────────────────────────────────────────────────────");

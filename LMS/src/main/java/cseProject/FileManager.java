@@ -31,20 +31,20 @@ import java.util.logging.Logger;
  * @author 이승환
  */
 public class FileManager {
-    
+
     private static FileManager instance;
     private static String basePath = System.getProperty("user.dir") + "\\data"; //파일 저장 경로
     private static User_Manager userManager = User_Manager.getInstance();
     private static Book_Manager bookManager = Book_Manager.getInstance();
     private static Rental_Manager rentalManager = Rental_Manager.getInstance();
-    
+
     private FileManager() {
     }
-    
+
     public static String getBasePath() {
         return basePath;
     }
-    
+
     public static FileManager getInstance() {
         File createFolder = new File(basePath);
         if (instance == null) {
@@ -55,7 +55,7 @@ public class FileManager {
         }
         return instance;
     }
-    
+
     public void createDBFile(String fileName) {
         String createFilePath = basePath + File.separator + fileName;
         File createFile = new File(createFilePath); // File 객체 생성
@@ -69,7 +69,7 @@ public class FileManager {
             }
         }
     }
-    
+
     public void createDB(String fileName) {
         try {
             ArrayList<String> fileContents = readDBFile(fileName);
@@ -97,11 +97,11 @@ public class FileManager {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public ArrayList<String> readDBFile(String fileName) throws IOException {
         String readFilePath = basePath + File.separator + fileName;
         ArrayList<String> fileContents = new ArrayList<>();
-        
+
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(readFilePath), StandardCharsets.UTF_8))) {
             String fileContent;
             while ((fileContent = br.readLine()) != null) {
@@ -112,10 +112,10 @@ public class FileManager {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
             throw ex;
         }
-        
+
         return fileContents;
     }
-    
+
     public void writeDBFile(String fileName) {
         try {
             String writeFilePath = basePath + File.separator + fileName;
@@ -151,5 +151,5 @@ public class FileManager {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

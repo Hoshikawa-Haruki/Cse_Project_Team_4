@@ -85,7 +85,7 @@ public class General_Form_Behavior implements Main_Form_Behavior {
                         Rental_Manager.getInstance().doRental(targetBook); // 옵저버와 관계 X rentalDB 만드는 과정
                         break;
                     } else {
-                        System.out.println("해당 도서를 찾을 수 없습니다.");
+                        System.out.println("- 해당 도서를 찾을 수 없습니다.");
                     }
                 }
                 showBookGeneralForm();
@@ -100,7 +100,7 @@ public class General_Form_Behavior implements Main_Form_Behavior {
                         targetBook.realReturn(); // 반납 옵저버 실행 (책 객체 상태 변경 알림)
                         break;
                     } else {
-                        System.out.println("해당 도서를 찾을 수 없습니다.");
+                        System.out.println("- 해당 도서를 찾을 수 없습니다.");
                     }
                 }
                 Rental_Info targetRentalBook;
@@ -109,11 +109,11 @@ public class General_Form_Behavior implements Main_Form_Behavior {
                 showBookGeneralForm();
             }
             case "5" -> {
-                System.out.println("이전 화면으로 돌아갑니다");
+                System.out.println("- 이전 화면으로 돌아갑니다");
                 show_MainForm();
             }
             default -> {
-                System.out.println("잘못된 입력입니다.");
+                System.out.println("- 잘못된 입력입니다.");
             }
         }
     }
@@ -126,7 +126,7 @@ public class General_Form_Behavior implements Main_Form_Behavior {
         System.out.println("└────────────────────────┘");
         String choice = helper.getUserInput();
         if ("3".equals(choice)) {
-            System.out.println("메인 화면으로 돌아갑니다");
+            System.out.println("- 메인 화면으로 돌아갑니다");
             show_MainForm();
         }
     }
