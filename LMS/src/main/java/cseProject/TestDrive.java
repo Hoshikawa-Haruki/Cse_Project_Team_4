@@ -25,6 +25,9 @@ public class TestDrive {
 
         UserManagementInvoker invoker = new UserManagementInvoker();
         Scanner sc = new Scanner(System.in);
+        
+        FileManager.getInstance().createDBFile("User_Info.txt");
+        FileManager.getInstance().createDB("User_Info.txt");
 
         while (true) {
             String command = sc.nextLine();

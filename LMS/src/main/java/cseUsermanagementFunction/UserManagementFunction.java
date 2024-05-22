@@ -4,6 +4,7 @@
  */
 package cseUsermanagementFunction;
 
+import cseProject.FileManager;
 import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
 import cseProject.Helper.ProxyHelper;
@@ -15,16 +16,6 @@ import cseUsermanagementFunction.SearchFunction.Unit.IdSearchUnit;
 import cseUsermanagementFunction.SearchFunction.Unit.NameSearchUnit;
 import cseUsermanagementFunction.SearchFunction.Unit.SearchUnit;
 
-import java.io.BufferedWriter;
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import cseUsermanagementFunction.SearchFunction.Unit.TypeSearchUnit;
 
 
@@ -38,7 +29,7 @@ public class UserManagementFunction {
     private static UserManagementFunction instance;
     private static final User_Manager manager = User_Manager.getInstance();
 
-    private UserManagementFunction() {    //처음 생성될때 유저데이터를 파일에서 불러와 저장
+    private UserManagementFunction() {  
     }
 
     public static UserManagementFunction getInstance() {
@@ -48,8 +39,7 @@ public class UserManagementFunction {
         return instance;
     }
 
-    public void InspectUserList() { //사용자 목록 출력
-        
+    public void InspectUserList() { //사용자 목록 출력 
         System.out.println(
                   String.format("%-6s"," ")
                 + String.format("%-16s", "아이디" )
@@ -126,8 +116,7 @@ public class UserManagementFunction {
                 Boolean.parseBoolean(UserTemp[3])
         ));
 
-        Regenerate("UserData");
-
+        FileManager.getInstance().writeDBFile("User_Info.txt");
         InspectUserList();
     }
 
@@ -155,39 +144,8 @@ public class UserManagementFunction {
 
         }
         
-        Regenerate("UserData");
+        FileManager.getInstance().writeDBFile("User_Info.txt");
         InspectUserList();
-
-    }
-
-    public void Regenerate(String str) { //변경된 파일을 백업 후 재성성
-        helper.BackUpTextFile("./" + str + ".txt");
-        helper.fileMake(str);
-
-        try (FileOutputStream output = new FileOutputStream("./" + str + ".txt", true); OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8"); BufferedWriter out = new BufferedWriter(writer);) {
-            for (int i = 0; i < manager.getUserDB().size(); i++) { //이름,아이디,비밀번호,관리자여부 형식으로 저장
-                out.append(
-                        manager.getUserDB().get(i).getUserID()
-                        + ","
-                        + manager.getUserDB().get(i).getUserPW()
-                        + ","
-                        + manager.getUserDB().get(i).getUserName()
-                        + ","
-                        + String.valueOf(manager.getUserDB().get(i).getIsManager())
-                        + ","
-                        + manager.getUserDB().get(i).getRegisteredDate()
-                        + "/" // '/'문자로 사용자와 다른 사용자의 정보를 구분지음
-                );
-                out.append("\n");
-            }
-            out.append("*");          //시스템에 저장된 사용자데이터의 끝을 나타냄
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(User_Manager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }
 
 }
