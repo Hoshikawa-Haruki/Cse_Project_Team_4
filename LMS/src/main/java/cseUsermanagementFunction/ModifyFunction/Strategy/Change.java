@@ -13,7 +13,6 @@ import cseProject.Helper.ProxyHelper;
 public class Change extends ModifyBehaviorTemplet {
 
     public void modify() {
-        ProxyHelper helper = ProxyHelper.getInstance();
         String input = "";
 
         System.out.println("아이디: ");
@@ -31,6 +30,11 @@ public class Change extends ModifyBehaviorTemplet {
         System.out.println("관리자 여부(true or false): ");
         input = helper.getUserInput();
         manager.getUserDB().get(selNum).setIsManager(Boolean.valueOf(input));
+    }
+    
+     @Override
+    public boolean chkModifyType() {
+        return true;
     }
 
 }

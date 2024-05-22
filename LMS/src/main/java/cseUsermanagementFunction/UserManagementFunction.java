@@ -5,9 +5,9 @@
 package cseUsermanagementFunction;
 
 import cseProject.FileManager;
-import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
 import cseProject.Helper.ProxyHelper;
+import cseUsermanagementFunction.ModifyFunction.Unit.AddUnit;
 
 import cseUsermanagementFunction.ModifyFunction.Unit.DeleteUnit;
 import cseUsermanagementFunction.ModifyFunction.Unit.ChangeUnit;
@@ -96,35 +96,13 @@ public class UserManagementFunction {
         }
     }
 
-    public void AddUser() { //사용자정보 등록
-        InspectUserList();
-
-        String[] UserTemp = new String[4];
-        System.out.println("아이디: ");
-        UserTemp[0] = helper.getUserInput();
-        System.out.println("비밀번호: ");
-        UserTemp[1] = helper.getUserInput();
-        System.out.println("이름: ");
-        UserTemp[2] = helper.getUserInput();
-        System.out.println("관리자 여부(true or false): ");
-        UserTemp[3] = helper.getUserInput();
-
-        manager.getUserDB().add(new User_Info(
-                UserTemp[0],
-                UserTemp[1],
-                UserTemp[2],
-                Boolean.parseBoolean(UserTemp[3])
-        ));
-
-        FileManager.getInstance().writeDBFile("User_Info.txt");
-        InspectUserList();
-    }
-
-    public void ModifyUser() { //사용자 정보 수정전략(삭제, 변경)에 따라 적절한 메세드 실행
+    public void ModifyUser() { //사용자 정보 수정전략(삭제, 변경, 추가)에 따라 적절한 메세드 실행
         ModifyUnit mu = null;
         
-        System.out.println("수행할 수정명령을 입력하세요(delete, change): ");
+        System.out.println("수행할 수정명령을 입력하세요(delete, change, add): ");
         String input = helper.getUserInput();
+        
+        InspectUserList();
         
         switch (input) {
             case "delete":
@@ -133,6 +111,9 @@ public class UserManagementFunction {
             case "change":
                 mu = new ChangeUnit();
                 break;
+            case "add":
+                mu = new AddUnit();
+                break;    
             default:
                 System.out.println("유효하지 않은 수정명령 입니다. ");
                 break;        

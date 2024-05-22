@@ -12,7 +12,11 @@ public class Delete extends ModifyBehaviorTemplet {
 
     public void modify() {
         manager.getUserDB().remove(selNum);
-        System.out.println("asdasd");
+    }
+    
+     @Override
+    public boolean chkModifyType() {
+         return true;
     }
 
 }

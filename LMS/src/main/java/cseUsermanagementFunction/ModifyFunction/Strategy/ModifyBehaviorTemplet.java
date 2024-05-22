@@ -12,8 +12,8 @@ import cseProject.Login.User_Manager;
  * @author jasuj
  */
 
-public class ModifyBehaviorTemplet implements ModifyBehavior{
-    private static final ProxyHelper helper = ProxyHelper.getInstance();
+public abstract class ModifyBehaviorTemplet implements ModifyBehavior{
+    protected static final ProxyHelper helper = ProxyHelper.getInstance();
     protected static final User_Manager manager = User_Manager.getInstance();
 
     protected static int selNum;
@@ -30,9 +30,12 @@ public class ModifyBehaviorTemplet implements ModifyBehavior{
     public void modify() {
     }
 
+  
     @Override
     public void excute() {
-        selModifyIndex();
+        if(chkModifyType()){
+             selModifyIndex();
+        }
         modify();
     }
 }
