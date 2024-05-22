@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cseUsermanagementFunction.ModifyFunction;
+package cseUsermanagementFunction.ModifyFunction.Strategy;
 
 import cseProject.Helper.ProxyHelper;
 
@@ -10,7 +10,7 @@ import cseProject.Helper.ProxyHelper;
  *
  * @author jasuj
  */
-public class changeStrategy extends StrategyTemplet {
+public class Change extends ModifyBehaviorTemplet {
 
     public void modify() {
         ProxyHelper helper = ProxyHelper.getInstance();

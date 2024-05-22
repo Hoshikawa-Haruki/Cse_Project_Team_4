@@ -7,24 +7,26 @@ package cseUsermanagementFunction;
 import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
 import cseProject.Helper.ProxyHelper;
-import cseProject.Helper.RealSystemHelper;
-import cseUsermanagementFunction.ModifyFunction.StrategyTemplet;
-import cseUsermanagementFunction.ModifyFunction.changeStrategy;
-import cseUsermanagementFunction.ModifyFunction.deleteStrategy;
-import cseUsermanagementFunction.SearchFunction.SearchUserListStrategy;
-import cseUsermanagementFunction.SearchFunction.UserIdSearchStrategy;
-import cseUsermanagementFunction.SearchFunction.UserNameSearchStrategy;
-import cseUsermanagementFunction.SearchFunction.UserTypeSearchStrategy;
+
+import cseUsermanagementFunction.ModifyFunction.Unit.DeleteUnit;
+import cseUsermanagementFunction.ModifyFunction.Unit.ChangeUnit;
+import cseUsermanagementFunction.ModifyFunction.Unit.ModifyUnit;
+import cseUsermanagementFunction.SearchFunction.Unit.IdSearchUnit;
+import cseUsermanagementFunction.SearchFunction.Unit.NameSearchUnit;
+import cseUsermanagementFunction.SearchFunction.Unit.SearchUnit;
+
 import java.io.BufferedWriter;
-import java.io.File;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
-import java.util.ArrayList;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import cseUsermanagementFunction.SearchFunction.Unit.TypeSearchUnit;
+
 
 /**
  *
@@ -47,15 +49,32 @@ public class UserManagementFunction {
     }
 
     public void InspectUserList() { //사용자 목록 출력
+        
+        System.out.println(
+                  String.format("%-6s"," ")
+                + String.format("%-16s", "아이디" )
+                + String.format("%-16s", "패스워드" )
+                + String.format("%-16s", "이름" )
+                + String.format("%-16s", "관리자여부" )
+                + String.format("%-16s", "가입일" )
+        );
 
         for (int i = 0; i < manager.getUserDB().size(); i++) {
+            String temp = manager.getUserDB().get(i).getRegisteredDate();
+            String registeredDate="";
+            registeredDate = temp.substring(0, 4)
+                    + "-"
+                    + temp.substring(4,6)
+                    + "-"
+                    + temp.substring(6, 8); 
+            
             System.out.println(
-                    i + 1
-                    + "."
-                    + String.format("%15s", manager.getUserDB().get(i).getUserID())
-                    + String.format("%15s", manager.getUserDB().get(i).getUserPW())
-                    + String.format("%15s", manager.getUserDB().get(i).getUserName())
-                    + String.format("%15b", manager.getUserDB().get(i).getIsManager())
+                      String.format("%-6s" , i+1 + ".")
+                    + String.format("%-18s", manager.getUserDB().get(i).getUserID())
+                    + String.format("%-18s", manager.getUserDB().get(i).getUserPW())
+                    + String.format("%-18s", manager.getUserDB().get(i).getUserName())
+                    + String.format("%-18b", manager.getUserDB().get(i).getIsManager())
+                    + String.format("%-18s",registeredDate)
             );
 
         }
@@ -63,26 +82,27 @@ public class UserManagementFunction {
     }
 
     public void SearchUserList() { //검색 전략에 따라 검색 메서드 호출
-        System.out.println("검색방식을 입력하세요(id, name,, type): ");
+        SearchUnit su = null;
+        
+        System.out.println("검색방식을 입력하세요(id, name, type): ");
         String input = helper.getUserInput();
 
-        SearchUserListStrategy SearchUserStrategy = getLoginStrategy(input);
-        if (SearchUserStrategy != null) {
-            SearchUserStrategy.Search();
-        }
-    }
-
-    private SearchUserListStrategy getLoginStrategy(String input) { //사용자의 입력을 받아 적절한 검색 전략 반환
-        switch (input) {
+         switch (input) {
             case "id":
-                return new UserIdSearchStrategy();
+                su = new IdSearchUnit();
+                break;
             case "name":
-                return new UserNameSearchStrategy();
+                su = new NameSearchUnit();
+                break;
             case "type":
-                return new UserTypeSearchStrategy();
+                su = new TypeSearchUnit();
+                break;
             default:
                 System.out.println("유효하지 않은 검색방식 입니다. ");
-                return null;
+        }
+        
+        if (su.getSearchBehavior() != null) {
+            su.performSearch();
         }
     }
 
@@ -112,31 +132,31 @@ public class UserManagementFunction {
     }
 
     public void ModifyUser() { //사용자 정보 수정전략(삭제, 변경)에 따라 적절한 메세드 실행
+        ModifyUnit mu = null;
+        
         System.out.println("수행할 수정명령을 입력하세요(delete, change): ");
         String input = helper.getUserInput();
-
-        StrategyTemplet modifyStrategy = getModifyUserStrategy(input);
-
-        if (modifyStrategy != null) {
-            System.out.println(input);
-            modifyStrategy.excute();
-
-        }
-        Regenerate("UserData");
-        InspectUserList();
-
-    }
-
-    public StrategyTemplet getModifyUserStrategy(String input) { //사용자 입력에 따라 적절한 전략 반환
+        
         switch (input) {
             case "delete":
-                return new deleteStrategy();
+                mu = new DeleteUnit();
+                break;
             case "change":
-                return new changeStrategy();
+                mu = new ChangeUnit();
+                break;
             default:
                 System.out.println("유효하지 않은 수정명령 입니다. ");
-                return null;
+                break;        
         }
+
+        if (mu.getModifyBehavior() != null) {
+            System.out.println(input);
+            mu.performModify();
+
+        }
+        
+        Regenerate("UserData");
+        InspectUserList();
 
     }
 
