@@ -4,7 +4,7 @@
  */
 package cseProject.Book;
 
-import cseProject.FileManager;
+import cseProject.FileManagerTemplate.FileManagerTemplate;
 
 /**
  *
@@ -31,7 +31,7 @@ public class RentalObserver implements Observer {
         if (book != null) {
             book.setIsBorrorwed(true);
             System.out.println(ISBN + " 도서가 대여 되었습니다.");
-            FileManager.getInstance().writeDBFile("Book_Info.txt");
+            FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
         } else {
             System.out.println(ISBN + " 해당 도서가 없습니다.");
         }
@@ -49,7 +49,7 @@ public class RentalObserver implements Observer {
         if (book != null) {
             book.setIsBorrorwed(false);
             System.out.println(ISBN + " 도서가 반납 되었습니다.");
-            FileManager.getInstance().writeDBFile("Book_Info.txt");
+            FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
         } else {
             System.out.println(ISBN + " 해당 도서가 없습니다.");
         }

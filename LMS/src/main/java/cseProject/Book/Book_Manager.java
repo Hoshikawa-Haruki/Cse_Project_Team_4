@@ -4,7 +4,7 @@
  */
 package cseProject.Book;
 
-import cseProject.FileManager;
+import cseProject.FileManagerTemplate.FileManagerTemplate;
 import cseProject.Helper.RealSystemHelper;
 import java.util.ArrayList;
 
@@ -50,7 +50,7 @@ public class Book_Manager {
         RentalObserver ro = new RentalObserver(book); // 새로운 도서 객체 추가마다 옵저버에 등록
         add_BookDB(book);
         System.out.println("- " + book.getTitle() + " 도서가 추가되었습니다.");
-        FileManager.getInstance().writeDBFile("Book_Info.txt");
+        FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
     }
 
     public ArrayList<Book_Info> findBooksByTitle() { // 제목으로 검색 (안쓰이는중)
@@ -227,14 +227,14 @@ public class Book_Manager {
             targetBook.setAuthor(author);
         }
 
-        FileManager.getInstance().writeDBFile("Book_Info.txt");
+        FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
     }
 
     public void removeBook(Book_Info targetBook) {
 
         System.out.println("- " + targetBook.getTitle() + " 도서가 삭제되었습니다");
         getBookDB().remove(targetBook);
-        FileManager.getInstance().writeDBFile("Book_Info.txt");
+        FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
     }
 
     public void displayBooks() { // 모든 책 보여주기

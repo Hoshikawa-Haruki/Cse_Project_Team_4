@@ -34,49 +34,6 @@ public class LoginSystem {
         return instance;
     }
 
-//    public void make_ID() throws IOException {
-//        String newID;
-//        boolean isExist;
-//        do {
-//            isExist = false;
-//            System.out.println("생성 할 ID를 입력하세요");
-//            System.out.print("ID : ");
-//            newID = helper.getUserInput();
-//            if (newID.length() < 4) {
-//                System.out.println("ID는 4자리 이상 입력해주세요.");
-//                System.out.println("다시 입력해주세요.");
-//                isExist = true;
-//            } else {
-//                for (User_Info check_user_ID : manager.getUserDB()) {
-//                    if (check_user_ID.getUserID().equals(newID)) {
-//                        System.out.println("이미 존재하는 아이디 입니다. 다른 아이디를 입력하세요");
-//                        isExist = true;
-//                        break;
-//                    }
-//                }
-//            }
-//        } while (isExist);
-//
-//        String newPW;
-//        do {
-//            System.out.println("생성 할 PW를 입력하세요");
-//            System.out.print("PW : ");
-//            newPW = helper.getUserInput();
-//            if (newPW.length() < 4) {
-//                System.out.println("PW는 4자리 이상 입력해주세요.");
-//                System.out.println("다시 입력해주세요.");
-//            }
-//        } while (newPW.length() < 4);
-//
-//        System.out.println("이름을 입력하세요");
-//        System.out.print("이름 : ");
-//        String newName = helper.getUserInput();
-//
-//        // 관리자로 가입하는 기능 추가
-//        System.out.println("관리자로 가입하시겠습니까? (y/n)");
-//        String isManagerChoice = helper.getUserInput();
-//        boolean newisManager = isManagerChoice.equalsIgnoreCase("y");
-//    }
     public void try_Login() throws IOException {
         do {
             System.out.print("ID : ");
@@ -125,8 +82,5 @@ public class LoginSystem {
         if (form != null) {
             form.perform_Register();
         }
-        // 회원가입 또는 로그인 후에도 다시 while 루프를 돌기 위해 루프 조건을 유지
-        // 로그인에 성공했을 때만 루프를 빠져나옴
-
     }
 }
