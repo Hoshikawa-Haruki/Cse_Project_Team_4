@@ -67,7 +67,7 @@ public abstract class FileManagerTemplate {
         }
     }
 
-    public final void createDBFile(String fileName) {
+    public void createDBFile(String fileName) {
         String createFilePath = basePath + File.separator + fileName;
         File createFile = new File(createFilePath);
 
@@ -108,7 +108,7 @@ public abstract class FileManagerTemplate {
         }
     }
 
-    public final ArrayList<String> readDBFile(String fileName) throws IOException {
+    public ArrayList<String> readDBFile(String fileName) throws IOException {
         String readFilePath = basePath + File.separator + fileName;
         ArrayList<String> fileContents = new ArrayList<>();
 
