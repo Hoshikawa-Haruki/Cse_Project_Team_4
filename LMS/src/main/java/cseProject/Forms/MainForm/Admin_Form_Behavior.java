@@ -10,11 +10,11 @@ package cseProject.Forms.MainForm;
  */
 import cseProject.Book.Book_Manager;
 import cseProject.LoginState.UserContext;
-import cseProject.Helper.ProxyHelper;
+import cseProject.Helper.SystemHelper;
 
 public class Admin_Form_Behavior implements Main_Form_Behavior {
 
-    private static final ProxyHelper helper = ProxyHelper.getInstance();
+    private static final SystemHelper helper = SystemHelper.getInstance();
 
     @Override
     public void show_MainForm() {

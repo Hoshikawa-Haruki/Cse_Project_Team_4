@@ -4,7 +4,7 @@
  */
 package cseUsermanagementFunction.ModifyFunction.Strategy;
 
-import cseProject.Helper.ProxyHelper;
+import cseProject.Helper.SystemHelper;
 import cseProject.Login.User_Manager;
 
 /**
@@ -13,7 +13,7 @@ import cseProject.Login.User_Manager;
  */
 
 public abstract class ModifyBehaviorTemplet implements ModifyBehavior{
-    protected static final ProxyHelper helper = ProxyHelper.getInstance();
+    protected static final SystemHelper helper = SystemHelper.getInstance();
     protected static final User_Manager manager = User_Manager.getInstance();
 
     protected static int selNum;

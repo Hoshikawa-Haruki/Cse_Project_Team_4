@@ -6,7 +6,7 @@ package cseProject.Login.UserCreation;
 
 import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
-import cseProject.Helper.ProxyHelper;
+import cseProject.Helper.SystemHelper;
 
 /**
  *
@@ -14,7 +14,7 @@ import cseProject.Helper.ProxyHelper;
  */
 public class General_UserCreation_Behavior implements UserCreation_Behavior {
 
-    private static final ProxyHelper helper = ProxyHelper.getInstance();
+    private static final SystemHelper helper = SystemHelper.getInstance();
     private static User_Manager manager = User_Manager.getInstance();
 
     @Override

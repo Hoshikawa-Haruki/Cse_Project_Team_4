@@ -5,7 +5,7 @@
 package cseProject.Login;
 
 import cseProject.FileManager;
-import cseProject.Helper.RealSystemHelper;
+import cseProject.Helper.SystemHelper;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,7 +25,7 @@ public class User_Manager {
     private static User_Manager instance; // 싱글턴
     private ArrayList<User_Info> userDB = new ArrayList<>(); // 유저DB
     private User_Info loginUser; // 현재 로그인 유저
-    private static RealSystemHelper helper = RealSystemHelper.getInstance();
+    private static SystemHelper helper = SystemHelper.getInstance();
 
     private User_Manager() {
         // Private 생성자, 처음 생성될시 UserData.txt에서 유저정보를 가져와 객체 리스트화 하여 추가해줌

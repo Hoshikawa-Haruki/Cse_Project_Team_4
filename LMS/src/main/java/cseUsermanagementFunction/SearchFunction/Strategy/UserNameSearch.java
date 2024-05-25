@@ -4,7 +4,7 @@
  */
 package cseUsermanagementFunction.SearchFunction.Strategy;
 
-import cseProject.Helper.ProxyHelper;
+import cseProject.Helper.SystemHelper;
 import cseProject.Login.User_Manager;
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class UserNameSearch implements SearchBehavior{
     
-     private static final ProxyHelper helper = ProxyHelper.getInstance();
+     private static final SystemHelper helper = SystemHelper.getInstance();
      private static final User_Manager manager = User_Manager.getInstance();
     
      public void Search(){

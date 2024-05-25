@@ -7,7 +7,7 @@ package cseProject.Forms.MainForm;
 import cseProject.Book.Book_Info;
 import cseProject.Book.Book_Manager;
 import cseProject.Login.User_Manager;
-import cseProject.Helper.ProxyHelper;
+import cseProject.Helper.SystemHelper;
 import cseProject.LoginState.UserContext;
 
 /**
@@ -16,7 +16,7 @@ import cseProject.LoginState.UserContext;
  */
 public class General_Form_Behavior implements Main_Form_Behavior {
 
-    private static final ProxyHelper helper = ProxyHelper.getInstance();
+    private static final SystemHelper helper = SystemHelper.getInstance();
 
     @Override
     public void show_MainForm() {

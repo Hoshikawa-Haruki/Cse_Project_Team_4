@@ -5,7 +5,7 @@
 package cseProject.Book;
 
 import cseProject.FileManager;
-import cseProject.Helper.RealSystemHelper;
+import cseProject.Helper.SystemHelper;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +16,7 @@ public class Book_Manager {
 
     private static Book_Manager instance;
     private ArrayList<Book_Info> bookDB = new ArrayList<>();
-    private static RealSystemHelper helper = RealSystemHelper.getInstance();
+    private static SystemHelper helper = SystemHelper.getInstance();
 
     public static Book_Manager getInstance() {
         if (instance == null) {

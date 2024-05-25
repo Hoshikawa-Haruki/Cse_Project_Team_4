@@ -6,7 +6,7 @@ package cseUsermanagementFunction;
 
 import cseProject.FileManager;
 import cseProject.Login.User_Manager;
-import cseProject.Helper.ProxyHelper;
+import cseProject.Helper.SystemHelper;
 
 import cseUsermanagementFunction.ModifyFunction.Unit.DeleteUnit;
 import cseUsermanagementFunction.ModifyFunction.Unit.ChangeUnit;
@@ -24,7 +24,7 @@ import cseUsermanagementFunction.SearchFunction.Unit.TypeSearchUnit;
  */
 public class UserManagementFunction {
 
-    private static final ProxyHelper helper = ProxyHelper.getInstance();
+    private static final SystemHelper helper = SystemHelper.getInstance();
     private static UserManagementFunction instance;
     private static final User_Manager manager = User_Manager.getInstance();
 

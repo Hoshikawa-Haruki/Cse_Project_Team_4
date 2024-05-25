@@ -4,7 +4,7 @@
  */
 package cseUsermanagementFunction.ModifyFunction.Strategy;
 
-import cseProject.Helper.ProxyHelper;
+import cseProject.Helper.SystemHelper;
 
 /**
  *

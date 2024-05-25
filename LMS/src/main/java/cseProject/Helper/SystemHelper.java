@@ -22,18 +22,18 @@ import java.util.logging.Logger;
  *
  * @author 이승환
  */
-public class RealSystemHelper implements InterfaceSystemHelper {
+public class SystemHelper implements InterfaceSystemHelper {
 
-    private static RealSystemHelper instance;
+    private static SystemHelper instance;
 
     // 외부에서 인스턴스화 방지하기 위해 private 생성자 선언
-    private RealSystemHelper() {
+    private SystemHelper() {
     }
 
     // 인스턴스를 반환하는 정적 메서드
-    public static RealSystemHelper getInstance() {
+    public static SystemHelper getInstance() {
         if (instance == null) {
-            instance = new RealSystemHelper();
+            instance = new SystemHelper();
         }
         return instance;
     }
@@ -126,7 +126,7 @@ public class RealSystemHelper implements InterfaceSystemHelper {
         try {
             Files.copy(file.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
-            Logger.getLogger(RealSystemHelper.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SystemHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         file.delete();
