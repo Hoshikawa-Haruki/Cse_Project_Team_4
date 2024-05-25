@@ -56,11 +56,12 @@ public class Rental_Manager {
         String userName = User_Manager.getInstance().getLoginUser().getUserName();
         String title = targetBook.getTitle();
         String ISBN = targetBook.getISBN();
+        targetBook.setIsBorrorwed(true);
 
         Rental_Info rtbook = new Rental_Info(userID, userName, title, ISBN);
 
         add_rentalDB(rtbook);
-        System.out.println("- " + targetBook.getTitle() + " 도서가 대여되었습니다.");
+        System.out.println("- " + targetBook.getTitle() + " 도서가 대여 되었습니다.");
         try {
             FileManagerTemplate.getInstance("Rental").writeDBFile("Rental_Info.txt");
         } catch (IOException ex) {
@@ -68,7 +69,7 @@ public class Rental_Manager {
         }
     }
 
-    public void doReturn(Rental_Info targetBook) { // 도서 대여
+    public void doReturn(Rental_Info targetBook) { // 도서 반납
         System.out.println("반납을 실행 합니다");
         remove_rentalDB(targetBook);
         System.out.println("- " + targetBook.getTitle() + " 도서가 반납되었습니다.");
