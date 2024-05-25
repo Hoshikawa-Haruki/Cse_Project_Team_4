@@ -44,11 +44,10 @@ public class LoginSystem {
             for (User_Info check_user : manager.getUserDB()) {
                 if (check_user.getUserID().equals(ID) && check_user.getUserPW().equals(PW)) {
                     manager.setLoginUser(check_user); // 현재 로그인 객체 유저로 반환
-                    System.out.println("로그인 성공.");
                     if (check_user.getIsManager()) {
-                        System.out.println("안녕하세요 " + manager.getLoginUser().getUserName() + " 관리자님");
+                        System.out.println("● 안녕하세요 " + manager.getLoginUser().getUserName() + " 관리자님");
                     } else {
-                        System.out.println("안녕하세요 " + manager.getLoginUser().getUserName() + " 님");
+                        System.out.println("● 안녕하세요 " + manager.getLoginUser().getUserName() + " 님");
                     }
                     break;
                 }
@@ -63,7 +62,7 @@ public class LoginSystem {
     }
 
     public void runLoginSystem() throws IOException {
-
+        System.out.println("가입 유형을 선택해 주세요");
         System.out.println("1. 관리자 가입, 2. 이용자 가입");
         String choice = helper.getUserInput();
         Form form = null;

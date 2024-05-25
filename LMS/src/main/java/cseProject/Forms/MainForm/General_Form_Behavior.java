@@ -24,9 +24,8 @@ public class General_Form_Behavior implements Main_Form_Behavior {
     public void show_MainForm() {
         System.out.println("┌────────────────────────┐");
         System.out.println("│ 1. 도서 검색/대출/반납                         │");
-        System.out.println("│ 2. 희망도서 신청                               │");
-        System.out.println("│ 3. 내 정보 조회                                │");
-        System.out.println("│ 4. 로그아웃                                    │");
+        System.out.println("│ 2. 내 정보 조회                                │");
+        System.out.println("│ 3. 로그아웃                                    │");
         System.out.println("└────────────────────────┘");
         String choice = helper.getUserInput();
         switch (choice) {
@@ -35,15 +34,10 @@ public class General_Form_Behavior implements Main_Form_Behavior {
                 showBookGeneralForm();
             }
             case "2" -> {
-                System.out.println("희망도서 신청 탭.");
-                showRequestingBook();
-            }
-            case "3" -> {
                 System.out.println("내 정보 조회");
                 showMyInformation();
             }
-            case "4" -> {
-                System.out.println("로그아웃을 실행합니다");
+            case "3" -> {
                 UserContext.getInstance().logout();
             }
             default -> {
@@ -75,8 +69,6 @@ public class General_Form_Behavior implements Main_Form_Behavior {
             }
             case "3" -> {
                 System.out.println("도서 대출");
-                //Book_Info targetBook = Book_Manager.getInstance().findBookByISBN(); // 기존코드
-                //targetBook.realRent(); // 옵저버 실행
                 Book_Info targetBook;
                 while (true) {
                     targetBook = Book_Manager.getInstance().findBookByISBN();
@@ -93,24 +85,13 @@ public class General_Form_Behavior implements Main_Form_Behavior {
 
             case "4" -> {
                 System.out.println("도서 반납");
-                Book_Info targetBook;
-                while (true) {
-                    targetBook = Book_Manager.getInstance().findBookByISBN();
-                    if (targetBook != null) { // 널포인트 해결 코드
-                        // todo
-                        // 반납 메서드만 주셈
-                        break;
-                    } else {
-                        System.out.println("- 해당 도서를 찾을 수 없습니다.");
-                    }
-                }
                 Rental_Info targetRentalBook;
                 targetRentalBook = Rental_Manager.getInstance().findMyBookByISBN();
                 Rental_Manager.getInstance().doReturn(targetRentalBook);
                 showBookGeneralForm();
             }
             case "5" -> {
-                System.out.println("- 이전 화면으로 돌아갑니다");
+                System.out.println("이전 화면으로 돌아갑니다");
                 show_MainForm();
             }
             default -> {
@@ -119,20 +100,8 @@ public class General_Form_Behavior implements Main_Form_Behavior {
         }
     }
 
-    public void showRequestingBook() {
-        System.out.println("┌────────────────────────┐");
-        System.out.println("│ 1. 희망도서 신청                               │");
-        System.out.println("│ 2. 희망도서 신청 현황                          │");
-        System.out.println("│ 3. 돌아가기                                    │");
-        System.out.println("└────────────────────────┘");
-        String choice = helper.getUserInput();
-        if ("3".equals(choice)) {
-            System.out.println("- 메인 화면으로 돌아갑니다");
-            show_MainForm();
-        }
-    }
-
     public void showMyInformation() {
-
+        Rental_Manager.getInstance().showMyRentalInfo();
+        show_MainForm();
     }
 }

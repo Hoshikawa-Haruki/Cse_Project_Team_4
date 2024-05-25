@@ -17,7 +17,7 @@ public class LoggedInState implements LoginState {
 
     @Override
     public void login(UserContext context) {
-        System.out.println("이미 로그인 상태 입니다");
+        System.out.println("로그인 되었습니다.");
         Form form;
         try {
             if (User_Manager.getInstance().getLoginUser().getIsManager() == false) {
