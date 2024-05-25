@@ -5,13 +5,25 @@
 package cseUsermanagementFunction.ModifyFunction.Strategy;
 
 import cseProject.Helper.SystemHelper;
+import cseProject.Login.User_Manager;
 
 /**
  *
  * @author jasuj
  */
-public class Change extends ModifyBehaviorTemplet {
-
+public class Change implements ModifyBehavior{
+      
+    private static final SystemHelper helper = SystemHelper.getInstance();
+    private static User_Manager manager = User_Manager.getInstance();
+    private int selNum;
+    
+    @Override
+    public void selModifyIndex() {
+        System.out.println("수정할 대상의 번호를 입력하세요: ");
+        String input = helper.getUserInput();
+        selNum = Integer.parseInt(input) - 1;
+    }
+  
     public void modify() {
         String input = "";
 
@@ -32,5 +44,12 @@ public class Change extends ModifyBehaviorTemplet {
         manager.getUserDB().get(selNum).setIsManager(Boolean.valueOf(input));
     }
     
+    
+        @Override
+    public void excute() {
+        selModifyIndex();
+        modify();
+    }
+
 
 }
