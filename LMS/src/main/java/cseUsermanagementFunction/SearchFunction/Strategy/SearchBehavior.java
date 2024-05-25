@@ -2,17 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cseUsermanagementFunction.ModifyFunction;
+package cseUsermanagementFunction.SearchFunction.Strategy;
 
 /**
  *
  * @author jasuj
  */
-public class deleteStrategy extends StrategyTemplet {
-
-    public void modify() {
-        manager.getUserDB().remove(selNum);
-        System.out.println("asdasd");
-    }
-
+public interface SearchBehavior {
+    public void Search();
 }

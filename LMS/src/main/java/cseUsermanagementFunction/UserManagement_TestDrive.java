@@ -2,27 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package cseProject;
+package cseUsermanagementFunction;
 
-import cseProject.Login.LoginSystem;
-import cseUsermanagementFunction.UserManagementFunction;
+import cseProject.FileManager;
 import cseUsermanagementFunction.command.UserManagementInvoker;
-import java.io.IOException;
 import java.util.Scanner;
 
 /**
  *
- * @author 이승환
- *
+ * @author jasuj
  */
-public class TestDrive {
+public class UserManagement_TestDrive {
 
-    private UserManagementFunction user = UserManagementFunction.getInstance();
-
-    public static void main(String[] args) throws IOException {
-//        LoginSystem loginSystem = LoginSystem.getInstance();
-//        loginSystem.runLoginSystem();
-
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
         UserManagementInvoker invoker = new UserManagementInvoker();
         Scanner sc = new Scanner(System.in);
         
@@ -46,4 +42,5 @@ public class TestDrive {
         //add, delete, modify의 커맨드를 입력하면 해당 기능이 작동되고 변경된 사항은 UserData.txt에 저장되며 기존의 내용은'
         //UserData.txt_old 폴더에 현재 시간을 파일명으로 하여 자동저장됨
     }
+    
 }

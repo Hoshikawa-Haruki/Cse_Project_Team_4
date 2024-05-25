@@ -4,6 +4,7 @@
  */
 package cseProject.Login;
 
+
 import cseProject.FileManagerTemplate.FileManagerTemplate;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +18,6 @@ public class User_Manager {
     private static User_Manager instance; // 싱글턴
     private ArrayList<User_Info> userDB = new ArrayList<>(); // 유저DB
     private User_Info loginUser; // 현재 로그인 유저
-    //private static RealSystemHelper helper = RealSystemHelper.getInstance();
 
     private User_Manager() {
     }

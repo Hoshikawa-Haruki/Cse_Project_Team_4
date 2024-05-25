@@ -5,8 +5,9 @@
 package cseProject.Book;
 
 import cseProject.FileManagerTemplate.FileManagerTemplate;
-import cseProject.Helper.RealSystemHelper;
 import java.io.IOException;
+import cseProject.Helper.SystemHelper;
+
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +20,7 @@ public class Book_Manager {
 
     private static Book_Manager instance;
     private ArrayList<Book_Info> bookDB = new ArrayList<>();
-    private static RealSystemHelper helper = RealSystemHelper.getInstance();
+    private static SystemHelper helper = SystemHelper.getInstance();
 
     public static Book_Manager getInstance() {
         if (instance == null) {
