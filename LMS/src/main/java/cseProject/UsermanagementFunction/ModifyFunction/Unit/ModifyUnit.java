@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cseUsermanagementFunction.ModifyFunction.Unit;
+package cseProject.UsermanagementFunction.ModifyFunction.Unit;
 
-import cseUsermanagementFunction.ModifyFunction.Strategy.ModifyBehavior;
+import cseProject.UsermanagementFunction.ModifyFunction.Strategy.ModifyBehavior;
 
 /**
  *

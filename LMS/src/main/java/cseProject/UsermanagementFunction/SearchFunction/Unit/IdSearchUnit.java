@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cseUsermanagementFunction.SearchFunction.Unit;
+package cseProject.UsermanagementFunction.SearchFunction.Unit;
 
-import cseUsermanagementFunction.SearchFunction.Strategy.UserIdSearch;
-import cseUsermanagementFunction.SearchFunction.Strategy.SearchBehavior;
+import cseProject.UsermanagementFunction.SearchFunction.Strategy.UserIdSearch;
+import cseProject.UsermanagementFunction.SearchFunction.Strategy.SearchBehavior;
 
 /**
  *

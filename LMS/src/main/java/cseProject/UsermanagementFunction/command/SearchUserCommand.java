@@ -2,23 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cseUsermanagementFunction.command;
+package cseProject.UsermanagementFunction.command;
+
+import cseProject.UsermanagementFunction.UserManagementFunction;
 
 /**
  *
  * @author jasuj
  */
-import cseUsermanagementFunction.UserManagementFunction;
-
-public class ModifyUserCommand implements Command {
+public class SearchUserCommand implements Command {
     private UserManagementFunction userManager = UserManagementFunction.getInstance();
 
-    public ModifyUserCommand(UserManagementFunction userManager) {
+    public SearchUserCommand(UserManagementFunction userManager) {
         this.userManager = userManager;
     }
 
     @Override
     public void execute() {
-        userManager.ModifyUser();
+        userManager.SearchUserList();
     }
 }

@@ -2,19 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cseUsermanagementFunction;
+package cseProject.UsermanagementFunction;
 
 import cseProject.FileManagerTemplate.FileManagerTemplate;
 import cseProject.Login.User_Manager;
 import cseProject.Helper.SystemHelper;
-import cseUsermanagementFunction.ModifyFunction.Unit.DeleteUnit;
-import cseUsermanagementFunction.ModifyFunction.Unit.ChangeUnit;
-import cseUsermanagementFunction.ModifyFunction.Unit.ModifyUnit;
-import cseUsermanagementFunction.SearchFunction.Unit.IdSearchUnit;
-import cseUsermanagementFunction.SearchFunction.Unit.NameSearchUnit;
-import cseUsermanagementFunction.SearchFunction.Unit.SearchUnit;
-
-import cseUsermanagementFunction.SearchFunction.Unit.TypeSearchUnit;
+import cseProject.UsermanagementFunction.ModifyFunction.Unit.DeleteUnit;
+import cseProject.UsermanagementFunction.ModifyFunction.Unit.ChangeUnit;
+import cseProject.UsermanagementFunction.ModifyFunction.Unit.ModifyUnit;
+import cseProject.UsermanagementFunction.SearchFunction.Unit.IdSearchUnit;
+import cseProject.UsermanagementFunction.SearchFunction.Unit.NameSearchUnit;
+import cseProject.UsermanagementFunction.SearchFunction.Unit.SearchUnit;
+import cseProject.UsermanagementFunction.SearchFunction.Unit.TypeSearchUnit;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,8 +50,7 @@ public class UserManagementFunction {
 
         for (int i = 0; i < manager.getUserDB().size(); i++) {
             String temp = manager.getUserDB().get(i).getRegisteredDate();
-            String registeredDate = "";
-            registeredDate = temp.substring(0, 4)
+            String registeredDate = temp.substring(0, 4)
                     + "-"
                     + temp.substring(4, 6)
                     + "-"
@@ -73,7 +71,6 @@ public class UserManagementFunction {
 
     public void SearchUserList() { //검색 전략에 따라 검색 메서드 호출
         SearchUnit su = null;
-
         System.out.println("검색방식을 입력하세요(id, name, type): ");
         String input = helper.getUserInput();
 
@@ -105,20 +102,22 @@ public class UserManagementFunction {
         InspectUserList();
 
         switch (input) {
-            case "delete":
+            case "delete" -> {
                 mu = new DeleteUnit();
-                break;
-            case "change":
+                if (mu.getModifyBehavior() != null) {
+                    System.out.println(input);
+                    mu.performModify();
+                }
+            }
+            case "change" -> {
                 mu = new ChangeUnit();
-                break;
-            default:
+                if (mu.getModifyBehavior() != null) {
+                    System.out.println(input);
+                    mu.performModify();
+                }
+            }
+            default ->
                 System.out.println("유효하지 않은 수정명령 입니다. ");
-                break;
-        }
-
-        if (mu.getModifyBehavior() != null) {
-            System.out.println(input);
-            mu.performModify();
         }
 
         try {

@@ -11,10 +11,13 @@ package cseProject.Forms.MainForm;
 import cseProject.Book.Book_Manager;
 import cseProject.LoginState.UserContext;
 import cseProject.Helper.SystemHelper;
+import cseProject.Rental.Rental_Manager;
+import cseProject.UsermanagementFunction.command.UserManagementInvoker;
 
 public class Admin_Form_Behavior implements Main_Form_Behavior {
 
     private static final SystemHelper helper = SystemHelper.getInstance();
+    UserManagementInvoker invoker = new UserManagementInvoker();
 
     @Override
     public void show_MainForm() {
@@ -108,10 +111,9 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
         System.out.println("┌────────────────────────┐");
         System.out.println("│ 1. 이용자 현황                                 │");
         System.out.println("│ 2. 이용자 검색                                 │");
-        System.out.println("│ 3. 이용자 삭제                                 │");
-        System.out.println("│ 4. 이용자 정보 수정                            │");
-        System.out.println("│ 5. 이용자 별 대출현황                          │");
-        System.out.println("│ 6. 돌아가기                                    │");
+        System.out.println("│ 3. 이용자 정보 수정                            │");
+        System.out.println("│ 4. 이용자 별 대출현황                          │");
+        System.out.println("│ 5. 돌아가기                                    │");
         System.out.println("└────────────────────────┘");
 
         boolean valid = false;
@@ -120,36 +122,29 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
             switch (choice) {
                 case "1" -> {
                     System.out.println("이용자 현황");
-                    //todo
+                    invoker.executeCommand("inspect");
                     showUserManageForm();
                     valid = true;
                 }
                 case "2" -> {
                     System.out.println("이용자 검색");
-                    //todo
+                    invoker.executeCommand("search");
                     showUserManageForm();
                     valid = true;
                 }
                 case "3" -> {
-                    System.out.println("이용자 삭제");
-                    //todo
+                    System.out.println("이용자 정보 수정");
+                    invoker.executeCommand("modify");
                     showUserManageForm();
-
                     valid = true;
                 }
                 case "4" -> {
-                    System.out.println("이용자 정보 수정");
-                    //todo
-                    showUserManageForm();
+                    System.out.println("이용자 별 대출 현황");
+                    Rental_Manager.getInstance().showAllRentalInfo();
                     valid = true;
+                    showUserManageForm();
                 }
                 case "5" -> {
-                    System.out.println("이용자 별 대출 현황");
-                    //todo
-                    showUserManageForm();
-                    valid = true;
-                }
-                case "6" -> {
                     System.out.println("이전 화면으로 돌아갑니다");
                     show_MainForm();
                     valid = true;

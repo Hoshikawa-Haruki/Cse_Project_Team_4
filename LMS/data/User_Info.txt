@@ -3,5 +3,3 @@ lsh123;1111;이승환;false;20240518165501
 apple;apple;Tim Cook;true;20240519165501
 micro;soft;Bill Gates;false;20240522000639
 blue;archive;Ichinose Asuna;true;20240524040315
-banana;milk;바나나우유;true;20240524044709
-mackBook;pro14;M3;false;20240524050732

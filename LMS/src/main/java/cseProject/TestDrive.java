@@ -5,8 +5,8 @@
 package cseProject;
 
 //import cseProject.Login.LoginSystem;
-import cseUsermanagementFunction.UserManagementFunction;
-import cseUsermanagementFunction.command.UserManagementInvoker;
+import cseProject.UsermanagementFunction.UserManagementFunction;
+import cseProject.UsermanagementFunction.command.UserManagementInvoker;
 import java.io.IOException;
 import java.util.Scanner;
 
