@@ -10,3 +10,4 @@
 
 현재까지 진행된 목록의 대략적인 UML:
 https://drive.google.com/drive/folders/1yFWyCqn5KzuiFRcFF_tLIEF9eas7lUzx?usp=sharing
+*bouml 폴더에 bouml로 새로 작성중입니다.
