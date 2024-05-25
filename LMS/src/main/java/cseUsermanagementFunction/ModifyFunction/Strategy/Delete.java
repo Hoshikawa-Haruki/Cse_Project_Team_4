@@ -14,9 +14,5 @@ public class Delete extends ModifyBehaviorTemplet {
         manager.getUserDB().remove(selNum);
     }
     
-     @Override
-    public boolean chkModifyType() {
-         return true;
-    }
 
 }

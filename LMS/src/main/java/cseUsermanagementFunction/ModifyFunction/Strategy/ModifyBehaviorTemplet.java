@@ -33,9 +33,7 @@ public abstract class ModifyBehaviorTemplet implements ModifyBehavior{
   
     @Override
     public void excute() {
-        if(chkModifyType()){
-             selModifyIndex();
-        }
+        selModifyIndex();
         modify();
     }
 }

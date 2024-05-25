@@ -14,6 +14,5 @@ public interface ModifyBehavior {
     public void selModifyIndex();
     public void modify();
     public void excute();
-    public boolean chkModifyType();
   
 }

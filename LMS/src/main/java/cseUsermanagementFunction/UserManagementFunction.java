@@ -7,7 +7,6 @@ package cseUsermanagementFunction;
 import cseProject.FileManager;
 import cseProject.Login.User_Manager;
 import cseProject.Helper.ProxyHelper;
-import cseUsermanagementFunction.ModifyFunction.Unit.AddUnit;
 
 import cseUsermanagementFunction.ModifyFunction.Unit.DeleteUnit;
 import cseUsermanagementFunction.ModifyFunction.Unit.ChangeUnit;
@@ -99,7 +98,7 @@ public class UserManagementFunction {
     public void ModifyUser() { //사용자 정보 수정전략(삭제, 변경, 추가)에 따라 적절한 메세드 실행
         ModifyUnit mu = null;
         
-        System.out.println("수행할 수정명령을 입력하세요(delete, change, add): ");
+        System.out.println("수행할 수정명령을 입력하세요(delete, change): ");
         String input = helper.getUserInput();
         
         InspectUserList();
@@ -111,9 +110,6 @@ public class UserManagementFunction {
             case "change":
                 mu = new ChangeUnit();
                 break;
-            case "add":
-                mu = new AddUnit();
-                break;    
             default:
                 System.out.println("유효하지 않은 수정명령 입니다. ");
                 break;        

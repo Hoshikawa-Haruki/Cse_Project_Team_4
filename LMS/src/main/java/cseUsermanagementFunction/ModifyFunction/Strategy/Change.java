@@ -32,9 +32,5 @@ public class Change extends ModifyBehaviorTemplet {
         manager.getUserDB().get(selNum).setIsManager(Boolean.valueOf(input));
     }
     
-     @Override
-    public boolean chkModifyType() {
-        return true;
-    }
 
 }
