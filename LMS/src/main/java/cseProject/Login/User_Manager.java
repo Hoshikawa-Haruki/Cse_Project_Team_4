@@ -5,6 +5,7 @@
 package cseProject.Login;
 
 import cseProject.FileManagerTemplate.FileManagerTemplate;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -19,18 +20,6 @@ public class User_Manager {
     //private static RealSystemHelper helper = RealSystemHelper.getInstance();
 
     private User_Manager() {
-        // Private 생성자, 처음 생성될시 UserData.txt에서 유저정보를 가져와 객체 리스트화 하여 추가해줌
-//        ArrayList<String[]> UserTemp = new ArrayList<>(helper.getTextedData("UserData.txt"));
-//
-//        for (int i = 0; i < UserTemp.size(); i++) {
-//            userDB.add(new User_Info(
-//                    UserTemp.get(i)[0],
-//                    UserTemp.get(i)[1],
-//                    UserTemp.get(i)[2],
-//                    Boolean.parseBoolean(UserTemp.get(i)[3]),
-//                    UserTemp.get(i)[4]
-//            ));
-//        }
     }
 
     public static User_Manager getInstance() {
@@ -41,7 +30,7 @@ public class User_Manager {
     }
 
     // user_MemberShip : 로그인시스템에서 정보 받음 -> 전략패턴 실행 -> 전략패턴에서 addUser 실행 -> 생성한 객체를 add_userDB에 넘겨줌, 여기 매개변수 이름이 user_MemberShip
-    public void add_userDB(User_Info user_MemberShip) {
+    public void add_userDB(User_Info user_MemberShip) throws IOException {
         userDB.add(user_MemberShip);
         FileManagerTemplate.getInstance("User").writeDBFile("User_Info.txt");
     }

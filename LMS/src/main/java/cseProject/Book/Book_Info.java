@@ -4,6 +4,7 @@
  */
 package cseProject.Book;
 
+import cseProject.Rental.Observer;
 import java.util.ArrayList;
 
 /**
@@ -45,28 +46,11 @@ public class Book_Info extends Subject {
 
     @Override
     public void notifyObserver() {
-        System.out.println("대여 " + ISBN);
+        System.out.println("변 " + ISBN);
 
         observers.forEach((observer) -> {
-            observer.updateRental(ISBN);
+            observer.update(this.title);
         });
-    }
-
-    @Override
-    public void notifyReturnObserver() {
-        System.out.println("반납 " + ISBN);
-
-        observers.forEach((observer) -> {
-            observer.updateReturn(ISBN);
-        });
-    }
-
-    public void realReturn() {
-        notifyReturnObserver();
-    }
-
-    public void realRent() {
-        notifyObserver();
     }
 
     public String getTitle() {
@@ -75,6 +59,7 @@ public class Book_Info extends Subject {
 
     public void setTitle(String title) {
         this.title = title;
+        notifyObserver();
     }
 
     public String getAuthor() {

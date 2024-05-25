@@ -10,6 +10,7 @@ import cseProject.Forms.Admin_Form;
 import cseProject.Forms.Form;
 import cseProject.Forms.General_Form;
 import cseProject.LoginState.UserContext;
+import java.io.IOException;
 
 /**
  *
@@ -20,7 +21,7 @@ public class KangTestDrive {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here 
 //        Form form;
 //        int select = 0;

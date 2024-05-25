@@ -4,17 +4,39 @@
  */
 package cseProject.Rental;
 
+import cseProject.Book.Book_Info;
+import cseProject.FileManagerTemplate.FileManagerTemplate;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author 이승환
  */
-public class Rental_Info {
+public class Rental_Info implements Observer {
 
     private String userID;
     private String userName;
-    private String Title;
+    private String title;
     private String ISBN;
+
+    private Book_Info book_info;
+
+    public void setSubject(Book_Info book_info) {
+        this.book_info = book_info;
+        this.book_info.registerObserver(this);
+    }
+
+    @Override
+    public void update(String title) {
+        this.title = title;
+        try {
+            FileManagerTemplate.getInstance("Rental").writeDBFile("Rental_Info.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(Rental_Info.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public String getUserID() {
         return userID;
@@ -33,11 +55,11 @@ public class Rental_Info {
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String Title) {
-        this.Title = Title;
+        this.title = Title;
     }
 
     public String getISBN() {
@@ -51,7 +73,7 @@ public class Rental_Info {
     public Rental_Info(String userID, String userName, String Title, String ISBN) {
         this.userID = userID;
         this.userName = userName;
-        this.Title = Title;
+        this.title = Title;
         this.ISBN = ISBN;
     }
 

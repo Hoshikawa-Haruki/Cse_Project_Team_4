@@ -1,2 +1,3 @@
 micro;Bill Gates;디자인패턴;3003
-micro;Bill Gates;돈키호테;1001
+micro;Bill Gates;돈키 호테;1001
+micro;Bill Gates;걸리버여행기;1002

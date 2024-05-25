@@ -10,7 +10,6 @@ package cseProject.FileManagerTemplate;
  */
 
 import cseProject.Book.Book_Info;
-import cseProject.Book.RentalObserver;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -22,7 +21,6 @@ public class BookFileManager extends FileManagerTemplate {
         String[] params = line.split(";");
         Book_Info newBook = new Book_Info(params[0], params[1], params[2], params[3], params[4], Boolean.parseBoolean(params[5]));
 
-        RentalObserver ro = new RentalObserver(newBook);
         bookManager.add_BookDB(newBook);
     }
 

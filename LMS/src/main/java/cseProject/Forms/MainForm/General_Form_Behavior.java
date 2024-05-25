@@ -81,7 +81,7 @@ public class General_Form_Behavior implements Main_Form_Behavior {
                 while (true) {
                     targetBook = Book_Manager.getInstance().findBookByISBN();
                     if (targetBook != null) { // 널포인트 해결 코드
-                        targetBook.realRent(); // 대여 옵저버 실행 (책 객체 상태 변경 알림)
+                        // 대여 옵저버 실행 (책 객체 상태 변경 알림) < 상태 변경 메서드만 넣으면 됨
                         Rental_Manager.getInstance().doRental(targetBook); // 옵저버와 관계 X rentalDB 만드는 과정
                         break;
                     } else {
@@ -97,7 +97,7 @@ public class General_Form_Behavior implements Main_Form_Behavior {
                 while (true) {
                     targetBook = Book_Manager.getInstance().findBookByISBN();
                     if (targetBook != null) { // 널포인트 해결 코드
-                        targetBook.realReturn(); // 반납 옵저버 실행 (책 객체 상태 변경 알림)
+                        // 반납 옵저버 실행 (책 객체 상태 변경 알림) <- 반납 메서드만 주셈
                         break;
                     } else {
                         System.out.println("- 해당 도서를 찾을 수 없습니다.");

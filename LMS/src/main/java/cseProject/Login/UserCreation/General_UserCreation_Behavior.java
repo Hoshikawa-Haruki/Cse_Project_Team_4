@@ -7,6 +7,7 @@ package cseProject.Login.UserCreation;
 import cseProject.Login.User_Info;
 import cseProject.Login.User_Manager;
 import cseProject.Helper.ProxyHelper;
+import java.io.IOException;
 
 /**
  *
@@ -18,7 +19,7 @@ public class General_UserCreation_Behavior implements UserCreation_Behavior {
     private static User_Manager manager = User_Manager.getInstance();
 
     @Override
-    public void make_User() {
+    public void make_User() throws IOException {
         String newID;
         boolean isExist;
         do {

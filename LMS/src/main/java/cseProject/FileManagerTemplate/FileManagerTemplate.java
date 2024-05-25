@@ -79,36 +79,22 @@ public abstract class FileManagerTemplate {
             }
         }
     }
-// 템플릿 메서드 부분. parseLine 부분을 추상으로 놓아서 클래스 별 파일 읽기 방법을 규정
 
-    public final void createDB(String fileName) {
-        try {
-            ArrayList<String> fileContents = readDBFile(fileName);
-            for (String fileContent : fileContents) {
-                parseLine(fileContent); // (파일 종류에 따라 쓰는 형식이 다르므로)
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(FileManagerTemplate.class.getName()).log(Level.SEVERE, null, ex);
+    public final void createDB(String fileName) throws IOException {
+        ArrayList<String> fileContents = readDBFile(fileName); // concrete
+        for (String fileContent : fileContents) {
+            parseLine(fileContent); // (파일 종류에 따라 쓰는 형식이 다르므로)
         }
     }
 
-// 템플릿 메서드 부분. writeData 부분을 추상으로 놓아서 클래스 별 파일 쓰기 방법을 규정
-    public final void writeDBFile(String fileName) {
-        try {
-            String writeFilePath = basePath + File.separator + fileName;
-            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(writeFilePath, false), StandardCharsets.UTF_8);
-            BufferedWriter out = new BufferedWriter(writer);
-
-            writeData(out); //(파일 종류에 따라 쓰는 형식이 다르므로)
-
-            out.flush();
-            out.close();
-        } catch (IOException ex) {
-            Logger.getLogger(FileManagerTemplate.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public final void writeDBFile(String fileName) throws IOException {
+        String writeFilePath = getWriteFilePath(fileName); // concrete
+        BufferedWriter out = createBufferedWriter(writeFilePath);
+        writeData(out); // (파일 종류에 따라 쓰는 형식이 다르므로)
+        closeBufferedWriter(out);
     }
 
-    public ArrayList<String> readDBFile(String fileName) throws IOException {
+    private ArrayList<String> readDBFile(String fileName) throws IOException { // concrete
         String readFilePath = basePath + File.separator + fileName;
         ArrayList<String> fileContents = new ArrayList<>();
 
@@ -123,6 +109,20 @@ public abstract class FileManagerTemplate {
         }
 
         return fileContents;
+    }
+
+    private String getWriteFilePath(String fileName) { // concrete
+        return basePath + File.separator + fileName;
+    }
+
+    private BufferedWriter createBufferedWriter(String writeFilePath) throws IOException { // concrete
+        OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(writeFilePath, false), StandardCharsets.UTF_8);
+        return new BufferedWriter(writer);
+    }
+
+    private void closeBufferedWriter(BufferedWriter out) throws IOException { // concrete
+        out.flush();
+        out.close();
     }
 
     protected abstract void parseLine(String line); // 한줄씩 읽기

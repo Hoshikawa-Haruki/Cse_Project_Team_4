@@ -139,6 +139,7 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
         System.out.println("│ 2. 이용자 검색                                 │");
         System.out.println("│ 3. 이용자 삭제                                 │");
         System.out.println("│ 4. 이용자 정보 수정                            │");
+        System.out.println("│ 6. 이용자 별 대출현황                          │");
         System.out.println("│ 5. 돌아가기                                    │");
         System.out.println("└────────────────────────┘");
         String choice = helper.getUserInput();

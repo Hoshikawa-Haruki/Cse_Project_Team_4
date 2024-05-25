@@ -1,7 +1,7 @@
 
 package cseProject.Book;
 
-interface Observer {
+interface Observer_Dead {
    void updateRental(String ISBN);
    void updateReturn(String ISBN);
 }

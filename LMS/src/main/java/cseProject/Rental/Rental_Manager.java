@@ -8,7 +8,10 @@ import cseProject.Book.Book_Info;
 import cseProject.FileManagerTemplate.FileManagerTemplate;
 import cseProject.Helper.RealSystemHelper;
 import cseProject.Login.User_Manager;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -58,14 +61,22 @@ public class Rental_Manager {
 
         add_rentalDB(rtbook);
         System.out.println("- " + targetBook.getTitle() + " 도서가 대여되었습니다.");
-        FileManagerTemplate.getInstance("Rental").writeDBFile("Rental_Info.txt");
+        try {
+            FileManagerTemplate.getInstance("Rental").writeDBFile("Rental_Info.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(Rental_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void doReturn(Rental_Info targetBook) { // 도서 대여
         System.out.println("반납을 실행 합니다");
         remove_rentalDB(targetBook);
         System.out.println("- " + targetBook.getTitle() + " 도서가 반납되었습니다.");
-        FileManagerTemplate.getInstance("Rental").writeDBFile("Rental_Info.txt");
+        try {
+            FileManagerTemplate.getInstance("Rental").writeDBFile("Rental_Info.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(Rental_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public Rental_Info findMyBookByISBN() { // rental_DB 에서 본인 책 찾기

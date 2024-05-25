@@ -6,7 +6,10 @@ package cseProject.Book;
 
 import cseProject.FileManagerTemplate.FileManagerTemplate;
 import cseProject.Helper.RealSystemHelper;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -47,10 +50,14 @@ public class Book_Manager {
         String ISBN = helper.getUserInput();
 
         Book_Info book = new Book_Info(title, author, genre, publisher, ISBN, false);
-        RentalObserver ro = new RentalObserver(book); // 새로운 도서 객체 추가마다 옵저버에 등록
+
         add_BookDB(book);
         System.out.println("- " + book.getTitle() + " 도서가 추가되었습니다.");
-        FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
+        try {
+            FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(Book_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public ArrayList<Book_Info> findBooksByTitle() { // 제목으로 검색 (안쓰이는중)
@@ -195,6 +202,15 @@ public class Book_Manager {
         return null;
     }
 
+    public Book_Info findBookByISBN(String ISBN) {
+        for (Book_Info book : bookDB) {
+            if (book.getISBN().equals(ISBN)) {
+                return book;
+            }
+        }
+        return null;
+    }
+
     public void editBook(Book_Info targetBook) {
         if (targetBook == null) {
             System.out.println("- 해당 ISBN의 도서가 없습니다.");
@@ -227,14 +243,22 @@ public class Book_Manager {
             targetBook.setAuthor(author);
         }
 
-        FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
+        try {
+            FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(Book_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void removeBook(Book_Info targetBook) {
 
         System.out.println("- " + targetBook.getTitle() + " 도서가 삭제되었습니다");
         getBookDB().remove(targetBook);
-        FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
+        try {
+            FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(Book_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void displayBooks() { // 모든 책 보여주기
