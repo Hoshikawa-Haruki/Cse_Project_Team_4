@@ -4,8 +4,10 @@
  */
 package cseUsermanagementFunction;
 
-import cseProject.FileManager;
+
+import cseProject.FileManagerTemplate.FileManagerTemplate;
 import cseUsermanagementFunction.command.UserManagementInvoker;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -17,13 +19,13 @@ public class UserManagement_TestDrive {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         UserManagementInvoker invoker = new UserManagementInvoker();
         Scanner sc = new Scanner(System.in);
         
-        FileManager.getInstance().createDBFile("User_Info.txt");
-        FileManager.getInstance().createDB("User_Info.txt");
+        FileManagerTemplate.getInstance("User").createDBFile("User_Info.txt");
+        FileManagerTemplate.getInstance("User").createDB("User_Info.txt");
 
         while (true) {
             String command = sc.nextLine();

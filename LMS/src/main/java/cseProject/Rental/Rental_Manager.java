@@ -7,7 +7,7 @@ package cseProject.Rental;
 import cseProject.Book.Book_Info;
 import cseProject.Book.Book_Manager;
 import cseProject.FileManagerTemplate.FileManagerTemplate;
-import cseProject.Helper.RealSystemHelper;
+import cseProject.Helper.SystemHelper;
 import cseProject.Login.User_Manager;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 public class Rental_Manager {
 
     private static Rental_Manager instance;
-    private static RealSystemHelper helper = RealSystemHelper.getInstance();
+    private static SystemHelper helper = SystemHelper.getInstance();
     private ArrayList<Rental_Info> rentalDB = new ArrayList<>();
 
     public ArrayList<Rental_Info> getRentalDB() {

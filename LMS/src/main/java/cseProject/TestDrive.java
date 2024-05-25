@@ -4,7 +4,7 @@
  */
 package cseProject;
 
-import cseProject.Login.LoginSystem;
+//import cseProject.Login.LoginSystem;
 import cseUsermanagementFunction.UserManagementFunction;
 import cseUsermanagementFunction.command.UserManagementInvoker;
 import java.io.IOException;
@@ -26,8 +26,8 @@ public class TestDrive {
         UserManagementInvoker invoker = new UserManagementInvoker();
         Scanner sc = new Scanner(System.in);
         
-        FileManager.getInstance().createDBFile("User_Info.txt");
-        FileManager.getInstance().createDB("User_Info.txt");
+//        FileManager.getInstance().createDBFile("User_Info.txt");
+//        FileManager.getInstance().createDB("User_Info.txt");
 
         while (true) {
             String command = sc.nextLine();

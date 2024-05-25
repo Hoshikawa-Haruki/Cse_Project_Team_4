@@ -4,10 +4,9 @@
  */
 package cseUsermanagementFunction;
 
-import cseProject.FileManager;
+import cseProject.FileManagerTemplate.FileManagerTemplate;
 import cseProject.Login.User_Manager;
 import cseProject.Helper.SystemHelper;
-
 import cseUsermanagementFunction.ModifyFunction.Unit.DeleteUnit;
 import cseUsermanagementFunction.ModifyFunction.Unit.ChangeUnit;
 import cseUsermanagementFunction.ModifyFunction.Unit.ModifyUnit;
@@ -16,7 +15,9 @@ import cseUsermanagementFunction.SearchFunction.Unit.NameSearchUnit;
 import cseUsermanagementFunction.SearchFunction.Unit.SearchUnit;
 
 import cseUsermanagementFunction.SearchFunction.Unit.TypeSearchUnit;
-
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,7 +29,7 @@ public class UserManagementFunction {
     private static UserManagementFunction instance;
     private static final User_Manager manager = User_Manager.getInstance();
 
-    private UserManagementFunction() {  
+    private UserManagementFunction() {
     }
 
     public static UserManagementFunction getInstance() {
@@ -40,30 +41,30 @@ public class UserManagementFunction {
 
     public void InspectUserList() { //사용자 목록 출력 
         System.out.println(
-                  String.format("%-6s"," ")
-                + String.format("%-16s", "아이디" )
-                + String.format("%-16s", "패스워드" )
-                + String.format("%-16s", "이름" )
-                + String.format("%-16s", "관리자여부" )
-                + String.format("%-16s", "가입일" )
+                String.format("%-6s", " ")
+                + String.format("%-16s", "아이디")
+                + String.format("%-16s", "패스워드")
+                + String.format("%-16s", "이름")
+                + String.format("%-16s", "관리자여부")
+                + String.format("%-16s", "가입일")
         );
 
         for (int i = 0; i < manager.getUserDB().size(); i++) {
             String temp = manager.getUserDB().get(i).getRegisteredDate();
-            String registeredDate="";
+            String registeredDate = "";
             registeredDate = temp.substring(0, 4)
                     + "-"
-                    + temp.substring(4,6)
+                    + temp.substring(4, 6)
                     + "-"
-                    + temp.substring(6, 8); 
-            
+                    + temp.substring(6, 8);
+
             System.out.println(
-                      String.format("%-6s" , i+1 + ".")
+                    String.format("%-6s", i + 1 + ".")
                     + String.format("%-18s", manager.getUserDB().get(i).getUserID())
                     + String.format("%-18s", manager.getUserDB().get(i).getUserPW())
                     + String.format("%-18s", manager.getUserDB().get(i).getUserName())
                     + String.format("%-18b", manager.getUserDB().get(i).getIsManager())
-                    + String.format("%-18s",registeredDate)
+                    + String.format("%-18s", registeredDate)
             );
 
         }
@@ -72,11 +73,11 @@ public class UserManagementFunction {
 
     public void SearchUserList() { //검색 전략에 따라 검색 메서드 호출
         SearchUnit su = null;
-        
+
         System.out.println("검색방식을 입력하세요(id, name, type): ");
         String input = helper.getUserInput();
 
-         switch (input) {
+        switch (input) {
             case "id":
                 su = new IdSearchUnit();
                 break;
@@ -89,7 +90,7 @@ public class UserManagementFunction {
             default:
                 System.out.println("유효하지 않은 검색방식 입니다. ");
         }
-        
+
         if (su.getSearchBehavior() != null) {
             su.performSearch();
         }
@@ -97,12 +98,12 @@ public class UserManagementFunction {
 
     public void ModifyUser() { //사용자 정보 수정전략(삭제, 변경, 추가)에 따라 적절한 메세드 실행
         ModifyUnit mu = null;
-        
+
         System.out.println("수행할 수정명령을 입력하세요(delete, change): ");
         String input = helper.getUserInput();
-        
+
         InspectUserList();
-        
+
         switch (input) {
             case "delete":
                 mu = new DeleteUnit();
@@ -112,16 +113,19 @@ public class UserManagementFunction {
                 break;
             default:
                 System.out.println("유효하지 않은 수정명령 입니다. ");
-                break;        
+                break;
         }
 
         if (mu.getModifyBehavior() != null) {
             System.out.println(input);
             mu.performModify();
-
         }
-        
-        FileManager.getInstance().writeDBFile("User_Info.txt");
+
+        try {
+            FileManagerTemplate.getInstance("User").writeDBFile("User_Info.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(UserManagementFunction.class.getName()).log(Level.SEVERE, null, ex);
+        }
         InspectUserList();
     }
 

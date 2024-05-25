@@ -39,9 +39,9 @@ public class Change implements ModifyBehavior{
         input = helper.getUserInput();
         manager.getUserDB().get(selNum).setUserName(input);
 
-        System.out.println("관리자 여부(true or false): ");
-        input = helper.getUserInput();
-        manager.getUserDB().get(selNum).setIsManager(Boolean.valueOf(input));
+//        System.out.println("관리자 여부(true or false): ");
+//        input = helper.getUserInput();
+//        manager.getUserDB().get(selNum).setIsManager(Boolean.valueOf(input));
     }
     
     
