@@ -5,10 +5,12 @@
 package cseProject;
 
 //import cseProject.Login.LoginSystem;
+import cseProject.FileManagerTemplate.FileManagerTemplate;
 import cseProject.UsermanagementFunction.UserManagementFunction;
 import cseProject.UsermanagementFunction.command.UserManagementInvoker;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Scanner;
+import java.io.InputStreamReader;
 
 /**
  *
@@ -24,13 +26,13 @@ public class TestDrive {
 //        loginSystem.runLoginSystem();
 
         UserManagementInvoker invoker = new UserManagementInvoker();
-        Scanner sc = new Scanner(System.in);
-        
-//        FileManager.getInstance().createDBFile("User_Info.txt");
-//        FileManager.getInstance().createDB("User_Info.txt");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        FileManagerTemplate.getInstance("User").createDBFile("User_Info.txt");
+        FileManagerTemplate.getInstance("User").createDB("User_Info.txt");
 
         while (true) {
-            String command = sc.nextLine();
+            String command = br.readLine();
 
             if (command.equalsIgnoreCase("exit")) {
                 System.out.println("프로그램을 종료합니다.");
@@ -39,8 +41,6 @@ public class TestDrive {
 
             invoker.executeCommand(command.toLowerCase());
         }
-
-        sc.close();
 
         //위의 주석은 유저 추가, 삭제, 수정 관련 기능을 사용하기 위하여 작성된 구문임
         //add, delete, modify의 커맨드를 입력하면 해당 기능이 작동되고 변경된 사항은 UserData.txt에 저장되며 기존의 내용은'

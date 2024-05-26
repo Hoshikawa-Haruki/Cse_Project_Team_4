@@ -157,13 +157,6 @@ public class Book_Manager {
                 books.add(book);
             }
         }
-
-//        boolean isBorrowed = Boolean.parseBoolean(option);
-//        for (Book_Info book : bookDB) {
-//            if (book.getIsBorrorwed() == isBorrowed) {
-//                books.add(book);
-//            }
-//        }
         return books;
     }
 

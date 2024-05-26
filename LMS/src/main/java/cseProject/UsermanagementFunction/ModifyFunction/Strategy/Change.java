@@ -19,7 +19,7 @@ public class Change implements ModifyBehavior {
 
     @Override
     public void selModifyIndex() {
-        System.out.println("수정할 대상의 번호를 입력하세요: ");
+        System.out.print("▶ 수정할 대상의 번호를 입력하세요: ");
         String input = helper.getUserInput();
         selNum = Integer.parseInt(input) - 1;
     }
@@ -36,10 +36,8 @@ public class Change implements ModifyBehavior {
         System.out.print("▶ 이름: ");
         String userName = helper.getUserInput();
 
-        System.out.print("▶ 관리자 여부 (true or false): ");
-        String isManager = helper.getUserInput();
-
-
+//        System.out.print("▶ 관리자 여부 (true or false): ");
+//        String isManager = helper.getUserInput();
         if (!userID.isBlank()) {
             manager.getUserDB().get(selNum).setUserID(userID);
         }
@@ -52,9 +50,9 @@ public class Change implements ModifyBehavior {
             manager.getUserDB().get(selNum).setUserName(userName);
         }
 
-        if (!isManager.isBlank()) {
-            manager.getUserDB().get(selNum).setIsManager(Boolean.valueOf(isManager));
-        }
+//        if (!isManager.isBlank()) {
+//            manager.getUserDB().get(selNum).setIsManager(Boolean.valueOf(isManager));
+//        }
     }
 
     @Override
