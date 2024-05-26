@@ -23,42 +23,44 @@ public class UserNameSearch implements SearchBehavior {
         ArrayList<Integer> index = new ArrayList<>();
         int indexNumber = 0;
 
-        System.out.println("검색할 이름을 입력하세요: ");
+        System.out.print("검색할 이름을 입력하세요: ");
         String str = helper.getUserInput();
 
         for (int i = 0; i < manager.getUserDB().size(); i++) {
-            if (str.equals(manager.getUserDB().get(i).getUserName())) {
+            if (str.contains(manager.getUserDB().get(i).getUserName())) {
                 index.add(i);
             }
         }
-
-        System.out.println(
-                String.format("%-6s", " ")
-                + String.format("%-16s", "아이디")
-                + String.format("%-16s", "패스워드")
-                + String.format("%-16s", "이름")
-                + String.format("%-16s", "관리자여부")
-                + String.format("%-16s", "가입일")
-        );
-
-        for (int num : index) {
-            String temp = manager.getUserDB().get(num).getRegisteredDate();
-            String registeredDate = temp.substring(0, 4)
-                    + "-"
-                    + temp.substring(4, 6)
-                    + "-"
-                    + temp.substring(6, 8);
-
+        if (!index.isEmpty()) {
             System.out.println(
-                    String.format("%-6s", indexNumber + 1 + ".")
-                    + String.format("%-18s", manager.getUserDB().get(num).getUserID())
-                    + String.format("%-18s", manager.getUserDB().get(num).getUserPW())
-                    + String.format("%-18s", manager.getUserDB().get(num).getUserName())
-                    + String.format("%-18s", String.valueOf(manager.getUserDB().get(num).getIsManager()))
-                    + String.format("%-18s", registeredDate)
+                    String.format("%-6s", " ")
+                    + String.format("%-16s", "아이디")
+                    + String.format("%-16s", "패스워드")
+                    + String.format("%-16s", "이름")
+                    + String.format("%-16s", "관리자여부")
+                    + String.format("%-16s", "가입일")
             );
-            indexNumber++;
 
+            for (int num : index) {
+                String temp = manager.getUserDB().get(num).getRegisteredDate();
+                String registeredDate = temp.substring(0, 4)
+                        + "-"
+                        + temp.substring(4, 6)
+                        + "-"
+                        + temp.substring(6, 8);
+
+                System.out.println(
+                        String.format("%-6s", indexNumber + 1 + ".")
+                        + String.format("%-18s", manager.getUserDB().get(num).getUserID())
+                        + String.format("%-18s", manager.getUserDB().get(num).getUserPW())
+                        + String.format("%-18s", manager.getUserDB().get(num).getUserName())
+                        + String.format("%-18s", String.valueOf(manager.getUserDB().get(num).getIsManager()))
+                        + String.format("%-18s", registeredDate)
+                );
+                indexNumber++;
+            }
+        } else {
+            System.out.println("해당 조건에 맞는 사용자가 없습니다");
         }
     }
 }

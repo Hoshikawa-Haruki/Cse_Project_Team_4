@@ -46,7 +46,7 @@ public class Book_Info extends Subject {
 
     @Override
     public void notifyObserver() {
-        System.out.println("변 " + ISBN);
+        System.out.println("변경 도서 : " + ISBN);
 
         observers.forEach((observer) -> {
             observer.update(this.title);

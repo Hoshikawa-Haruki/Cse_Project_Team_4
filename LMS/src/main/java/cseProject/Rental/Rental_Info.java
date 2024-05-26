@@ -23,6 +23,13 @@ public class Rental_Info implements Observer {
 
     private Book_Info book_info;
 
+    public Rental_Info(String userID, String userName, String Title, String ISBN) {
+        this.userID = userID;
+        this.userName = userName;
+        this.title = Title;
+        this.ISBN = ISBN;
+    }
+
     public void setSubject(Book_Info book_info) {
         this.book_info = book_info;
         this.book_info.registerObserver(this);
@@ -67,13 +74,6 @@ public class Rental_Info implements Observer {
     }
 
     public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
-    }
-
-    public Rental_Info(String userID, String userName, String Title, String ISBN) {
-        this.userID = userID;
-        this.userName = userName;
-        this.title = Title;
         this.ISBN = ISBN;
     }
 

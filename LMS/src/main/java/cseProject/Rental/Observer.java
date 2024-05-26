@@ -9,6 +9,5 @@ package cseProject.Rental;
  * @author 이승환
  */
 public interface Observer {
-    void update(String title);
-    
+    public void update(String title);
 }

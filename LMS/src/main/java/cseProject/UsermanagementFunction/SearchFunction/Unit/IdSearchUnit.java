@@ -12,8 +12,8 @@ import cseProject.UsermanagementFunction.SearchFunction.Strategy.SearchBehavior;
  * @author jasuj
  */
 public class IdSearchUnit extends SearchUnit {
-    
-    public IdSearchUnit(){
-    setSearchBehavior(new UserIdSearch());
-}
+
+    public IdSearchUnit() {
+        setSearchBehavior(new UserIdSearch());
+    }
 }

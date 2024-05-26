@@ -11,7 +11,6 @@ package cseProject.FileManagerTemplate;
 import cseProject.Book.Book_Manager;
 import cseProject.Login.User_Manager;
 import cseProject.Rental.Rental_Manager;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -80,17 +79,17 @@ public abstract class FileManagerTemplate {
         }
     }
 
-    public final void createDB(String fileName) throws IOException {
+    public final void createDB(String fileName) throws IOException { // template
         ArrayList<String> fileContents = readDBFile(fileName); // concrete
         for (String fileContent : fileContents) {
-            parseLine(fileContent); // (파일 종류에 따라 쓰는 형식이 다르므로)
+            parseLine(fileContent); // abstract
         }
     }
 
-    public final void writeDBFile(String fileName) throws IOException {
+    public final void writeDBFile(String fileName) throws IOException { // template
         String writeFilePath = getWriteFilePath(fileName); // concrete
         BufferedWriter out = createBufferedWriter(writeFilePath);
-        writeData(out); // (파일 종류에 따라 쓰는 형식이 다르므로)
+        writeData(out); // abstract
         closeBufferedWriter(out);
     }
 

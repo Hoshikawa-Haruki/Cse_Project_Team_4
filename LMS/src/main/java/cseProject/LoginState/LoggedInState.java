@@ -5,8 +5,9 @@
 package cseProject.LoginState;
 
 import cseProject.Forms.Admin_Form;
+import cseProject.Forms.Factory.ConcreteFormFactory;
+import cseProject.Forms.Factory.FormFactory;
 import cseProject.Forms.Form;
-import cseProject.Forms.General_Form;
 import cseProject.Login.User_Manager;
 
 /**
@@ -18,14 +19,11 @@ public class LoggedInState implements LoginState {
     @Override
     public void login(UserContext context) {
         System.out.println("로그인 되었습니다.");
-        Form form;
+        FormFactory ff = new ConcreteFormFactory();
         try {
-            if (User_Manager.getInstance().getLoginUser().getIsManager() == false) {
-                form = new General_Form();
-            } else {
-                form = new Admin_Form();
-            }
-            form.perform_Main();
+            boolean isManager = User_Manager.getInstance().getLoginUser().getIsManager();
+            Form form = ff.create(isManager);  // 팩토리메서드로 객체 생성
+            form.perform_Main(); // 전략에 따른 실행
         } catch (NullPointerException a) {
             System.out.println("널포인트 에러!! 프로그램을 종료합니다.");
             System.out.println("에러 사유 : 해당되는 이용자 또는 도서가 없습니다.");

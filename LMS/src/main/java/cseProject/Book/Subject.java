@@ -16,6 +16,6 @@ public abstract class Subject {
     public void notifyObserver() {
     }
 
-    public void notifyReturnObserver() {
+    public void deleteObserver() {
     }
 }

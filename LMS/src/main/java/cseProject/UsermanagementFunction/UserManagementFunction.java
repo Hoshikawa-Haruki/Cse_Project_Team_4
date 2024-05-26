@@ -66,29 +66,28 @@ public class UserManagementFunction {
             );
 
         }
-
     }
 
     public void SearchUserList() { //검색 전략에 따라 검색 메서드 호출
         SearchUnit su = null;
-        System.out.println("검색방식을 입력하세요(id, name, type): ");
+        System.out.println("검색방식을 입력하세요(id, name, type)");
         String input = helper.getUserInput();
 
         switch (input) {
-            case "id":
+            case "id" ->
                 su = new IdSearchUnit();
-                break;
-            case "name":
+            case "name" ->
                 su = new NameSearchUnit();
-                break;
-            case "type":
+            case "type" ->
                 su = new TypeSearchUnit();
-                break;
-            default:
-                System.out.println("유효하지 않은 검색방식 입니다. ");
+            default -> {
+                System.out.println("유효하지 않은 검색방식 입니다. 다시 입력해주세요.");
+                SearchUserList();
+            }
         }
-
-        if (su.getSearchBehavior() != null) {
+        if (null == su.getSearchBehavior()) {
+            System.out.println("널 포인트에러");
+        } else {
             su.performSearch();
         }
     }
@@ -116,8 +115,11 @@ public class UserManagementFunction {
                     mu.performModify();
                 }
             }
-            default ->
-                System.out.println("유효하지 않은 수정명령 입니다. ");
+            default -> {
+                System.out.println("유효하지 않은 수정명령 입니다. 다시 입력해주세요.");
+                ModifyUser();
+            }
+
         }
 
         try {

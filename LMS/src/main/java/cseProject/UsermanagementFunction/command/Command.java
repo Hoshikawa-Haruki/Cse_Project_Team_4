@@ -9,5 +9,5 @@ package cseProject.UsermanagementFunction.command;
  * @author jasuj
  */
 public interface Command {
-      void execute();
+    public void execute();
 }
