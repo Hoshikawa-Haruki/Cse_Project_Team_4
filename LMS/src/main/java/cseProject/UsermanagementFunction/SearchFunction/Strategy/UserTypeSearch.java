@@ -70,7 +70,7 @@ public class UserTypeSearch implements SearchBehavior {
                     + String.format("%-18s", manager.getUserDB().get(num).getUserName())
                     + String.format("%-18s", String.valueOf(manager.getUserDB().get(num).getIsManager()))
                     + String.format("%-18s", registeredDate)
-            ); 
+            );
             indexNumber++;
 
         }

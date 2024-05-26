@@ -9,5 +9,6 @@ package cseProject.UsermanagementFunction.SearchFunction.Strategy;
  * @author jasuj
  */
 public interface SearchBehavior {
+
     public void Search();
 }

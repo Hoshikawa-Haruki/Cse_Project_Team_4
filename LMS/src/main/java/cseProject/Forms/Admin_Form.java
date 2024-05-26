@@ -17,6 +17,4 @@ public class Admin_Form extends Form { // 관리자 폼
         this.form_Behavior = new Admin_Form_Behavior();
         this.register_Behavior = new Admin_UserCreation_Behavior();
     }
-    
-
 }
