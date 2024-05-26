@@ -48,12 +48,12 @@ public class Menu extends MenuComponent {
     }
 
     @Override
-    public void print() {
-        System.out.println("\n" + "● "+ getName());
+    public void printMenu() {
+        System.out.println("\n" + "● " + getName());
         System.out.println(", " + getDescription());
 
         for (MenuComponent Menu_Component : menuComponents) {
-            Menu_Component.print();
+            Menu_Component.printMenu();
         }
     }
 }

@@ -29,7 +29,7 @@ public class MenuItem extends MenuComponent {
     }
 
     @Override
-    public void print() {
+    public void printMenu() {
         System.out.println(getName() + " -- " + getDescription());
     }
 

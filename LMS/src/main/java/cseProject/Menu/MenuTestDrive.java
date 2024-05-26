@@ -36,9 +36,7 @@ public class MenuTestDrive {
 //        MenuComponent adminMenu = new AdminMenu("관리자 메뉴", "관리자 관련 메뉴 선택");
 //        mainMenu.add(adminMenu);
 
-        allMenus.print();
-        managerMenu.print();
-        bookManage.print();
+        allMenus.getChild(0).getChild(0).printMenu();
 
     }
 

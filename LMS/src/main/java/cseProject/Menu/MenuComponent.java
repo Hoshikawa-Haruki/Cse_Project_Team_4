@@ -4,11 +4,15 @@
  */
 package cseProject.Menu;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author 이승환
  */
 public abstract class MenuComponent {
+
+    private ArrayList<MenuComponent> menuComponents = new ArrayList<>();
 
     public void add(MenuComponent menuComponent) {
         throw new UnsupportedOperationException();
@@ -30,7 +34,9 @@ public abstract class MenuComponent {
         throw new UnsupportedOperationException();
     }
 
-    public void print() {
-        throw new UnsupportedOperationException();
+    public void printMenu() {
+        for (MenuComponent MenuComponent : menuComponents) {
+            MenuComponent.printMenu();
+        }
     }
 }
