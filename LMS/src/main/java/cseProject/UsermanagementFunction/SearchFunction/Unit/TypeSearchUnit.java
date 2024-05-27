@@ -11,8 +11,8 @@ import cseProject.UsermanagementFunction.SearchFunction.Strategy.UserTypeSearch;
  * @author jasuj
  */
 public class TypeSearchUnit extends SearchUnit {
-    
-    public TypeSearchUnit(){
-    setSearchBehavior(new UserTypeSearch());
-}
+
+    public TypeSearchUnit() {
+        setSearchBehavior(new UserTypeSearch());
+    }
 }

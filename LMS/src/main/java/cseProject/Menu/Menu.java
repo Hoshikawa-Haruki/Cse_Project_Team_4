@@ -11,15 +11,12 @@ import java.util.List;
  *
  * @author 이승환
  */
-public class Menu extends MenuComponent {
+public class Menu extends MenuComponent { // 컴포지트 노드
 
     List<MenuComponent> menuComponents = new ArrayList<>();
     private String name;
-    private String description;
 
-    public Menu(String name, String description) {
-        this.name = name;
-        this.description = description;
+    public Menu() {
     }
 
     @Override
@@ -43,15 +40,7 @@ public class Menu extends MenuComponent {
     }
 
     @Override
-    public String getDescription() {
-        return description;
-    }
-
-    @Override
     public void printMenu() {
-        System.out.println("\n" + "● " + getName());
-        System.out.println(", " + getDescription());
-
         for (MenuComponent Menu_Component : menuComponents) {
             Menu_Component.printMenu();
         }

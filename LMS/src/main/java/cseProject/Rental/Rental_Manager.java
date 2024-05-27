@@ -110,8 +110,12 @@ public class Rental_Manager {
     public void showAllRentalInfo() {
         System.out.println("● 현재 모든 이용자의 대여 정보 입니다");
         System.out.println("────────────────────────────────────────────────────────────────────────");
+        System.out.println(String.format("%-5s %-15s %-15s %-15s %-15s", "No", "아이디", "이름", "도서명", "ISBN"));
+
+        int rowNumber = 1;
         for (Rental_Info rental : rentalDB) {
-            System.out.println(String.format("%s%15s15s15s", rental.getUserID(), rental.getUserName(), rental.getTitle(), rental.getISBN()));
+            System.out.println(String.format("%-5d %-20s %-15s %-15s %-15s", rowNumber, rental.getUserID(), rental.getUserName(), rental.getTitle(), rental.getISBN()));
+            rowNumber++;
         }
         System.out.println("────────────────────────────────────────────────────────────────────────");
     }

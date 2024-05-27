@@ -11,8 +11,8 @@ import cseProject.UsermanagementFunction.SearchFunction.Strategy.UserNameSearch;
  * @author jasuj
  */
 public class NameSearchUnit extends SearchUnit {
-    
-    public NameSearchUnit(){
-    setSearchBehavior(new UserNameSearch());
-}
+
+    public NameSearchUnit() {
+        setSearchBehavior(new UserNameSearch());
+    }
 }

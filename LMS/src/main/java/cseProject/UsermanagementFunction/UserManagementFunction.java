@@ -70,7 +70,7 @@ public class UserManagementFunction {
 
     public void SearchUserList() { //검색 전략에 따라 검색 메서드 호출
         SearchUnit su = null;
-        System.out.println("검색방식을 입력하세요(id, name, type)");
+        System.out.print("검색방식을 입력하세요(id, name, type): ");
         String input = helper.getUserInput();
 
         switch (input) {
@@ -98,10 +98,9 @@ public class UserManagementFunction {
         System.out.println("수행할 수정명령을 입력하세요(delete, change): ");
         String input = helper.getUserInput();
 
-        InspectUserList();
-
         switch (input) {
             case "delete" -> {
+                InspectUserList();
                 mu = new DeleteUnit();
                 if (mu.getModifyBehavior() != null) {
                     System.out.println(input);
@@ -109,6 +108,7 @@ public class UserManagementFunction {
                 }
             }
             case "change" -> {
+                InspectUserList();
                 mu = new ChangeUnit();
                 if (mu.getModifyBehavior() != null) {
                     System.out.println(input);
@@ -127,7 +127,6 @@ public class UserManagementFunction {
         } catch (IOException ex) {
             Logger.getLogger(UserManagementFunction.class.getName()).log(Level.SEVERE, null, ex);
         }
-        InspectUserList();
     }
 
 }

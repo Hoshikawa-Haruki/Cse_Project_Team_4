@@ -8,29 +8,21 @@ package cseProject.Menu;
  *
  * @author 이승환
  */
-public class MenuItem extends MenuComponent {
-
-    private String name; // 메뉴 이름
-    private String description; // 메뉴 설명
-
-    public MenuItem(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
-    }
-
-    @Override
-    public void printMenu() {
-        System.out.println(getName() + " -- " + getDescription());
-    }
-
-}
+//public class MenuItem extends MenuComponent { // 리프노드
+//
+//    private String name; // 메뉴 이름
+//
+//    public MenuItem(String name) {
+//        this.name = name;
+//    }
+//
+//    @Override
+//    public String getName() {
+//        return name;
+//    }
+//
+//    @Override
+//    public void printMenu() {
+//
+//    }
+//}

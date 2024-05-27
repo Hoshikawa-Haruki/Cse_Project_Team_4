@@ -23,11 +23,11 @@ public class UserIdSearch implements SearchBehavior {
         ArrayList<Integer> index = new ArrayList<>();
         int indexNumber = 0;
 
-        System.out.print("검색할 아이디를 입력하세요: ");
+        System.out.print("▶ 검색할 아이디를 입력하세요: ");
         String str = helper.getUserInput();
 
         for (int i = 0; i < manager.getUserDB().size(); i++) {
-            if (str.contains(manager.getUserDB().get(i).getUserID())) {
+            if ((manager.getUserDB().get(i).getUserID()).contains(str)) {
                 index.add(i);
             }
         }
