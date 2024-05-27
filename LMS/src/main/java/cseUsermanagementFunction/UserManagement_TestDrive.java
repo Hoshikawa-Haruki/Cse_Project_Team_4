@@ -5,6 +5,9 @@
 package cseUsermanagementFunction;
 
 import cseProject.FileManager;
+import cseUsermanagementFunction.command.InspectUserListCommand;
+import cseUsermanagementFunction.command.ModifyUserCommand;
+import cseUsermanagementFunction.command.SearchUserCommand;
 import cseUsermanagementFunction.command.UserManagementInvoker;
 import java.util.Scanner;
 
@@ -25,6 +28,10 @@ public class UserManagement_TestDrive {
         FileManager.getInstance().createDBFile("User_Info.txt");
         FileManager.getInstance().createDB("User_Info.txt");
 
+        invoker.setCommand("inspect",new InspectUserListCommand());
+        invoker.setCommand("search",new SearchUserCommand());
+        invoker.setCommand("modify",new ModifyUserCommand());
+                
         while (true) {
             String command = sc.nextLine();
 

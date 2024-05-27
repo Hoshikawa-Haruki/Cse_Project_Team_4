@@ -13,8 +13,7 @@ import cseUsermanagementFunction.UserManagementFunction;
 public class InspectUserListCommand implements Command {
     private UserManagementFunction userManager = UserManagementFunction.getInstance();
 
-    public InspectUserListCommand(UserManagementFunction userManager) {
-        this.userManager = userManager;
+    public InspectUserListCommand() {
     }
 
     @Override

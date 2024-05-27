@@ -13,8 +13,7 @@ import cseUsermanagementFunction.UserManagementFunction;
 public class ModifyUserCommand implements Command {
     private UserManagementFunction userManager = UserManagementFunction.getInstance();
 
-    public ModifyUserCommand(UserManagementFunction userManager) {
-        this.userManager = userManager;
+    public ModifyUserCommand() {
     }
 
     @Override

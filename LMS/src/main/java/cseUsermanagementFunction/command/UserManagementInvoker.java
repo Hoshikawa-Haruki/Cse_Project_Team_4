@@ -4,7 +4,6 @@
  */
 package cseUsermanagementFunction.command;
 
-import cseUsermanagementFunction.UserManagementFunction;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,10 +15,10 @@ public class UserManagementInvoker {
  private Map<String, Command> commandMap = new HashMap<>();
 
     public UserManagementInvoker() {
-        // 여기에 사용할 명령어와 해당 명령어에 해당하는 커맨드 객체를 추가합니다.
-        commandMap.put("modify", new ModifyUserCommand(UserManagementFunction.getInstance()));
-        commandMap.put("search", new SearchUserCommand(UserManagementFunction.getInstance()));
-        commandMap.put("inspect", new InspectUserListCommand(UserManagementFunction.getInstance()));
+    }
+    
+    public void setCommand(String commandName, Command command) {
+        commandMap.put(commandName, command);
     }
 
     public void executeCommand(String commandName) {

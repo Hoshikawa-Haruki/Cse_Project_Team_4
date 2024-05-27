@@ -13,8 +13,7 @@ import cseUsermanagementFunction.UserManagementFunction;
 public class SearchUserCommand implements Command {
     private UserManagementFunction userManager = UserManagementFunction.getInstance();
 
-    public SearchUserCommand(UserManagementFunction userManager) {
-        this.userManager = userManager;
+    public SearchUserCommand() {
     }
 
     @Override
