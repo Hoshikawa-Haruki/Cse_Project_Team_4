@@ -47,8 +47,21 @@ public class Book_Manager {
         String genre = helper.getUserInput();
         System.out.print("▶ 출판사 : ");
         String publisher = helper.getUserInput();
-        System.out.print("▶ ISBN : ");
-        String ISBN = helper.getUserInput();
+
+        boolean valid = false;
+        String ISBN = "";
+        while (!valid) {
+            System.out.print("▶ ISBN: ");
+            ISBN = helper.getUserInput();
+            valid = true; // 일단 입력된 ISBN이 유효하다고 가정
+            for (Book_Info existingBook : bookDB) {
+                if (existingBook.getISBN().equals(ISBN)) {
+                    System.out.println("- 이미 존재하는 ISBN입니다. 다른 ISBN을 입력하세요.");
+                    valid = false; // 입력된 ISBN이 이미 존재하므로 유효하지 않음
+                    break;
+                }
+            }
+        }
 
         Book_Info book = new Book_Info(title, author, genre, publisher, ISBN, false);
 
@@ -245,7 +258,10 @@ public class Book_Manager {
     }
 
     public void removeBook(Book_Info targetBook) {
-
+        if (targetBook == null) {
+            System.out.println("- 해당 ISBN의 도서가 없습니다.");
+            return;
+        }
         System.out.println("- " + targetBook.getTitle() + " 도서가 삭제되었습니다");
         getBookDB().remove(targetBook);
         try {

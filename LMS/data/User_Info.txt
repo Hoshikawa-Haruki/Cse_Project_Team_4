@@ -1,5 +1,9 @@
-hello;world;rkdtnsdn;true;20240516165501
-lsh123;1111;이승환;false;20240518165501
-apple;apple;Tim Cook;true;20240519165501
+hello;world;헬로월드;true;20240516165501
+lsh123;lsh123;이승환;true;20240518165501
+apple;apple;Tim Cook;false;20240519165501
 micro;soft;Bill Gates;false;20240522000639
-blue;archive;Ichinose Asuna;true;20240524040315
+tesla;tesla;Elon Musk;false;20240523012222
+nvidia;graphic;Jensen;false;20240523021102
+samsung;galaxy;이재용;false;20240523021159
+hyundai;motors;정주영;false;20240523021236
+lotte;giants;신격호;false;20240523021440

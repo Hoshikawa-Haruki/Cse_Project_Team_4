@@ -1,3 +1,3 @@
-micro;Bill Gates;돈키 호테;1001
-micro;Bill Gates;걸리버 여행기;1002
+micro;Bill Gates;돈키호테;1001
+micro;Bill Gates;걸리버여행기;1002
 micro;Bill Gates;햄릿;1003
