@@ -8,7 +8,6 @@ package cseProject.Forms.MainForm;
  *
  * @author 이승환
  */
-import cseProject.LoginState.UserContext;
 import cseProject.Helper.SystemHelper;
 import cseProject.Menu.AdminBookManage;
 import cseProject.Menu.AdminMain;
@@ -32,7 +31,8 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
         allMenus.add(managerMenu);
         managerMenu.add(bookManage);
         managerMenu.add(userManage);
-        allMenus.getChild(0).printMenu();
+        allMenus.printMenu();
+        //allMenus.getChild(0).printMenu();
     }
 
     public void showBookManageForm() {

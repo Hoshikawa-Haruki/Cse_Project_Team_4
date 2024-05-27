@@ -17,7 +17,7 @@ public class KangTestDrive {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException { // 전략 테스트 코드
         // TODO code application logic here 
 //        Form form;
 //        int select = 0;

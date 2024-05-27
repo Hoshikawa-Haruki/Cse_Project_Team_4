@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author jasuj
  */
-public class UserManagement_TestDrive {
+public class UserManagement_TestDrive { // 커맨드 테스트 코드
 
     /**
      * @param args the command line arguments
