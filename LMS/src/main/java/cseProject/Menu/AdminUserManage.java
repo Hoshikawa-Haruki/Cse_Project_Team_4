@@ -12,7 +12,7 @@ import cseProject.UsermanagementFunction.command.UserManagementInvoker;
  *
  * @author 이승환
  */
-public class AdminUserManage extends MenuComponent { // 리프노드
+public class AdminUserManage extends MenuItem { // 리프노드
 
     UserManagementInvoker invoker = new UserManagementInvoker();
     private MenuComponent allMenus;

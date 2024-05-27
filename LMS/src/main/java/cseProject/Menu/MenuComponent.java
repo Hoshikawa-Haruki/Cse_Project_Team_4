@@ -10,9 +10,7 @@ import java.util.ArrayList;
  *
  * @author 이승환
  */
-public abstract class MenuComponent { // 리프노드
-
-    private ArrayList<MenuComponent> menuComponents = new ArrayList<>();
+public abstract class MenuComponent {
 
     public void add(MenuComponent menuComponent) {
         throw new UnsupportedOperationException();
@@ -31,8 +29,6 @@ public abstract class MenuComponent { // 리프노드
     }
 
     public void printMenu() {
-        for (MenuComponent MenuComponent : menuComponents) {
-            MenuComponent.printMenu();
-        }
+        throw new UnsupportedOperationException();
     }
 }

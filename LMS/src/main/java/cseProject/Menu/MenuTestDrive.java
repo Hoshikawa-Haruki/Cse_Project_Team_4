@@ -13,7 +13,7 @@ public class MenuTestDrive {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         // TODO code application logic here
 //        MenuComponent allMenus = new Menu("전체 메뉴");
 //        MenuComponent managerMenu = new Menu("관리자 메뉴");

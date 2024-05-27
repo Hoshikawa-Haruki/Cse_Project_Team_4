@@ -11,34 +11,33 @@ import cseProject.LoginState.UserContext;
  *
  * @author 이승환
  */
-public class AdminMain extends Menu {
+public class GeneralMain extends Menu {
 
     private MenuComponent allMenus;
 
-    public AdminMain(MenuComponent allMenus) {
+    public GeneralMain(MenuComponent allMenus) {
         this.allMenus = allMenus;
     }
 
     @Override
     public void printMenu() {
         System.out.println("┌────────────────────────┐");
-        System.out.println("│ 1. 도서 현황/검색/등록/수정                    │");
-        System.out.println("│ 2. 이용자 관리                                 │");
+        System.out.println("│ 1. 도서 검색/대출/반납                         │");
+        System.out.println("│ 2. 내 정보 조회                                │");
         System.out.println("│ 3. 로그아웃                                    │");
         System.out.println("└────────────────────────┘");
-
         boolean valid = false;
         while (!valid) {
             String choice = SystemHelper.getInstance().getUserInput();
             switch (choice) {
                 case "1" -> {
-                    System.out.println("도서 관련 탭.");
-                    allMenus.getChild(0).getChild(0).printMenu();
+                    System.out.println("도서 검색/대출/반납");
+                    allMenus.getChild(1).getChild(0).printMenu();
                     valid = true;
                 }
                 case "2" -> {
-                    System.out.println("이용자 관리 탭");
-                    allMenus.getChild(0).getChild(1).printMenu();
+                    System.out.println("내 정보 조회");
+                    allMenus.getChild(1).getChild(1).printMenu();
                     valid = true;
                 }
                 case "3" -> {
@@ -51,5 +50,4 @@ public class AdminMain extends Menu {
             }
         }
     }
-
 }

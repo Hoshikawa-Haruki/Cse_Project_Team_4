@@ -11,7 +11,7 @@ import cseProject.Helper.SystemHelper;
  *
  * @author 이승환
  */
-public class AdminBookManage extends MenuComponent {
+public class AdminBookManage extends MenuItem {
 
     private MenuComponent allMenus;
 

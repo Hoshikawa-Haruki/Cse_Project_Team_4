@@ -68,27 +68,37 @@ public class UserManagementFunction {
         }
     }
 
-    public void SearchUserList() { //검색 전략에 따라 검색 메서드 호출
+    public void SearchUserList() {
         SearchUnit su = null;
-        System.out.print("검색방식을 입력하세요(id, name, type): ");
-        String input = helper.getUserInput();
+        boolean valid = false;
 
-        switch (input) {
-            case "id" ->
-                su = new IdSearchUnit();
-            case "name" ->
-                su = new NameSearchUnit();
-            case "type" ->
-                su = new TypeSearchUnit();
-            default -> {
-                System.out.println("유효하지 않은 검색방식 입니다. 다시 입력해주세요.");
-                SearchUserList();
+        while (!valid) {
+            System.out.print("검색방식을 입력하세요(id, name, type): ");
+            String input = helper.getUserInput();
+
+            switch (input) {
+                case "id" -> {
+                    su = new IdSearchUnit();
+                    valid = true;
+                }
+                case "name" -> {
+                    su = new NameSearchUnit();
+                    valid = true;
+                }
+                case "type" -> {
+                    su = new TypeSearchUnit();
+                    valid = true;
+                }
+                default -> {
+                    System.out.println("유효하지 않은 검색방식 입니다. 다시 입력해주세요.");
+                }
             }
         }
-        if (null == su.getSearchBehavior()) {
-            System.out.println("널 포인트에러");
-        } else {
+
+        if (su != null && su.getSearchBehavior() != null) {
             su.performSearch();
+        } else {
+            System.out.println("널 포인트에러");
         }
     }
 

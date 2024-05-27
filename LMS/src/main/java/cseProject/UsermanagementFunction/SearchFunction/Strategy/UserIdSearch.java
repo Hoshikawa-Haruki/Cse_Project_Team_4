@@ -19,7 +19,6 @@ public class UserIdSearch implements SearchBehavior {
 
     @Override
     public void Search() {
-
         ArrayList<Integer> index = new ArrayList<>();
         int indexNumber = 0;
 
@@ -61,7 +60,6 @@ public class UserIdSearch implements SearchBehavior {
         } else {
             System.out.println("해당 조건에 맞는 사용자가 없습니다");
         }
-
     }
 
 }
