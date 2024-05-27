@@ -23,7 +23,7 @@ public class MenuBuilder {
     }
 
     public static MenuComponent buildAllMenus() {
-        MenuComponent allMenus = new Menu(); // 전체 메뉴
+        MenuComponent allMenus = new MenuItem(); // 전체 메뉴
 
         // 관리자 메뉴 설정
         MenuComponent managerMenu = new AdminMain(allMenus); // 관리자의 컴포지트 노드 (하위메뉴 가능)

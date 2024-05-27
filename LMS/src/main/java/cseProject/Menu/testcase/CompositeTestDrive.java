@@ -2,7 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package cseProject.Menu;
+package cseProject.Menu.testcase;
+
+import cseProject.Menu.AdminBookManage;
+import cseProject.Menu.AdminMain;
+import cseProject.Menu.AdminUserManage;
+import cseProject.Menu.Menu;
+import cseProject.Menu.MenuComponent;
 
 /**
  *
