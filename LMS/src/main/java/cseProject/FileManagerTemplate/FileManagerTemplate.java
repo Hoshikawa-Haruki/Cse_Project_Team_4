@@ -90,7 +90,7 @@ public abstract class FileManagerTemplate {
         String writeFilePath = getWriteFilePath(fileName); // concrete
         BufferedWriter out = createBufferedWriter(writeFilePath);
         writeData(out); // abstract
-        closeBufferedWriter(out);
+        closeBufferedWriter(out); // concrete
     }
 
     private ArrayList<String> readDBFile(String fileName) throws IOException { // concrete
