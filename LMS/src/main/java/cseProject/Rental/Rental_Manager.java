@@ -56,17 +56,21 @@ public class Rental_Manager {
         String userName = User_Manager.getInstance().getLoginUser().getUserName();
         String title = targetBook.getTitle();
         String ISBN = targetBook.getISBN();
-        targetBook.setIsBorrorwed(true);
+        if (!targetBook.getIsBorrorwed()) {
+            targetBook.setIsBorrorwed(true);
 
-        Rental_Info rtbook = new Rental_Info(userID, userName, title, ISBN);
+            Rental_Info rtbook = new Rental_Info(userID, userName, title, ISBN);
 
-        add_rentalDB(rtbook);
-        System.out.println("- " + targetBook.getTitle() + " 도서가 대여 되었습니다.");
-        try {
-            FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
-            FileManagerTemplate.getInstance("Rental").writeDBFile("Rental_Info.txt");
-        } catch (IOException ex) {
-            Logger.getLogger(Rental_Manager.class.getName()).log(Level.SEVERE, null, ex);
+            add_rentalDB(rtbook);
+            System.out.println("- " + targetBook.getTitle() + " 도서가 대여 되었습니다.");
+            try {
+                FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
+                FileManagerTemplate.getInstance("Rental").writeDBFile("Rental_Info.txt");
+            } catch (IOException ex) {
+                Logger.getLogger(Rental_Manager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else{
+            System.out.println("해당 도서는 현재 대여중입니다.");
         }
     }
 
