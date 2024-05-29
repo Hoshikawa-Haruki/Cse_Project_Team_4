@@ -32,6 +32,14 @@ public class UserIdSearch implements SearchBehavior {
         }
 
         if (!index.isEmpty()) {
+            System.out.println(
+                    String.format("%-6s", " ")
+                    + String.format("%-16s", "아이디")
+                    + String.format("%-16s", "패스워드")
+                    + String.format("%-16s", "이름")
+                    + String.format("%-16s", "관리자여부")
+                    + String.format("%-16s", "가입일")
+            );
             for (int num : index) {
                 String temp = manager.getUserDB().get(num).getRegisteredDate();
                 String registeredDate = temp.substring(0, 4)
@@ -39,14 +47,6 @@ public class UserIdSearch implements SearchBehavior {
                         + temp.substring(4, 6)
                         + "-"
                         + temp.substring(6, 8);
-                System.out.println(
-                        String.format("%-6s", " ")
-                        + String.format("%-16s", "아이디")
-                        + String.format("%-16s", "패스워드")
-                        + String.format("%-16s", "이름")
-                        + String.format("%-16s", "관리자여부")
-                        + String.format("%-16s", "가입일")
-                );
                 System.out.println(
                         String.format("%-6s", indexNumber + 1 + ".")
                         + String.format("%-18s", manager.getUserDB().get(num).getUserID())
