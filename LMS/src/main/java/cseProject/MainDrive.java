@@ -12,23 +12,12 @@ import java.io.IOException;
  *
  * @author 이승환
  */
-public class KangTestDrive {
+public class MainDrive {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException { // 전략 테스트 코드
-        // TODO code application logic here 
-//        Form form;
-//        int select = 0;
-//
-//        if (select == 0) {
-//            form = new Admin_Form();
-//        } else {
-//            form = new General_Form();
-//        }
-//        form.perform_Main();
-
+    public static void main(String[] args) throws IOException {
         // User file manager
         FileManagerTemplate.getInstance("User").createDBFile("User_Info.txt");
         FileManagerTemplate.getInstance("User").createDB("User_Info.txt");
