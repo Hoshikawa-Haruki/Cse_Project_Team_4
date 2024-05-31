@@ -10,7 +10,7 @@ package cseProject.FileManagerTemplate;
  */
 import cseProject.Book.Book_Manager;
 import cseProject.Login.User_Manager;
-import cseProject.Rental.Rental_Manager;
+import cseProject.Book.Rental.Rental_Manager;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;

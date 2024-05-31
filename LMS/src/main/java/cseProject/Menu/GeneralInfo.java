@@ -4,7 +4,7 @@
  */
 package cseProject.Menu;
 
-import cseProject.Rental.Rental_Manager;
+import cseProject.Book.Rental.Rental_Manager;
 
 /**
  *

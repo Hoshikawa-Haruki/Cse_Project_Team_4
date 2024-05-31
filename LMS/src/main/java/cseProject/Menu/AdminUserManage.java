@@ -5,7 +5,7 @@
 package cseProject.Menu;
 
 import cseProject.Helper.SystemHelper;
-import cseProject.Rental.Rental_Manager;
+import cseProject.Book.Rental.Rental_Manager;
 import cseProject.UsermanagementFunction.command.UserManagementInvoker;
 
 /**

@@ -4,7 +4,7 @@
  */
 package cseProject.Book;
 
-import cseProject.Rental.Observer;
+import cseProject.Book.Rental.Observer;
 import java.util.ArrayList;
 
 /**

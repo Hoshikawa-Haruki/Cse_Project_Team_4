@@ -7,8 +7,8 @@ package cseProject.Menu;
 import cseProject.Book.Book_Info;
 import cseProject.Book.Book_Manager;
 import cseProject.Helper.SystemHelper;
-import cseProject.Rental.Rental_Info;
-import cseProject.Rental.Rental_Manager;
+import cseProject.Book.Rental.Rental_Info;
+import cseProject.Book.Rental.Rental_Manager;
 
 /**
  *

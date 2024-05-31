@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cseProject.Rental;
+package cseProject.Book.Rental;
 
 import cseProject.Book.Book_Info;
 import cseProject.FileManagerTemplate.FileManagerTemplate;

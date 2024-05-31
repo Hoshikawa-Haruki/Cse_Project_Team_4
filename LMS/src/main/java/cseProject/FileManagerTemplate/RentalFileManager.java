@@ -9,7 +9,7 @@ package cseProject.FileManagerTemplate;
  * @author 이승환
  */
 import cseProject.Book.Book_Info;
-import cseProject.Rental.Rental_Info;
+import cseProject.Book.Rental.Rental_Info;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
