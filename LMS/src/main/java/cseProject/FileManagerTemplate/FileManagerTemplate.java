@@ -101,7 +101,7 @@ public abstract class FileManagerTemplate {
             String fileContent;
             while ((fileContent = br.readLine()) != null) {
                 fileContents.add(fileContent);
-                // System.out.println(fileContent); // 전체 목록 출력(확인용)
+                System.out.println(fileContent); // 전체 목록 출력(확인용)
             }
         } catch (IOException ex) {
             Logger.getLogger(FileManagerTemplate.class.getName()).log(Level.SEVERE, null, ex);
