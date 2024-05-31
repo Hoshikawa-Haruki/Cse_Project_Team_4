@@ -69,7 +69,7 @@ public class Rental_Manager {
             } catch (IOException ex) {
                 Logger.getLogger(Rental_Manager.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else{
+        } else {
             System.out.println("해당 도서는 현재 대여중입니다.");
         }
     }
@@ -77,13 +77,17 @@ public class Rental_Manager {
     public void doReturn(Rental_Info targetBook) { // 도서 반납
         remove_rentalDB(targetBook);
         Book_Info targetReturnBook = Book_Manager.getInstance().findBookByISBN(targetBook.getISBN());
-        targetReturnBook.setIsBorrorwed(false);
-        System.out.println("- " + targetBook.getTitle() + " 도서가 반납되었습니다.");
-        try {
-            FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
-            FileManagerTemplate.getInstance("Rental").writeDBFile("Rental_Info.txt");
-        } catch (IOException ex) {
-            Logger.getLogger(Rental_Manager.class.getName()).log(Level.SEVERE, null, ex);
+        if (targetReturnBook != null) {
+            targetReturnBook.setIsBorrorwed(false);
+            System.out.println("- " + targetBook.getTitle() + " 도서가 반납되었습니다.");
+            try {
+                FileManagerTemplate.getInstance("Book").writeDBFile("Book_Info.txt");
+                FileManagerTemplate.getInstance("Rental").writeDBFile("Rental_Info.txt");
+            } catch (IOException ex) {
+                Logger.getLogger(Rental_Manager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else{
+            System.out.println("현재 해당 도서는 대여중이 아닙니다.");
         }
     }
 

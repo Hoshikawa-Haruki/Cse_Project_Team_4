@@ -1,3 +1,4 @@
 micro;Bill Gates;돈키호테;1001
 micro;Bill Gates;걸리버여행기;1002
 micro;Bill Gates;햄릿;1003
+apple;Tim Cook;컴퓨터구조와원리;3010

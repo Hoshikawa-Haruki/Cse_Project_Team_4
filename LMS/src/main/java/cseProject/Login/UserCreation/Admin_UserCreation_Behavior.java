@@ -20,6 +20,7 @@ public class Admin_UserCreation_Behavior implements UserCreation_Behavior {
 
     @Override
     public void make_User() throws IOException {
+        System.out.println("(테스트용! : 현재 관리자 코드는 admin1111 입니다)");
         System.out.print("관리자 코드를 입력하세요:");
         String AdminCode = helper.getUserInput();
         if (!AdminCode.equals("admin1111")) {
