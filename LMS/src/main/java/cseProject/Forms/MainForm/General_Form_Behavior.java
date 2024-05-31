@@ -24,31 +24,9 @@ public class General_Form_Behavior implements Main_Form_Behavior {
     @Override
     public void show_MainForm() {
         allMenus.getChild(1).printMenu();
-//        System.out.println("┌────────────────────────┐");
-//        System.out.println("│ 1. 도서 검색/대출/반납                         │");
-//        System.out.println("│ 2. 내 정보 조회                                │");
-//        System.out.println("│ 3. 로그아웃                                    │");
-//        System.out.println("└────────────────────────┘");
-//        String choice = helper.getUserInput();
-//        switch (choice) {
-//            case "1" -> {
-//                System.out.println("도서 검색/대출/반납");
-//                showBookGeneralForm();
-//            }
-//            case "2" -> {
-//                System.out.println("내 정보 조회");
-//                showMyInformation();
-//            }
-//            case "3" -> {
-//                UserContext.getInstance().logout();
-//            }
-//            default -> {
-//                System.out.println("잘못된 입력입니다.");
-//            }
-//        }
     }
 
-    public void showBookGeneralForm() {
+//    public void showBookGeneralForm() {
 //        System.out.println("┌────────────────────────┐");
 //        System.out.println("│ 1. 도서 현황                                   │");
 //        System.out.println("│ 2. 도서 검색                                   │");
@@ -100,10 +78,9 @@ public class General_Form_Behavior implements Main_Form_Behavior {
 //                System.out.println("- 잘못된 입력입니다.");
 //            }
 //        }
-    }
-
-    public void showMyInformation() {
+//    }
+//    public void showMyInformation() {
 //        Rental_Manager.getInstance().showMyRentalInfo();
 //        show_MainForm();
-    }
+//    }
 }

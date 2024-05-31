@@ -9,13 +9,8 @@ package cseProject.Forms.MainForm;
  * @author 이승환
  */
 import cseProject.Helper.SystemHelper;
-import cseProject.Menu.AdminBookManage;
-import cseProject.Menu.AdminMain;
-import cseProject.Menu.AdminUserManage;
-import cseProject.Menu.Menu;
 import cseProject.Menu.MenuBuilder;
 import cseProject.Menu.MenuComponent;
-import cseProject.UsermanagementFunction.command.UserManagementInvoker;
 
 public class Admin_Form_Behavior implements Main_Form_Behavior {
 
@@ -28,19 +23,10 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
 
     @Override
     public void show_MainForm() {
-//        MenuComponent allMenus = new Menu(); // 컴포지트 노드 (하위메뉴 가능)
-//        MenuComponent managerMenu = new AdminMain(allMenus); // 컴포지트 노드 (하위메뉴 가능)
-//        MenuComponent bookManage = new AdminBookManage(allMenus); // 초기화면 -> 도서관리 (리프노드, 하위메뉴 X)
-//        MenuComponent userManage = new AdminUserManage(allMenus); // 초기화면 -> 이용자관리 (리프노드, 하위메뉴 X)
-//
-//        allMenus.add(managerMenu); // allMenus.0 = 관리자 메뉴
-//        managerMenu.add(bookManage); // allMenus.0.1 = 도서 관리
-//        managerMenu.add(userManage); // allMenus.0.2 = 이용자 관리
-//        managerMenu.printMenu();
         allMenus.getChild(0).printMenu();
     }
 
-    public void showBookManageForm() {
+//    public void showBookManageForm() {
 //        System.out.println("┌────────────────────────┐");
 //        System.out.println("│ 1. 도서 현황                                   │");
 //        System.out.println("│ 2. 도서 검색                                   │");
@@ -93,9 +79,8 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
 //                }
 //            }
 //        }
-    }
-
-    public void showUserManageForm() {
+//    }
+//    public void showUserManageForm() {
 //        System.out.println("┌────────────────────────┐");
 //        System.out.println("│ 1. 이용자 현황                                 │");
 //        System.out.println("│ 2. 이용자 검색                                 │");
@@ -142,6 +127,5 @@ public class Admin_Form_Behavior implements Main_Form_Behavior {
 //                }
 //            }
 //        }
-    }
-
+//    }
 }

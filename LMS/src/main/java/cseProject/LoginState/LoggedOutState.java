@@ -6,8 +6,6 @@ package cseProject.LoginState;
 
 import cseProject.Forms.Landing_Form;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
